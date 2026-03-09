@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小澤ゆうた｜西郷村議会議員</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Zen+Antique&family=Shippori+Mincho:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1c1710;
+  --paper: #f5f0e8;
+  --paper2: #ede8da;
+  --vermillion: #c0392b;
+  --gold: #b8860b;
+  --gold-light: #d4a017;
+  --moss: #4a5240;
+  --stone: #7a7065;
+  --cream: #faf6ee;
+  --border: rgba(28,23,16,0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* 和紙テクスチャ風背景 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 40px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(245,240,232,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Zen Antique', serif;
+  font-size: 1.1rem;
+  color: var(--ink);
+  letter-spacing: 0.15em;
+}
+
+.nav-logo span {
+  color: var(--vermillion);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  color: var(--stone);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--vermillion); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 100px 40px 80px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+/* 家紋風装飾 */
+.hero-deco {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(70vw, 600px);
+  height: min(70vw, 600px);
+  border-radius: 50%;
+  border: 1px solid rgba(192,57,43,0.06);
+  pointer-events: none;
+}
+.hero-deco::before {
+  content: '';
+  position: absolute;
+  inset: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(192,57,43,0.08);
+}
+.hero-deco::after {
+  content: '';
+  position: absolute;
+  inset: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(192,57,43,0.1);
+}
+
+/* 縦書き風ヒーロー */
+.hero-inner {
+  position: relative;
+  text-align: center;
+  max-width: 700px;
+}
+
+.hero-kamon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 24px;
+  opacity: 0.7;
+}
+
+.hero-pre {
+  font-size: 0.8rem;
+  letter-spacing: 0.4em;
+  color: var(--stone);
+  margin-bottom: 16px;
+  animation: fadeIn 1s ease both;
+}
+
+.hero-name-jp {
+  font-family: 'Zen Antique', serif;
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+  animation: fadeIn 1.2s ease both;
+}
+
+.hero-name-jp .yuta {
+  color: var(--vermillion);
+}
+
+.hero-divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  margin: 28px auto;
+  animation: growHeight 1.5s ease both;
+}
+
+.hero-copy {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 2.2;
+  color: var(--stone);
+  letter-spacing: 0.08em;
+  animation: fadeIn 1.6s ease both;
+}
+
+.hero-copy strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 36px;
+  animation: fadeIn 1.8s ease both;
+}
+
+.htag {
+  font-size: 0.8rem;
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--stone);
+  letter-spacing: 0.15em;
+  background: rgba(255,255,255,0.5);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--stone);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  opacity: 0.6;
+}
+
+.hero-scroll::after {
+  content: '';
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--stone), transparent);
+  animation: growHeight 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes growHeight {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+/* ===== COMMON ===== */
+.section-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 90px 32px;
+  position: relative;
+}
+
+.section-en {
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  color: var(--vermillion);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-jp {
+  font-family: 'Zen Antique', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--ink);
+  letter-spacing: 0.1em;
+  margin-bottom: 48px;
+}
+
+.line-deco {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.line-deco::before, .line-deco::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.line-deco-diamond {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ===== ABOUT ===== */
+.about-bg {
+  background: var(--paper2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-lead {
+  font-size: 1.05rem;
+  line-height: 2.4;
+  color: var(--stone);
+  letter-spacing: 0.05em;
+  margin-bottom: 48px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.about-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  position: relative;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--vermillion);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.about-card:hover::before { opacity: 1; }
+
+.about-card-icon {
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+}
+.about-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.about-card p {
+  font-size: 0.88rem;
+  line-height: 1.9;
+  color: var(--stone);
+}
+
+/* ===== QUESTIONS ===== */
+.q-section-bg {
+  background: var(--cream);
+}
+
+.q-card {
+  border: 1px solid var(--border);
+  margin-bottom: 48px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.q-card-header {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: var(--paper);
+}
+
+.q-number-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--vermillion);
+  border: 1px solid var(--vermillion);
+  padding: 4px 10px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.q-card-title {
+  font-family: 'Zen Antique', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  line-height: 1.5;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+}
+
+.q-card-body {
+  padding: 32px;
+}
+
+/* 質問の吹き出し */
+.dialogue {
+  margin-bottom: 20px;
+}
+
+.dialogue-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.dialogue-row.answer {
+  flex-direction: row-reverse;
+}
+
+.dialogue-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  background: var(--paper2);
+}
+
+.dialogue-content {
+  flex: 1;
+}
+
+.dialogue-name {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--stone);
+  margin-bottom: 6px;
+}
+
+.dialogue-row.answer .dialogue-name {
+  text-align: right;
+}
+
+.dialogue-bubble {
+  padding: 16px 20px;
+  font-size: 0.92rem;
+  line-height: 2;
+  border: 1px solid var(--border);
+  position: relative;
+  color: var(--ink);
+}
+
+.dialogue-row:not(.answer) .dialogue-bubble {
+  background: var(--paper2);
+  border-left: 3px solid var(--vermillion);
+}
+
+.dialogue-row.answer .dialogue-bubble {
+  background: #fff;
+  border-right: 3px solid var(--moss);
+  text-align: right;
+}
+
+.q-philosophy {
+  margin-top: 28px;
+  padding: 20px 24px;
+  border: 1px solid rgba(184,134,11,0.3);
+  background: rgba(212,160,23,0.04);
+  font-size: 0.9rem;
+  line-height: 2;
+  color: var(--ink);
+  position: relative;
+}
+
+.q-philosophy::before {
+  content: '── ゆうたの想い';
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--stone);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  background: var(--paper);
+  transition: border-color 0.2s, color 0.2s;
+}
+.pdf-btn:hover { border-color: var(--vermillion); color: var(--vermillion); }
+
+/* ===== SUPPORT ===== */
+.support-bg {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.support-bg .section-jp {
+  color: var(--cream);
+}
+
+.support-lead {
+  font-size: 0.95rem;
+  line-height: 2.2;
+  color: rgba(245,240,232,0.7);
+  margin-bottom: 48px;
+  letter-spacing: 0.05em;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.support-card {
+  border: 1px solid rgba(245,240,232,0.15);
+  padding: 32px 28px;
+  position: relative;
+  transition: border-color 0.3s, transform 0.2s;
+  text-decoration: none;
+  color: var(--cream);
+  display: block;
+  background: rgba(255,255,255,0.03);
+}
+
+.support-card:hover {
+  border-color: var(--gold-light);
+  transform: translateY(-4px);
+}
+
+.support-card-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--gold-light);
+  border: 1px solid rgba(212,160,23,0.4);
+  display: inline-block;
+  padding: 3px 10px;
+  margin-bottom: 16px;
+}
+
+.support-card-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.support-card h3 {
+  font-family: 'Zen Antique', serif;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  color: var(--cream);
+  letter-spacing: 0.08em;
+}
+
+.support-card p {
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: rgba(245,240,232,0.6);
+}
+
+.support-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-size: 0.82rem;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+}
+
+/* ===== CONTACT ===== */
+.contact-bg {
+  background: var(--paper2);
+  border-top: 1px solid var(--border);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.contact-card {
+  padding: 28px 24px;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--cream);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.2s;
+}
+
+.contact-card:hover {
+  border-color: var(--vermillion);
+}
+
+.contact-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.contact-label { font-size: 0.72rem; letter-spacing: 0.2em; color: var(--stone); margin-bottom: 4px; }
+.contact-value { font-size: 0.95rem; font-weight: 700; color: var(--ink); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--ink);
+  color: rgba(245,240,232,0.4);
+  text-align: center;
+  padding: 36px 20px;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+footer a {
+  color: rgba(245,240,232,0.4);
+  text-decoration: none;
+  margin: 0 12px;
+}
+footer a:hover { color: var(--gold-light); }
+
+@media (max-width: 640px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .section-wrap { padding: 60px 20px; }
+  .q-card-header, .q-card-body { padding: 20px; }
+  .hero { padding: 80px 24px 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">小澤<span>ゆうた</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">人物</a></li>
+    <li><a href="#questions">議会質問</a></li>
+    <li><a href="#support">応援する</a></li>
+    <li><a href="#contact">連絡先</a></li>
+    <li><a href="ozawa-gijiroku.html">議事録</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-inner">
+    <!-- 家紋風SVG -->
+    <svg class="hero-kamon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="46" stroke="#c0392b" stroke-width="1" opacity="0.4"/>
+      <circle cx="50" cy="50" r="36" stroke="#c0392b" stroke-width="1" opacity="0.3"/>
+      <circle cx="50" cy="50" r="4" fill="#c0392b" opacity="0.5"/>
+      <line x1="50" y1="14" x2="50" y2="86" stroke="#c0392b" stroke-width="0.8" opacity="0.3"/>
+      <line x1="14" y1="50" x2="86" y2="50" stroke="#c0392b" stroke-width="0.8" opacity="0.3"/>
+      <line x1="24" y1="24" x2="76" y2="76" stroke="#c0392b" stroke-width="0.8" opacity="0.2"/>
+      <line x1="76" y1="24" x2="24" y2="76" stroke="#c0392b" stroke-width="0.8" opacity="0.2"/>
+    </svg>
+
+    <div class="hero-pre">西郷村議会議員・村長候補</div>
+    <h1 class="hero-name-jp">小澤<span class="yuta">ゆうた</span></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-copy">
+      お笑い・ラップ・ゲーム開発——<br>
+      <strong>型破りな経歴で、村の未来を問い続ける。</strong>
+    </p>
+    <div class="hero-tags">
+      <span class="htag">お笑い</span>
+      <span class="htag">ラップ</span>
+      <span class="htag">ゲーム開発</span>
+      <span class="htag">西郷村議会議員</span>
+      <span class="htag">村長候補</span>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- ABOUT -->
+<div id="about" class="about-bg">
+  <div class="section-wrap">
+    <div class="section-en">ABOUT</div>
+    <div class="section-jp">人物紹介</div>
+    <p class="about-lead">
+      福島県西郷村生まれ。お笑い・ラップ・ゲーム開発と、政治とは縁遠そうな道を歩んできた。<br>
+      でも、「この村が好き」という気持ちだけは、ずっと変わらない。<br>
+      村議会議員として、そして村長候補として——型にはまらない視点で、村の課題に向き合ってきた。
+    </p>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-icon">🏡</div>
+        <h3>西郷村で生まれ育った</h3>
+        <p>福島県西白河郡西郷村。この村への愛着が、すべての原点。村民の顔が見える政治を目指す。</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🎤</div>
+        <h3>お笑い・ラップ</h3>
+        <p>人を笑わせる力、言葉でメッセージを届ける力。政治の場でも、この経験が生きている。</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🎮</div>
+        <h3>ゲーム開発</h3>
+        <p>ゼロからモノを作る思考。課題を構造的に捉え、解決策を設計する力に繋がっている。</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🏛️</div>
+        <h3>村議会議員として</h3>
+        <p>メガソーラー・子育て・ワクチン情報など、村民目線の質問を議会で問い続けてきた。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUESTIONS -->
+<div id="questions" class="q-section-bg">
+  <div class="section-wrap">
+    <div class="section-en">INSIDE MY HEAD</div>
+    <div class="section-jp">頭の中——<br>議会で問い続けたこと</div>
+    <div class="line-deco"><div class="line-deco-diamond"></div></div>
+
+    <!-- Q1: メガソーラー -->
+    <div class="q-card">
+      <div class="q-card-header">
+        <span class="q-number-badge">NO.01</span>
+        <div class="q-card-title">メガソーラー開発と<br>村の景観・環境保全について</div>
+      </div>
+      <div class="q-card-body">
+        <div class="dialogue">
+          <div class="dialogue-row">
+            <div class="dialogue-avatar">🎤</div>
+            <div class="dialogue-content">
+              <div class="dialogue-name">小澤ゆうた 議員</div>
+              <div class="dialogue-bubble">
+                近年、村内でメガソーラー開発の動きが見られます。再生可能エネルギーの推進は理解できますが、山林の伐採や水源への影響、景観の変化など、村民の生活環境に直結する問題があります。村として開発業者への指導や、条例による規制を検討する考えはありますか。また、村民への情報開示はどのように行われているのでしょうか。
+              </div>
+            </div>
+          </div>
+          <div class="dialogue-row answer">
+            <div class="dialogue-avatar">🏛️</div>
+            <div class="dialogue-content">
+              <div class="dialogue-name">村長 答弁</div>
+              <div class="dialogue-bubble">
+                メガソーラー開発については、現行の国・県の法令の範囲内で適切に対応しております。開発事業者に対しては、関係法令の遵守と地域住民への説明を求めています。条例制定については、他市町村の動向や法的課題を研究しながら、慎重に検討してまいります。
+              </div>
+            </div>
+          </div>
+          <div class="dialogue-row">
+            <div class="dialogue-avatar">🎤</div>
+            <div class="dialogue-content">
+              <div class="dialogue-name">小澤ゆうた 議員（再質問）</div>
+              <div class="dialogue-bubble">
+                「慎重に検討」という答弁ですが、開発は今まさに進んでいます。村民が知らないうちに工事が始まることのないよう、情報公開の仕組みを早急に整えていただきたい。村として主体的に関わる姿勢を、改めて確認したい。
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="q-philosophy">
+          大きな資本が入ってくるとき、いちばん置いてけぼりになるのが村民の声だと思っています。「法令の範囲内」だけで済ませず、村として村民の側に立って判断する——そういう姿勢が必要だと感じて、この質問をしました。
+        </div>
+        <a href="ozawa-gijiroku.html" class="pdf-btn">📄 議事録詳細を見る</a>
+      </div>
+    </div>
+
+    <!-- Q2: 子育て -->
+    <div class="q-card">
+      <div class="q-card-header">
+        <span class="q-number-badge">NO.02</span>
+        <div class="q-card-title">子育て支援の充実と<br>若い世代が残れる村づくりについて</div>
+      </div>
+      <div class="q-card-body">
+        <div class="dialogue">
+          <div class="dialogue-row">
+            <div class="dialogue-avatar">🎤</div>
+            <div class="dialogue-content">
+              <div class="dialogue-name">小澤ゆうた 議員</div>
+              <div class="dialogue-bubble">
+                西郷村の人口減少対策として、子育て世代の定住促進が欠かせません。保育所の待機児童の状況、放課後児童クラブの整備状況、そして子育て家庭への経済的支援について、現状と今後の方向性を伺います。「子どもを産み育てやすい村」を実現するための、具体的な施策はありますか。
+              </div>
+            </div>
+          </div>
+          <div class="dialogue-row answer">
+            <div class="dialogue-avatar">🏛️</div>
+            <div class="dialogue-content">
+              <div class="dialogue-name">村長 答弁</div>
+              <div class="dialogue-bubble">
+                子育て支援は本村にとって重要な施策と認識しております。保育環境の整備や各種手当の充実に努めており、引き続き子育てしやすい環境づくりに取り組んでまいります。具体的な新規施策については、財政状況も踏まえながら検討してまいります。
+              </div>
+            </div>
+          </div>
+          <div class="dialogue-row">
+            <div class="dialogue-avatar">🎤</div>
+            <div class="dialogue-content">
+              <div class="dialogue-name">小澤ゆうた 議員（再質問）</div>
+              <div class="dialogue-bubble">
+                財政状況を踏まえてというのはわかります。ただ、子育て支援は「コスト」ではなく「投資」です。今ここで手を打たないと、10年後には若い世代がいない村になってしまう。具体的な数値目標を持った施策展開をお願いしたいと思います。
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="q-philosophy">
+          子どもが育てやすい村なら、若い人も残る。それだけのことだと思うんです。シンプルだからこそ、本気でやらないといけない。議員として、この問いを何度でも届け続けます。
+        </div>
+        <a href="ozawa-gijiroku.html" class="pdf-btn">📄 議事録詳細を見る</a>
+      </div>
+    </div>
+
+    <!-- Q3: ワクチン -->
+    <div class="q-card">
+      <div class="q-card-header">
+        <span class="q-number-badge">NO.03</span>
+        <div class="q-card-title">新型コロナワクチンに関する<br>情報提供のあり方について</div>
+      </div>
+      <div class="q-card-body">
+        <div class="dialogue">
+          <div class="dialogue-row">
+            <div class="dialogue-avatar">🎤</div>
+            <div class="dialogue-content">
+              <div class="dialogue-name">小澤ゆうた 議員</div>
+              <div class="dialogue-bubble">
+                ワクチン接種については、村民の中に様々な考え方があります。村として接種を推奨する立場であることはわかりますが、効果と同時にリスクについても、村民が自分で判断できるよう客観的な情報を提供することが行政の役割ではないでしょうか。一方的な推奨ではなく、多角的な情報提供の場を設けることを求めます。
+              </div>
+            </div>
+          </div>
+          <div class="dialogue-row answer">
+            <div class="dialogue-avatar">🏛️</div>
+            <div class="dialogue-content">
+              <div class="dialogue-name">村長 答弁</div>
+              <div class="dialogue-bubble">
+                ワクチン接種に関する情報提供については、国・県の方針に基づいて適切に行っております。接種の有効性と安全性については、公的機関の情報をもとに村民へ周知しており、引き続き適切な情報提供に努めてまいります。
+              </div>
+            </div>
+          </div>
+          <div class="dialogue-row">
+            <div class="dialogue-avatar">🎤</div>
+            <div class="dialogue-content">
+              <div class="dialogue-name">小澤ゆうた 議員（再質問）</div>
+              <div class="dialogue-bubble">
+                国・県の方針に従うことは理解します。ただ、村民の中には不安を抱えている方もいる。「接種してください」だけでなく、「迷っている方はこういう相談窓口があります」という寄り添う姿勢も、行政として大切ではないでしょうか。
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="q-philosophy">
+          賛成・反対じゃなくて、村民一人ひとりが自分で考えられる環境を作りたかった。「お上が言うから」じゃなく、「自分で判断した」と言える村民を増やすことが、本当の意味での健康な地域だと思っています。
+        </div>
+        <a href="ozawa-gijiroku.html" class="pdf-btn">📄 議事録詳細を見る</a>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 8px;">
+      <a href="ozawa-gijiroku.html" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border:1px solid var(--vermillion);color:var(--vermillion);text-decoration:none;font-size:0.9rem;letter-spacing:0.15em;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--vermillion)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--vermillion)'">
+        📋 すべての議事録を見る
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- SUPPORT -->
+<div id="support" class="support-bg">
+  <div class="section-wrap">
+    <div class="section-en" style="color:var(--gold-light);">SUPPORT</div>
+    <div class="section-jp">応援する</div>
+    <p class="support-lead">
+      小澤ゆうたの活動を、あなたの形で支えてください。<br>
+      SNSでのシェアから、継続的な応援まで——どんな形でも、力になります。
+    </p>
+    <div class="support-grid">
+      <!-- プラン1: Xフォロー -->
+      <a href="#" class="support-card">
+        <div class="support-card-badge">PLAN 01</div>
+        <div class="support-card-icon">𝕏</div>
+        <h3>Xでフォロー・拡散</h3>
+        <p>まずはXをフォローして、日々の発信をシェアしてください。一人ひとりの拡散が、村の議論を広げます。</p>
+        <div class="support-card-action">フォローする →</div>
+      </a>
+      <!-- プラン2: 月額応援 -->
+      <a href="#" class="support-card">
+        <div class="support-card-badge">PLAN 02</div>
+        <div class="support-card-icon">☕</div>
+        <h3>月額応援プラン</h3>
+        <p>月々少額から、継続的に活動を支援することができます。活動報告や裏話を定期的にお届けします。</p>
+        <div class="support-card-action">応援する →</div>
+      </a>
+      <!-- プラン3: 政治資金 -->
+      <a href="#" class="support-card">
+        <div class="support-card-badge">PLAN 03</div>
+        <div class="support-card-icon">🏮</div>
+        <h3>政治資金で応援</h3>
+        <p>政治資金規正法に基づく寄付として、活動資金を支援いただけます。詳細はお問い合わせください。</p>
+        <div class="support-card-action">詳細を見る →</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="contact-bg">
+  <div class="section-wrap">
+    <div class="section-en">CONTACT</div>
+    <div class="section-jp">連絡先</div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">𝕏</div>
+        <div class="contact-label">X (Twitter)</div>
+        <div class="contact-value" style="color:var(--stone);font-size:0.85rem;">準備中</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-label">メール</div>
+        <div class="contact-value" style="color:var(--stone);font-size:0.85rem;">準備中</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:12px;">
+    <a href="#about">人物</a>
+    <a href="#questions">議会質問</a>
+    <a href="ozawa-gijiroku.html">議事録</a>
+    <a href="#support">応援する</a>
+    <a href="#contact">連絡先</a>
+  </p>
+  <p>© 2024 小澤ゆうた｜福島県西白河郡西郷村</p>
+</footer>
+
+</body>
+</html>
