@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>議事録アーカイブ｜小澤ゆうた</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Zen+Antique&family=Shippori+Mincho:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1c1710;
+  --paper: #f5f0e8;
+  --paper2: #ede8da;
+  --vermillion: #c0392b;
+  --gold: #b8860b;
+  --gold-light: #d4a017;
+  --moss: #4a5240;
+  --stone: #7a7065;
+  --cream: #faf6ee;
+  --border: rgba(28,23,16,0.12);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 40px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(245,240,232,0.95); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo a { font-family: 'Zen Antique', serif; font-size: 1.05rem; color: var(--ink); letter-spacing: 0.15em; text-decoration: none; }
+.nav-logo span { color: var(--vermillion); }
+.nav-back { font-size: 0.82rem; color: var(--stone); letter-spacing: 0.1em; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.nav-back:hover { color: var(--vermillion); }
+.page-header { padding: 120px 32px 60px; background: var(--paper); border-bottom: 1px solid var(--border); text-align: center; }
+.page-header-en { font-size: 0.72rem; letter-spacing: 0.4em; color: var(--vermillion); text-transform: uppercase; margin-bottom: 12px; }
+.page-header-title { font-family: 'Zen Antique', serif; font-size: clamp(2rem, 5vw, 3.5rem); color: var(--ink); letter-spacing: 0.1em; margin-bottom: 20px; }
+.page-header-desc { font-size: 0.92rem; line-height: 2.2; color: var(--stone); max-width: 600px; margin: 0 auto; }
+.filter-bar { max-width: 900px; margin: 0 auto; padding: 32px 32px 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.filter-label { font-size: 0.78rem; letter-spacing: 0.2em; color: var(--stone); }
+.filter-btn { padding: 6px 16px; border: 1px solid var(--border); background: transparent; font-family: 'Shippori Mincho', serif; font-size: 0.82rem; color: var(--stone); cursor: pointer; letter-spacing: 0.1em; transition: all 0.2s; }
+.filter-btn:hover, .filter-btn.active { border-color: var(--vermillion); color: var(--vermillion); background: rgba(192,57,43,0.04); }
+.main-wrap { max-width: 900px; margin: 0 auto; padding: 48px 32px 80px; }
+.year-section { margin-bottom: 56px; }
+.year-label { font-family: 'Zen Antique', serif; font-size: 1.4rem; color: var(--ink); letter-spacing: 0.1em; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 24px; display: flex; align-items: center; gap: 16px; }
+.year-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--border), transparent); }
+/* 議事録全文 */
+.transcript-toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border: 1px solid var(--border);
+  background: var(--paper); color: var(--stone);
+  font-size: 0.82rem; letter-spacing: 0.1em;
+  font-family: 'Shippori Mincho', serif;
+  cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  margin-top: 4px;
+}
+.transcript-toggle:hover { border-color: var(--vermillion); color: var(--vermillion); }
+.transcript-toggle.open { border-color: var(--vermillion); color: var(--vermillion); }
+.tr-arrow { transition: transform 0.2s; display: inline-block; }
+.transcript-toggle.open .tr-arrow { transform: rotate(180deg); }
+.transcript-full {
+  margin-top: 20px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--vermillion);
+  background: #fdfaf5;
+  padding: 20px 24px;
+  max-height: 520px;
+  overflow-y: auto;
+}
+.tr-line { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(28,23,16,0.05); font-size: 0.84rem; line-height: 1.9; }
+.tr-line:last-child { border-bottom: none; }
+.tr-spk { flex-shrink: 0; font-weight: 700; color: var(--stone); font-size: 0.78rem; min-width: 160px; padding-top: 2px; }
+.tr-txt { color: var(--ink); }
+.tr-ozawa { background: rgba(192,57,43,0.04); border-radius: 2px; padding: 8px 10px 8px 10px !important; border-bottom: 1px solid rgba(192,57,43,0.12) !important; }
+.tr-ozawa .tr-spk { color: var(--vermillion); font-weight: 900; }
+.tr-ozawa .tr-txt { color: #2a1a14; }
+.tr-other .tr-spk { color: #888; }
+.tr-cont { font-size: 0.82rem; color: var(--stone); padding: 3px 0; }
+
+
+.session-group{
+  margin-bottom: 32px;
+  transition: background 0.5s, box-shadow 0.5s, border-color 0.5s;
+  border-radius: 3px;
+  border: 2px solid transparent;
+  scroll-margin-top: 72px;
+}
+.session-group.highlighted {
+  border-color: var(--vermillion);
+  background: linear-gradient(135deg, rgba(192,57,43,0.04) 0%, rgba(192,57,43,0.01) 100%);
+  box-shadow: 0 0 0 4px rgba(192,57,43,0.08), 0 6px 28px rgba(192,57,43,0.12);
+  animation: highlightPulse 0.7s ease;
+}
+@keyframes highlightPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(192,57,43,0.5); }
+  60%  { box-shadow: 0 0 0 16px rgba(192,57,43,0); }
+  100% { box-shadow: 0 0 0 4px rgba(192,57,43,0.08), 0 6px 28px rgba(192,57,43,0.12); }
+}
+.session-group.highlighted .session-label {
+  background: var(--vermillion) !important;
+  color: #fff !important;
+  border-left-color: #fff !important;
+  letter-spacing: 0.28em;
+  padding-right: 20px;
+}
+.highlighted-badge {
+  display: none;
+}
+.session-group.highlighted .highlighted-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  padding: 2px 10px;
+  margin-left: 12px;
+  animation: badgeFadeIn 0.4s ease 0.25s both;
+}
+@keyframes badgeFadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.session-label { font-size: 0.78rem; letter-spacing: 0.2em; color: var(--stone); padding: 6px 12px; border-left: 2px solid var(--vermillion); margin-bottom: 12px; background: rgba(192,57,43,0.03); }
+.record-card { border: 1px solid var(--border); background: #fff; margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s; }
+.record-card:hover { border-color: var(--gold); }
+.record-card-header { padding: 18px 24px; display: flex; align-items: flex-start; gap: 20px; cursor: pointer; background: var(--paper); transition: background 0.2s; }
+.record-card-header:hover { background: var(--paper2); }
+.record-meta { flex-shrink: 0; text-align: center; min-width: 44px; }
+.record-num { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--stone); margin-bottom: 2px; }
+.record-num-val { font-family: 'Zen Antique', serif; font-size: 1.3rem; color: var(--vermillion); line-height: 1; }
+.record-title-area { flex: 1; }
+.record-title { font-size: 0.95rem; font-weight: 700; color: var(--ink); line-height: 1.6; margin-bottom: 6px; letter-spacing: 0.03em; }
+.record-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.record-tag { font-size: 0.68rem; padding: 2px 8px; border: 1px solid var(--border); color: var(--stone); letter-spacing: 0.08em; }
+.record-toggle { font-size: 0.72rem; color: var(--stone); flex-shrink: 0; margin-top: 4px; transition: transform 0.3s; }
+.record-card.open .record-toggle { transform: rotate(180deg); }
+.record-detail { display: none; padding: 24px 28px; border-top: 1px solid var(--border); }
+.record-card.open .record-detail { display: block; }
+.record-summary { font-size: 0.88rem; line-height: 2.2; color: var(--stone); margin-bottom: 20px; }
+.record-summary strong { color: var(--ink); font-weight: 700; }
+.record-pdf-link { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border: 1px solid var(--border); font-size: 0.82rem; color: var(--stone); text-decoration: none; letter-spacing: 0.1em; background: var(--paper); transition: border-color 0.2s, color 0.2s; }
+.record-pdf-link:hover { border-color: var(--vermillion); color: var(--vermillion); }
+.record-pdf-link.pending { opacity: 0.45; pointer-events: none; }
+.add-notice { border: 1px dashed rgba(192,57,43,0.3); padding: 32px; text-align: center; margin-top: 48px; background: rgba(192,57,43,0.02); }
+.add-notice p { font-size: 0.88rem; line-height: 2; color: var(--stone); }
+.add-notice strong { color: var(--vermillion); }
+footer { background: var(--ink); color: rgba(245,240,232,0.4); text-align: center; padding: 36px 20px; font-size: 0.8rem; letter-spacing: 0.15em; }
+footer a { color: rgba(245,240,232,0.4); text-decoration: none; margin: 0 12px; }
+footer a:hover { color: var(--gold-light); }
+@media (max-width: 640px) {
+  nav { padding: 0 16px; }
+  .page-header { padding: 80px 20px 40px; }
+  .filter-bar, .main-wrap { padding-left: 16px; padding-right: 16px; }
+  .record-card-header { padding: 14px 16px; gap: 12px; }
+  .record-detail { padding: 18px 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><a href="index.html">小澤<span>ゆうた</span></a></div>
+  <a href="index.html" class="nav-back">← メインページへ戻る</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-en">ASSEMBLY RECORDS</div>
+  <h1 class="page-header-title">議事録アーカイブ</h1>
+  <p class="page-header-desc">
+    西郷村議会での小澤ゆうたの質問記録です。<br>
+    村民の声を議会へ届けるため、何を問い、どんな答弁があったか——<br>
+    すべてをここに残しています。
+  </p>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">テーマで絞る：</span>
+  <button class="filter-btn active" onclick="filterRecords('all', this)">すべて</button>
+  <button class="filter-btn" onclick="filterRecords('nature', this)">自然・環境</button>
+  <button class="filter-btn" onclick="filterRecords('family', this)">子育て・家族</button>
+  <button class="filter-btn" onclick="filterRecords('edu', this)">教育</button>
+  <button class="filter-btn" onclick="filterRecords('community', this)">まちづくり</button>
+  <button class="filter-btn" onclick="filterRecords('agriculture', this)">農業</button>
+</div>
+
+<div class="main-wrap">
+
+  <!-- 令和7年 -->
+  <div class="year-section">
+    <div class="year-label">令和７年（2025年）</div>
+
+    <div class="session-group" id="r7-4">
+      <div class="session-label">第４回定例会｜令和７年１２月８日<span class="highlighted-badge">▶ 表示中</span></div>
+
+      <div class="record-card" data-tags="edu" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">27</div></div>
+          <div class="record-title-area">
+            <div class="record-title">部活動の地域移行について——目的・目標設定と負担の構造的分散を問う</div>
+            <div class="record-tags"><span class="record-tag">🏃 部活動地域移行</span><span class="record-tag">KPI設計</span><span class="record-tag">教員働き方改革</span><span class="record-tag">保護者負担</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>国の方針に従い令和5年度から進める部活動の地域移行について、ゴール設定やKPIが不明確なまま事業が進んでいると指摘。教員の負担軽減が保護者への転嫁につながっていないか、全体の負担軽減につながっているのかを問い、「負担の分散」にとどまる現状を明らかにした。地域指導者の確保・活動場所・送迎問題が当初から想定された課題であることを指摘し、トータルでの負担削減を前提とした設計と明確な成功基準の設定を求めた。<br><br>
+            <strong>答弁の要旨：</strong>ゴール設定については「まだ始まったばかりで関係者の意見をいただきながら改善する」にとどまる。教職員負担は軽減されたが、保護者の送迎負担増と地域指導者の責任増大があり「全体ではなく負担が分散した」と認めた。村は地域指導者謝礼金・保険料・消耗品等を支援中。送迎問題は今後の検討課題。<br><br>
+            <strong>要望：</strong>目的地を決めずに旅行に行けないように、ゴールなき事業は持続しない。しっかりした設計思想と判断基準を示した上で事業を進めることを強く要望。
+          </p>
+          <a href="r07_04teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="community" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">28</div></div>
+          <div class="record-title-area">
+            <div class="record-title">人口ビジョンについて——出生数の動態と今後の人口戦略を問う</div>
+            <div class="record-tags"><span class="record-tag">👨‍👩‍👧 人口ビジョン</span><span class="record-tag">出生数</span><span class="record-tag">少子化対策</span><span class="record-tag">第3期ビジョン</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>令和2年策定の第2期人口ビジョンは合計特殊出生率1.24を目標としたが、令和6年度実績は1.20と目標未達。出生数は136人で微増だが目標値との乖離は大きく、施策効果の検証が不十分と指摘。「社会全体が下がっているから仕方ない」では戦略にならないと追及。学区ごとの偏在を踏まえた出生数管理の重要性も提言。<br><br>
+            <strong>答弁の要旨：</strong>未婚化・晩婚化・ライフスタイルの多様化・経済不安など複合要因により想定より伸びなかったと説明。全国的な加速少子化の中で当村の低下は緩やかで人口も微増としながらも「強い危機感を持っている」と述べた。村長は次期第3期ビジョンで実態に即した人口推計を示し、若年層・女性の就労支援・結婚支援・切れ目ない子育て支援を多角的に展開すると答弁。<br><br>
+            <strong>要望：</strong>出生数が下がることは未来が減ること。人口の軸さえ保てれば多くの課題解決に直結する。
+          </p>
+          <a href="r07_04teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="community" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">29</div></div>
+          <div class="record-title-area">
+            <div class="record-title">財政戦略について——自主財源の構造的リスクと今後の戦略を問う</div>
+            <div class="record-tags"><span class="record-tag">💰 財政戦略</span><span class="record-tag">自主財源</span><span class="record-tag">法人税依存</span><span class="record-tag">地方創生</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>令和6年度決算で歳入総額127億円・財政力指数1.18・普通交付税不交付という健全財政を誇る西郷村だが、村税の大部分を村内一製造業の法人税割と固定資産税償却資産が占める構造を「投資余力ではなくリスクの集中」と指摘。2期8年で新たな自主財源の柱が育てられなかった現状を問い、今後の財政戦略ビジョンを求めた。<br><br>
+            <strong>答弁の要旨：</strong>財政課長は一企業依存の脆弱性を認め「過度に歳出を増やす予算編成はできない、基金積立で備える」と答弁。今後の方向性として①人口減対応②財政健全化③公共サービス効率化④インフラ整備⑤財政透明性⑥地方創生⑦防災強化の7要素を提示。村長は「先人の種を育ててきた成果であり、新たな種をまいてさらなる自主財源確保に努める。強くしなやかな西郷村を目指す」と答弁。<br><br>
+            <strong>要望：</strong>新たな自主財源の開拓・育成なしに、西郷村の人口も財政も現状がピークになってしまう。立場ある者の責任と義務（ノブレス・オブリージュ）を果たす村政を期待する。
+          </p>
+          <a href="r07_04teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+    </div><!-- /r7-4 -->
+
+    <div class="session-group" id="r7-3">
+      <div class="session-label">第３回定例会｜令和７年９月８日<span class="highlighted-badge">▶ 表示中</span></div>
+
+      <div class="record-card" data-tags="nature" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">25</div></div>
+          <div class="record-title-area">
+            <div class="record-title">メガソーラーについて——自然環境等と再生可能エネルギー条例の実効性を問う</div>
+            <div class="record-tags"><span class="record-tag">☀️ メガソーラー</span><span class="record-tag">再エネ条例</span><span class="record-tag">ゾーニング</span><span class="record-tag">廃棄パネル積立金</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>2年前の初議会でも問うたメガソーラー問題を再度取り上げ。現行の再エネ条例（令和2年制定）は理念条例にとどまり、実効的な抑止力として不十分ではないかと指摘。規制条例に移行できなかった経緯・ゾーニング導入の必要性・小規模案件への届出義務化・廃棄パネル積立金（OCCTO管理）の確認徹底・維持管理実態の把握・災害時対応マニュアルの整備を多角的に求めた。東京ドーム200個分のメガソーラーを抱える西郷村の現状と、県・国への働きかけの必要性を訴えた。<br><br>
+            <strong>答弁の要旨：</strong>条例制定時は指導要綱との併用で効果的と判断。制定以降の1,000㎡超新設は5件で一定の抑止効果あり。将来的な条例改正の際はゾーニングや危険区域の盛り込みを検討。廃棄費用積立管理は国（OCCTO）が担い村は把握していない。メガソーラー火災は噴霧注水が可能（消防庁令和6年通知）。村長は「両者の調和を基本方針に、国・県・近隣市町村と連携して実効性ある制度構築に努める」と答弁。<br><br>
+            <strong>再質問・要望：</strong>「諦めることを『しようがない』と言い換えてはいけない」と強調。OCCTOへの制度確認徹底・ゾーニング検討・県条例制定への働きかけを強く要望して次の質問へ。
+          </p>
+          <a href="r07_03teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="nature" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">26</div></div>
+          <div class="record-title-area">
+            <div class="record-title">水源保全について——外国資本による土地取得と水源地保全の課題</div>
+            <div class="record-tags"><span class="record-tag">💧 水源保全</span><span class="record-tag">外国資本</span><span class="record-tag">土地取得</span><span class="record-tag">水源保全条例</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>「21世紀は水の世紀」と言われる中、外国資本による水源地・山林の買収が日本でも現実のリスクとなっている。村内の外国資本による土地取得状況の把握・水源周辺での取得実績・水質水量への影響リスク・農業への悪影響・村民の不安への認識・水源保全条例（村独自または県条例）の検討状況を問うた。<br><br>
+            <strong>答弁の要旨：</strong>外国資本限定での土地取得は一元把握していない。現時点で水源地・森林での外国資本・国内企業による売買実績なし。村長は「外資に限らず大規模開発は水源涵養機能低下等のリスクがある」と認識。村から福島県へ働きかけた結果「福島県水源地域保全条例」が今月の県議会に上程される予定。憲法第29条の制約により売買制限は困難。現在、北部水源で水源涵養林の購入を推進中。<br><br>
+            <strong>再質問・要望：</strong>県条例案は「抑止力としてかなり弱い」と指摘。重要エリアのリスク情報を住民と共有することが売却抑止力になると主張。県条例が形骸化した場合の村独自条例検討と、関係機関への強い働きかけを要望して質問を締めくくった。
+          </p>
+          <a href="r07_03teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="session-group" id="r7-1">
+      <div class="session-label">第１回定例会｜令和７年３月１０日<span class="highlighted-badge">▶ 表示中</span></div>
+
+
+      <div class="record-card" data-tags="agriculture" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">20</div></div>
+          <div class="record-title-area">
+            <div class="record-title">農業振興について——村の食料自給率の現状と地産地消の課題</div>
+            <div class="record-tags"><span class="record-tag">🌾 食料自給率</span><span class="record-tag">地産地消</span><span class="record-tag">農業振興</span><span class="record-tag">学校給食</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>日本全体の食料自給率（カロリーベース38%）と比べ、西郷村独自の自給率はどうか。過去10年の推移・主要農産物の生産量・給食や直売所での地元産利用割合を問うた。自給率の定期算出と情報公開、給食の地元産比率50%目標設定を求めた。<br><br>
+            <strong>答弁の要旨：</strong>西郷村の食料自給率は概算でカロリーベース86%以上・生産額ベース72%以上。主要作物は米（726ha作付、村民約3年8か月分を生産）。学校給食の地元産比率は食材費の約2割。まるごと西郷館では西郷村産が売上の約5割。全体食材消費の把握は困難だが地産地消のさらなる充実を進める。<br><br>
+            <strong>再質問：</strong>米に偏った自給率構造を問題提起。給食地元産比率の具体的数値目標設定・多品目生産の拡大・地元農産物の消費循環の可視化を強く求めた。農業振興には農家任せではなく村全体で支える仕組みが必要と主張した。
+          </p>
+          <a href="r07_01teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="agriculture" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">21</div></div>
+          <div class="record-title-area">
+            <div class="record-title">農業振興について——災害時の食料供給・備蓄と農業・防災の連携</div>
+            <div class="record-tags"><span class="record-tag">🆘 防災備蓄</span><span class="record-tag">食料確保</span><span class="record-tag">農業と防災</span><span class="record-tag">個人備蓄</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>大規模災害・台湾有事等で物流が途絶えた際、村として何日分の食料を確保できるか。現行備蓄量・スーパー等との協定状況・東日本大震災時の教訓・農業と防災の連携について問うた。<br><br>
+            <strong>答弁の要旨：</strong>現在の備蓄は主食約2,400食・お菓子類2,900個・水2,000本（補充中）。目標は想定避難者1,048人×3食×3日分＝約9,600食。イオン・ツルハ・白河青果等と物資供給協定を締結済み。東日本大震災時は備蓄ゼロで支援物資到着まで約6日を要したことが教訓。農業従事者・JAとの食料供給協定の締結を今後検討。<br><br>
+            <strong>再質問：</strong>備蓄よりも「生産力を高める」方向へのシフトを提言。村内農家・JAとの協定強化・コンビニ等との協定拡充・個人備蓄の啓発を要望。防災の観点からも農業への投資こそが村民を守ると主張した。
+          </p>
+          <a href="r07_01teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="agriculture" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">22</div></div>
+          <div class="record-title-area">
+            <div class="record-title">農業振興について——農業人口の減少と新規就農者を増やすための施策</div>
+            <div class="record-tags"><span class="record-tag">👨‍🌾 担い手確保</span><span class="record-tag">新規就農</span><span class="record-tag">半農半X</span><span class="record-tag">農業塾</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>2020年農林業センサスで農業従事者532人・うち60歳以上が約55%。2000年から農家戸数は899→366経営体へ減少。やめた理由（米価低迷・農機高騰）・将来の持続可能性・新規就農者数（直近3年で計5名）・農業が選ばれない理由・半農半Xや農業塾などハードルを下げた仕組みの導入を問うた。<br><br>
+            <strong>答弁の要旨：</strong>担い手農家が農地集積を担うが、今後は全農地の維持が困難と見込む。5ha以上の規模農家は増加傾向。新規就農者支援に60万円補助（全員利用）。農業塾・就農相談・スマート農業補助等を実施。農業が職業選択に入らない要因は収入不安定・初期投資の大きさ・農業体験機会の少なさ。地域おこし協力隊（農業）1名採用・市民農園開設で関係人口拡大を目指す。<br><br>
+            <strong>再質問：</strong>「原因が分かっているのに対応できないのはなぜか」と問題の本質に迫った。専業農家だけでなく自給的農家・兼業農家・趣味農業など多様な農業への入口を広げること、東北6不交付団体の一員として農業人口増を証明する姿勢を村に求めた。
+          </p>
+          <a href="r07_01teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="agriculture" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">23</div></div>
+          <div class="record-title-area">
+            <div class="record-title">農業振興について——耕作放棄地の現状把握と対策</div>
+            <div class="record-tags"><span class="record-tag">🌿 耕作放棄地</span><span class="record-tag">遊休農地</span><span class="record-tag">農地バンク</span><span class="record-tag">相続未登記</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>全国の耕作放棄地は約42万haと東京都の2倍。村内の耕作放棄地面積・エリア別分布・所有者特定状況・相続未登記問題・農地バンクの活用状況・今後の見通しを問うた。<br><br>
+            <strong>答弁の要旨：</strong>今年度調査（10,788筆・2,080ha対象）で、非農地判断933筆・85ha、再生可能遊休農地767筆・78ha。エリア別では南部の耕作放棄地割合が最大（面積比10.3%）。相続未登記農地は385筆・約57.7万㎡（東京ドーム約12個分）で売買・転用不可。農地バンク活用実績あるが条件合わず担い手が見つからないケース多数。昨年度比では筆数・面積とも若干減少だが、離農増加で今後増加も懸念。<br><br>
+            <strong>再質問：</strong>「守りに入りすぎ」と現状維持姿勢を問題視。耕作放棄地を減らすビジョンと未来地図の明確化を要望。相続問題解決なしに農地活用は不可能として、農業委員会との連携強化・早期相続登記の促進を求めた。
+          </p>
+          <a href="r07_01teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="agriculture" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">24</div></div>
+          <div class="record-title-area">
+            <div class="record-title">農業振興について——空き家対策と農業振興の連携（農地付き空き家の活用）</div>
+            <div class="record-tags"><span class="record-tag">🏠 空き家活用</span><span class="record-tag">農地付き空き家</span><span class="record-tag">移住促進</span><span class="record-tag">2拠点生活</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>全国の空き家率は約13.6%。村内の空き家状況・空き家バンクの登録数・成約率・農地付き空き家の活用状況を問うた。また、耕作放棄地と空き家をセットで新規就農者や2拠点生活（ダーチャ的活用）に提供する仕組みの検討を提案。<br><br>
+            <strong>答弁の要旨：</strong>平成28年調査で空き家235棟（うち利活用可能48棟）。空き家バンクは令和2年度開始・9件登録・成約率89%。農地付き空き家は過去に成約実績あり。今後も産業振興課・農業委員会と連携し農地付き空き家の利活用を促進する。<br><br>
+            <strong>再質問：</strong>成約率89%の高さから「登録さえ増やせば空き家は減らせる」と指摘。農地付き空き家のマッチングをネットワーク化・仕組み化し、耕作放棄地解消と移住促進を同時に進めるロスのない仕組みの構築を要望した。農は国の礎として、守りではなく希望のある農業ビジョンを村に求めて質問を締めくくった。
+          </p>
+          <a href="r07_01teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 令和6年 -->
+  <div class="year-section">
+    <div class="year-label">令和６年（2024年）</div>
+
+    <div class="session-group" id="r6-4">
+      <div class="session-label">第４回定例会｜令和６年１２月１０日<span class="highlighted-badge">▶ 表示中</span></div>
+
+      <div class="record-card" data-tags="edu" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">17</div></div>
+          <div class="record-title-area">
+            <div class="record-title">教育行政について——副教材費・学用品リユース・AIドリル導入</div>
+            <div class="record-tags"><span class="record-tag">📚 副教材費</span><span class="record-tag">学用品リユース</span><span class="record-tag">AIドリル</span><span class="record-tag">GIGAスクール</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>義務教育で「副教材」として保護者負担となっているワークや資料集は実質的に必須教材であり、村が負担するかリユース・デジタル代用を進めるべきと主張。また現行タブレットドリルはAI機能を持たないため、令和7年度の次期GIGA端末更新時にAIドリル導入を求めた。<br><br>
+            <strong>答弁の要旨：</strong>副教材は教材選定委員会で厳選済み。現行ドリルは7万問・解説動画完備だがAIなし。就学援助や共通学用品一括購入等で負担軽減中。次期GIGA端末更新時に複数AIドリルを選定・導入を前向きに検討する。<br><br>
+            <strong>再質問：</strong>「副教材が絶対必要なら、もう副ではなく教材だ」と主張。娘の中学入学準備だけで10万円超、入学祝い金3万円では全然足りないと訴え、保護者負担軽減を強く要望。「私自身が中学校で教育に取り残された」経験から、AIで誰一人取り残されない個別最適化教育の実現を強く求めた。
+          </p>
+          <a href="r06_04teirei_kaigiroku_03.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="community" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">18</div></div>
+          <div class="record-title-area">
+            <div class="record-title">一般行政について——成人式典の意義・出席率とオンライン中継の導入</div>
+            <div class="record-tags"><span class="record-tag">🎌 成人式</span><span class="record-tag">オンライン中継</span><span class="record-tag">若者世代</span><span class="record-tag">地域活性化</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>来賓として参加した成人式で祝辞が多く形式的だと感じた。令和以降の出席率推移（令和2年72%→令和6年70%で約7割）を示し、来られない家族にも届くオンライン中継の導入を提案。<br><br>
+            <strong>答弁の要旨：</strong>成人式はふるさとを意識してもらう機会と位置づけ。令和6年は保護者向けに別室での中継映像を実施済み。オンライン中継は映像悪用防止・プライバシー配慮が必要だが、よりよい成人式に向け検討を進める。<br><br>
+            <strong>再質問：</strong>地元企業から協賛金を募ったり、有料カメラ席を設けて収益化する仕組みで運営費を補うアイデアを提案。対象者を限定したオンライン中継の実施と、成人式典の充実化を要望した。
+          </p>
+          <a href="r06_04teirei_kaigiroku_03.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="community" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">19</div></div>
+          <div class="record-title-area">
+            <div class="record-title">デマンド交通について——利用状況・AI活用・運行時間延長</div>
+            <div class="record-tags"><span class="record-tag">🚌 デマンド交通</span><span class="record-tag">AI活用</span><span class="record-tag">交通弱者</span><span class="record-tag">持続可能性</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>令和6年10月に本格運行移行したデマンド交通の現状を問う。登録者717人・月平均1,250件予約・利用者の68%が75歳以上・事業費は令和5年度2,850万円で増加傾向。AI活用・運行時間延長（部活地域移行への対応）・持続可能性について伺った。<br><br>
+            <strong>答弁の要旨：</strong>1人平均補助額2,030円・最大6,550円（新甲子〜白河厚生病院）。不交付団体のため特別交付税8割措置は使えない。夜間延長は飲酒利用等で事業費増の懸念あり現状維持。村長はAI配車システム導入を前向きに検討する意向。<br><br>
+            <strong>再質問：</strong>自身もスポ少送迎でデマンド交通を活用（タクシー1,200円→200円）と紹介。部活の地域移行で移動手段のない子どもが出た際に学校教育課と連携し、対象者を絞った限定的な時間延長も検討してほしいと要望。乗り合い率向上と持続可能性確保にはAI導入が不可欠と主張した。
+          </p>
+          <a href="r06_04teirei_kaigiroku_03.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-group" id="r6-3">
+      <div class="session-label">第３回定例会｜令和６年９月１１日<span class="highlighted-badge">▶ 表示中</span></div>
+
+      <div class="record-card" data-tags="family" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">15</div></div>
+          <div class="record-title-area">
+            <div class="record-title">新型コロナウイルスワクチン接種について——レプリコンワクチンの安全性と情報提供</div>
+            <div class="record-tags"><span class="record-tag">💉 ワクチン情報</span><span class="record-tag">レプリコンワクチン</span><span class="record-tag">情報提供</span><span class="record-tag">インフォームドコンセント</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>令和6年10月から定期接種となるコロナワクチンに、世界で日本のみ認可のレプリコンワクチン（コスタイベ）が含まれる可能性がある。安全性への懸念と、村としての情報提供体制について質問。<br><br>
+            <strong>答弁の要旨：</strong>10月からの定期接種は高齢者等対象の任意接種。5種類のワクチンが提供見込み。効果と副反応リスクを理解した上で判断できるよう、適切な情報提供に努める。<br><br>
+            <strong>再質問：</strong>65歳以上の村民の7回目接種率52.3%を指摘。高齢者へのリスク情報提供の徹底とインフォームドコンセントの周知を求めた。
+          </p>
+          <a href="r06_03teirei_kaigiroku_04.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="community" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">16</div></div>
+          <div class="record-title-area">
+            <div class="record-title">観光行政について——ニシゴーヌのブランディング・台湾インバウンド誘客</div>
+            <div class="record-tags"><span class="record-tag">🦕 ニシゴーヌ</span><span class="record-tag">観光振興</span><span class="record-tag">インバウンド</span><span class="record-tag">台湾</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>くまモン（10年で約1兆4,800億円の経済効果）を例にニシゴーヌのブランディング強化を提案。また令和6年1月開始の福島空港〜台湾定期便を活かしたインバウンド誘客について質問。<br><br>
+            <strong>答弁の要旨：</strong>ニシゴーヌは年40件のイベントに参加。グッズ収益化を検討。10周年（2025年）に特別表彰・住民票発行・記念グッズ等を計画。インバウンドは繁体字パンフ配布・台湾インフルエンサーツアー等を実施中。近隣市町村と広域連携で誘客を図る。<br><br>
+            <strong>再質問：</strong>モニターツアーや現地営業活動、令和8年ふくしまDCを見据えた積極的な誘客戦略を求めた。
+          </p>
+          <a href="r06_03teirei_kaigiroku_04.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-group" id="r6-2">
+      <div class="session-label">第２回定例会｜令和６年６月１１日<span class="highlighted-badge">▶ 表示中</span></div>
+
+      <div class="record-card" data-tags="edu" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">12</div></div>
+          <div class="record-title-area">
+            <div class="record-title">教育行政について——運動会の在り方・村内小学校合同学習の廃止について</div>
+            <div class="record-tags"><span class="record-tag">🏃 運動会</span><span class="record-tag">合同学習</span><span class="record-tag">学校行事</span><span class="record-tag">子どもの青春</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>コロナ後も運動会が半日開催のまま継続されていること、また今年度から村内小学校合同学習が廃止されたことについて、方針と代替策を質問。<br><br>
+            <strong>答弁の要旨：</strong>半日開催は熱中症・感染症対策として各校判断で継続。合同学習は競合等を理由に廃止。教育委員会として自然体験・地域産業体験等の代替活動を検討する。<br><br>
+            <strong>再質問：</strong>廃止されるたびに子どもたちの青春の一ページが失われる。代替イベントをしっかり設け、子どもを中心に据えた判断を求めた。
+          </p>
+          <a href="r06_02teirei_kaigiroku_03.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="community" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">13</div></div>
+          <div class="record-title-area">
+            <div class="record-title">スポーツ振興について——激励金の手続き改善・テニスコートの利便性向上</div>
+            <div class="record-tags"><span class="record-tag">🎾 スポーツ振興</span><span class="record-tag">激励金</span><span class="record-tag">テニスコート</span><span class="record-tag">手続き簡素化</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>①スポーツ競技大会激励金が後払い制のため選手の負担になっている問題。②フォロクチハラテニスコートの鍵を村体育館から借りなければならない不便さを質問。<br><br>
+            <strong>答弁の要旨：</strong>①激励金は近隣自治体より高額。前払いは式典開催時のみ対応、今後柔軟に検討。②第二中学校移転（2024年10月）に伴い、コンビニ管理または暗証番号式鍵管理を検討。<br><br>
+            <strong>再質問：</strong>式典なしでも前払い対応できるよう要望。鍵管理はコンビニ方式が最善と主張した。
+          </p>
+          <a href="r06_02teirei_kaigiroku_03.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="family" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">14</div></div>
+          <div class="record-title-area">
+            <div class="record-title">子育て支援について——3歳未満の支援・給食費とお弁当・奨学金の拡充</div>
+            <div class="record-tags"><span class="record-tag">👶 子育て支援</span><span class="record-tag">保育料</span><span class="record-tag">給食費</span><span class="record-tag">奨学金</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>①3歳未満保育料の段階的無償化の可能性。②保育料サブスク化の提案。③給食費無償化後のお弁当回数の推移。④人材育成基金奨学金の上限引き上げ（現行50万円→100万円）。<br><br>
+            <strong>答弁の要旨：</strong>①3歳未満無償化は保育士不足解消を優先。まきば保育所民営化後の財源で新支援を検討。②紙おむつサブスクは不公平・使用量差異の問題から不採用。④奨学金上限引き上げは教育委員会が検討する。<br><br>
+            <strong>再質問：</strong>半導体工場の税収増（約7億円）を子育て財源に活用し、若者が「西郷村で子どもを育てたい」と言える村へと強く訴えた。
+          </p>
+          <a href="r06_02teirei_kaigiroku_03.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-group" id="r6-1">
+      <div class="session-label">第１回定例会｜令和６年３月７日<span class="highlighted-badge">▶ 表示中</span></div>
+
+      <div class="record-card" data-tags="edu" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">07</div></div>
+          <div class="record-title-area">
+            <div class="record-title">不登校生徒について——一人ひとりに寄り添う教育を</div>
+            <div class="record-tags"><span class="record-tag">📚 不登校</span><span class="record-tag">居場所づくり</span><span class="record-tag">個別支援</span><span class="record-tag">学校環境</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>村内の不登校生徒数の現状と、学校に来られない子どもへの支援体制・居場所づくりについて質問。<br><br>
+            <strong>答弁の要旨：</strong>個別対応・家庭訪問・支援員配置等で対応。フリースクールとの連携も検討中。<br><br>
+            <strong>再質問：</strong>学校に来ることだけがゴールではなく、その子なりの道を支える多様な選択肢の整備を求めた。
+          </p>
+          <a href="r06_01teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="edu" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">08</div></div>
+          <div class="record-title-area">
+            <div class="record-title">通知表のあり方について——数字より、その子らしさを</div>
+            <div class="record-tags"><span class="record-tag">📝 通知表</span><span class="record-tag">評価方法</span><span class="record-tag">個性</span><span class="record-tag">子どもの可能性</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>数値評価中心の通知表が子どもの自己肯定感や学習意欲に与える影響と、記述式・ポートフォリオ型評価導入の可能性について質問。<br><br>
+            <strong>答弁の要旨：</strong>学習指導要領に基づく評価が基本だが、個に応じたコメントの充実など工夫を続けている。<br><br>
+            <strong>再質問：</strong>全国の先進事例を参考に、子どもの多様な力を見える化する評価への転換を求めた。
+          </p>
+          <a href="r06_01teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="edu" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">09</div></div>
+          <div class="record-title-area">
+            <div class="record-title">校則のあり方について——自由をつかむ力を育む学校へ</div>
+            <div class="record-tags"><span class="record-tag">📋 校則</span><span class="record-tag">ブラック校則</span><span class="record-tag">生徒自治</span><span class="record-tag">多様性</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>時代にそぐわない校則（いわゆるブラック校則）の見直し状況と、生徒が校則づくりに参加できる仕組みについて質問。<br><br>
+            <strong>答弁の要旨：</strong>各校で随時見直しを実施。生徒会等を通じた意見反映も行っている。<br><br>
+            <strong>再質問：</strong>校則は「守るもの」ではなく「共につくるもの」として、生徒が主体的に関わるプロセスの制度化を求めた。
+          </p>
+          <a href="r06_01teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="edu" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">10</div></div>
+          <div class="record-title-area">
+            <div class="record-title">宿題のあり方について——学ぶ喜びを奪わない教育を</div>
+            <div class="record-tags"><span class="record-tag">📖 宿題</span><span class="record-tag">学習意欲</span><span class="record-tag">自主学習</span><span class="record-tag">子どもの時間</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>一律的な宿題が子どもの学習意欲や家族の時間に与える影響と、個別最適な学びへの転換について質問。<br><br>
+            <strong>答弁の要旨：</strong>宿題は学習定着に有効と認識しており、量や内容については各校・各担任が工夫している。<br><br>
+            <strong>再質問：</strong>宿題の目的を問い直し、子どもが「やりたい」と思える自主学習スタイルへの転換を求めた。
+          </p>
+          <a href="r06_01teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="edu" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">11</div></div>
+          <div class="record-title-area">
+            <div class="record-title">ICT活用・GIGAスクールについて——子どもの夢を後押しする端末環境を</div>
+            <div class="record-tags"><span class="record-tag">💻 ICT</span><span class="record-tag">GIGAスクール</span><span class="record-tag">タブレット</span><span class="record-tag">教育DX</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>GIGAスクール端末の更新計画・活用状況と、子どもたちが創作・探究に使えるICT環境の整備について質問。<br><br>
+            <strong>答弁の要旨：</strong>端末の更新は計画的に進める。各校でのICT活用は年々充実している。<br><br>
+            <strong>再質問：</strong>タブレットを「管理するもの」ではなく「表現・創造のツール」として使える環境づくりを求めた。
+          </p>
+          <a href="r06_01teirei_kaigiroku_02.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 令和5年 -->
+  <div class="year-section">
+    <div class="year-label">令和５年（2023年）</div>
+
+    <div class="session-group" id="r5-4">
+      <div class="session-label">第４回定例会｜令和５年１２月１２日<span class="highlighted-badge">▶ 表示中</span></div>
+
+      <div class="record-card" data-tags="community" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">04</div></div>
+          <div class="record-title-area">
+            <div class="record-title">体育施設について——予約システムと安全なトレーニング環境の整備</div>
+            <div class="record-tags"><span class="record-tag">🏋️ 体育施設</span><span class="record-tag">トレーニングルーム</span><span class="record-tag">利用者目線</span><span class="record-tag">パスカード</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>村体育施設の予約システムの使いにくさと、トレーニングルームの安全性・機器更新について質問。<br><br>
+            <strong>答弁の要旨：</strong>予約システムの利便性向上を検討。トレーニング機器の点検・更新も進める。<br><br>
+            <strong>再質問：</strong>利用者の声を直接反映した改善サイクルの仕組みづくりを求めた。
+          </p>
+          <a href="r05_04_teirei_kaigiroku_03.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="community" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">05</div></div>
+          <div class="record-title-area">
+            <div class="record-title">パートナーシップ制度について——多様な幸せを認める村へ</div>
+            <div class="record-tags"><span class="record-tag">🌈 多様性</span><span class="record-tag">パートナーシップ</span><span class="record-tag">LGBTQIA+</span><span class="record-tag">人権</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>性的少数者（LGBTQIA+）のパートナーシップ制度導入について、村の考えと検討状況を質問。<br><br>
+            <strong>答弁の要旨：</strong>他自治体の動向を注視しながら研究・検討を続けていく。<br><br>
+            <strong>再質問：</strong>制度導入はコストゼロでできる。「まず宣言する」ことが村の姿勢を示すことになると訴えた。
+          </p>
+          <a href="r05_04_teirei_kaigiroku_03.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="community" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">06</div></div>
+          <div class="record-title-area">
+            <div class="record-title">行政区について——加入率低下と地域のつながりの未来</div>
+            <div class="record-tags"><span class="record-tag">🏘️ 地域コミュニティ</span><span class="record-tag">行政区</span><span class="record-tag">自治</span><span class="record-tag">担い手不足</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>行政区（自治会）への加入率低下の実態と、地域コミュニティ維持のための村の支援策について質問。<br><br>
+            <strong>答弁の要旨：</strong>加入促進を呼びかけるとともに、行政区の活動支援を継続していく。<br><br>
+            <strong>再質問：</strong>「入って当たり前」の時代は終わった。メリットが見える形にして、新住民も参加したくなる仕組みの設計を求めた。
+          </p>
+          <a href="r05_04_teirei_kaigiroku_03.pdf" class="record-pdf-link" target="_blank">📄 議事録PDF（原文）</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-group" id="r5-3">
+      <div class="session-label">第３回定例会｜令和５年９月２１日<span class="highlighted-badge">▶ 表示中</span></div>
+
+      <div class="record-card" data-tags="nature" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">01</div></div>
+          <div class="record-title-area">
+            <div class="record-title">メガソーラー事業について——景観・環境・村民の安全を守るために</div>
+            <div class="record-tags"><span class="record-tag">🌞 メガソーラー</span><span class="record-tag">景観保全</span><span class="record-tag">防災</span><span class="record-tag">ノーモアメガソーラー宣言</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>村内でのメガソーラー開発に対し、村としての規制・条例整備の検討状況、村民への情報公開、景観・防災面での影響について質問。<br><br>
+            <strong>答弁の要旨：</strong>現行法令の範囲内で対応。条例制定は他自治体の動向を研究しながら慎重に検討。<br><br>
+            <strong>再質問：</strong>開発が進行中の今こそ村として主体的に関与し、村民への積極的な情報公開と「ノーモアメガソーラー宣言」に向けた姿勢を求めた。
+          </p>
+          
+          <button class="transcript-toggle" onclick="toggleTranscript(this, event)">📄 議事録全文を読む <span class="tr-arrow">▼</span></button>
+          <div class="transcript-full" style="display:none">
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">１番、参政党の小澤佑太です。通告に従いまして一般質問を始め　ます。　まず、メガソーラー事業について伺います。　メガソーラー事業では、事業者が収益を目的に発電事業を行う一方で、農地や森林　がその代償に失われ、景観の悪化や災害、土壌汚染や地域の安全性が懸念されますが、　村内のメガソーラー施設の現状と今後の方針について伺います。　まず１つ目に、村内のメガソーラー設置面積について伺います。村議会の議事録等　拝見しますと、過去複数の議員からも同様の一般質問がなされているようですが、西　郷村の住民は太陽光発電がどのように計画され、どのように進んでいるのかを知りま　せん。一部の村民からは太陽光発電事業により災害の心配や景観悪化を嘆く声が聞こ　えております。ただ、メガソーラー事業にもメリットはあり、土地や太陽光パネルな　どの資産に課税される固定資産税が入ること、また一時的な雇用の創出が見込まれる　ことではないかと思いますが、その反面、農地や森林開発などにより、大雨時におけ　る災害を誘発したり、大規模な木々の伐採などによる景観の悪化などがあります。　そこで、西郷村内で現時点においての太陽光発電事業の実施者のうち、いわゆるメ　ガソーラー事業を行っている事業者がどのぐらいいて、またどのぐらいの面積を太陽　光発電事業として実施しているのか、伺います。　具体的には、それぞれの事業者の開発面積がどのぐらいあるか。また総面積がどの　ぐらいあるかについて伺います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">環境保全課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○環境保全課長（今井 学君）</span><span class="tr-txt">１番小澤佑太議員のご質問にお答えいたします。　メガソーラー事業者が村内で実施している太陽光発電設備事業のうち、既に発電を　開始している事業者数と面積及び現在開発中の事業者数と面積の件につきましては、　令和５年９月現在、村が把握しております太陽光発電事業者のうち、発電規模が１か　所当たり１メガワット以上のメガソーラー事業者で、既に造成や太陽光パネルを設置　するなどの行為が完了している事業者は１２社ございます。その合計面積は　３０５.５１ヘクタールでございます。また、現在、開発中の事業者は２社ございま　して、その面積は６３５.５９ヘクタールでございます。そのほか、協議中など現在　計画中の事業者は２社ございまして、面積は１９.８７ヘクタールでございます。合　計いたしまして、ご質問いただいた西郷村内において現在事業を開始している事業者　は計１６社でございます。また、その総面積は９６０.９７ヘクタールでございます。　以上でございます。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君の再質問を許します。小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">総面積が約９６０ヘクタールとのことでしたので、東京ドームに　換算しますと、東京ドーム１つ当たり約４.６ヘクタールですので、東京ドーム約　２００個分となると思います。このように広大な太陽光発電事業が西郷村内において　実施されていることが分かったところで、次の質問に移ります。　太陽光発電設備の廃棄等企業積立制度について質問いたします。　国の資源エネルギー庁は２０２１年より、太陽光発電事業が終了した後、太陽光発　電の解体や撤去に伴い発生する廃棄物の処理等に係る費用について、発電事業者など　に対して廃棄物費用の算定額の積立てを行うよう義務化しました。このことは西郷村　内におきましても、将来太陽光発電事業が終了したり頓挫した場合に備えるという意　味において、大変重要な制度であると私も認識しております。西郷村で太陽光発電事　業を行っている事業者において、国の太陽光発電設備の廃棄等費用積立制度に従って　積立てを行っていることを村が把握しているかについて伺います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">環境保全課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○環境保全課長（今井 学君）</span><span class="tr-txt">ご質問にお答えいたします。　太陽光発電設備の廃業等費用積立制度の件につきましては、国から２０２０年に示　されました再生エネルギー電気利用の促進に関する特別措置法及び２０１８年４月に　は資源エネルギー庁により事業用太陽光発電設備の廃棄費用の積立てを、またただい　まご質疑いただきましたとおり、２０２１年９月に事業ガイドライン太陽光の遵守事　項としまして、事業計画策定時におきましては廃業等費用の算定額と、その積立計画　を記載することとなりました。　また、再生エネルギー特別措置法施行規則に基づく定期報告におきまして、運転開　始後に積立ての進捗状況を報告することが事業者に対して義務付けられております。　一方、村におきましても、令和２年６月に制定しました西郷村村の自然環境と再生エ　ネルギー関連事業との調和に関する条例に加えまして、令和２年６月以降につきまし　ては西郷村太陽光発電設備設置事業指導要綱を改正制定しまして、関係各課との開発　に係る協議を行うよう指導するとともに、その届けに必要な書類としまして、太陽光　発電の廃棄等費用の積立てに関する資料の一部として資料の提出を求めまして、事業　者から提出された申請書が積立制度に基づいた計画になっているのかの確認作業を行　っているところでございます。　なお、国の積立制度が制定される以前に設置した一定規模の太陽光発電事業につき　ましても、国の積立制度の対象となっておるところでございます。　以上でございます。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">ただ、村の要綱などの決まり事ができる前に事業を開始した太陽　光発電事業者に関しては、積立て資料の提出がなされていない事業者もあると思いま　すので、今後それらの事業者に対しましても村は確認作業を行っていただきたいと思　います。　次の質問に移ります。　メガソーラー事業による太陽光発電事業は非常に多くの土地を開発するわけですか　ら、当然広範囲の山林伐採や整地などが行われます。このことにより、本来山が持っ　ている保水力を減少させたり、軟弱な地盤を露出させる可能性が十分考えられます。　昨今のゲリラ豪雨など、いつどのような災害が西郷村において発生してもおかしくな　い状況の中で、例えばメガソーラーの敷地で水害が発生した場合には、太陽光パネル　からの漏電による感電事故や化学物質による土壌汚染などが考えられます。また、地　盤そのものの流出や土地の崩落などは、メガソーラーの敷地にとどまらず、近隣住民　への被害も懸念されます。さらに、景観の悪化も無視できない問題だと考えています。　いくら民間事業者の行う事業活動と言えども、西郷村におきましては様々な懸念があ　り、多くの住民も望んでいない太陽光発電事業は、もうこれ以上西郷村に造ってほし　くない気持ちは村長も同じではないかと推測いたします。　そこで、ノーモアメガソーラー宣言について村長にお伺いいたします。　福島県内の市町村のうち、大玉村は大規模太陽光発電所と大玉村の自然環境保全と　の調和に関する宣言を令和元年６月に、そしてつい先月福島市はノーモアメガソーラ　ー宣言を令和５年８月に行っています。いずれの宣言も、山の保水機能に対する懸念　や土砂災害が発生する可能性など、住民の安心・安全に直接影響を与えるおそれにつ　いて述べられています。また、先人が培ってきた自然景観を将来へと引き継ぐ意味に　おいても重要な課題だと思います。西郷村においても村長はこれらの市町村と同様に、　日本国内の太陽光発電を企画する事業者に対する意思表示として、西郷村にはもう太　陽光発電事業は望まないのだと、西郷村ノーモアメガソーラー宣言を行うお気持ちが　あるかどうかについてお伺いいたします。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">村長、髙橋廣志君。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○村長（髙橋廣志君）</span><span class="tr-txt">小澤議員の一般質問にお答えいたします。　冒頭から、いろいろお話しされました。太陽光発電のメリット・デメリットという　お話ありました。確かに２０５０年カーボンニュートラルそして再生可能エネルギー、　これも進めなきゃなりません。一方で税収、雇用、そういうのも生まれますし、また　景観、森林伐採、水源の保有、そういった心配もあります。私も議員と同じ考えであ　ります。そんな中で、おただしのノーモアメガソーラー宣言でありますけれども、西　郷村では福島県で２番目に、関連条例である西郷村の自然環境と再生エネルギー関連　事業との調和に関する条例を制定し、事業者に対しまして条例に基づいた指導をして　おります。森林の伐採や用地の造成による災害発生などの懸念があり、自然環境に恵　まれている西郷村の景観が損なわれるメガソーラーを、村としてもこれ以上新たに望　まない思いは議員と同様であります。　過去、ほかの議員からのおただしに対しまして、私も答弁の中に、もう西郷村はこ　れ以上の山林を切り開くような大規模メガソーラーは必要ないと申し上げたこともご　ざいます。現在もこの気持ちには変わりあません。村として、ノーモアメガソーラー　宣言という意思表示ではなく、実質的に、西郷村の自然環境と再生可能エネルギー関　連事業との調和に関する条例に基づき、住環境を守り調和を目指した指導の強化をし　てまいりたいと考えております。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">ありがとうございます。　メガソーラー事業の新設に反対の立場を明確にしていただけたと思います。　今回は、東京ドーム２００個分のメガソーラーという設置面積は分かり、これ以上　設置についてはもういいでしょうという思いは皆さん同じだと思います。同時に、こ　のような大規模なメガソーラーが存在する以上、近隣住民の安全性を最優先に考え、　西郷村が適切な指導や監視を行っていただきたいと思います。　さらに、外国資本の参入により、国民が負担する賦課金で外国企業が利益を上げ、　自然環境や水源地が破壊されるなど、あまりにも理不尽な仕組みになっていますので、　今後も村民の意思を尊重していただきたいと切に願い、メガソーラー事業についての　質問を終わり、次の質問に移ります。</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="family" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">02</div></div>
+          <div class="record-title-area">
+            <div class="record-title">子育て支援について——保育料無償化・ファミリーサポート・補助教材費</div>
+            <div class="record-tags"><span class="record-tag">👶 子育て支援</span><span class="record-tag">保育料無償化</span><span class="record-tag">ファミリーサポート</span><span class="record-tag">補助教材費</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>保育所の待機児童状況・保育料無償化の拡充、ファミリーサポートセンターの体制強化、学校の補助教材費負担軽減について質問。<br><br>
+            <strong>答弁の要旨：</strong>子育て支援は重要施策として認識、財政状況を踏まえながら引き続き充実に取り組む。<br><br>
+            <strong>再質問：</strong>子育て支援を「コスト」ではなく「投資」として捉え、具体的な数値目標を持った施策展開を求めた。
+          </p>
+          
+          <button class="transcript-toggle" onclick="toggleTranscript(this, event)">📄 議事録全文を読む <span class="tr-arrow">▼</span></button>
+          <div class="transcript-full" style="display:none">
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">福祉課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○福祉課長（相川佐江子君）</span><span class="tr-txt">１番小澤佑太議員の一般質問にお答えいたします。　はじめに、保育料に関しましては、国が定める保育料の基準額がございます。市町　村はこの基準額を限度として保育料を設定することとなります。しかし、ほとんどの　市町村は世帯の所得の状況、その他の事情を勘案して、国が定める基準額より低く設　定しています。西郷村の保育料についても同様に低く設定しております。このように、　市町村は国が定める基準額までに保育料を設定できることとなっておりますが、低く　設定するということはそこに差が発生するということになります。その差額分につい　ては市町村が軽減しているということになります。無償化を実施するには、現在ご負　担いただいている保育料のほかに、村が負担している部分があるということを申し上　げさせていただきます。　さらに、保育料に関しましては、世帯の村民税所得割の額に応じてどの階層の保育　料になるか変わってきますので、年度ごとに収入額は異なることとなります。令和　４年度の収入総額は保育料、副食費合わせて約６,０００万円程度となっております　が、令和５年度の収入総額は前後することとなります。３歳未満児の保育料の無償化　に関するご質問ですが、保育料の無償化を実施するためには、議員おただしのとおり、　令和４年度であれば、約６,０００万円の収入分を村が公費で負担することができれ　ば、無償化ができるということになります。ただし、保育園に関しては全ての家庭が　利用しているというわけではないため、利用されていない方には不平等となる可能性　があります。保育料の無償化を行うためには、不平等とならないように、在宅で子ど　もを見ている家庭に対しても何らかの支援が必要となります。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">再質問します。　ただいまの答弁で、在宅にて子どもを見ている家庭にも何かしらの支援を実施しな　ければ、不平等になるとのことでしたので、在宅にて子どもを見ている家庭が保育園　を希望しないのは、どのような理由があるかをお伺いいたします。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">福祉課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○福祉課長（相川佐江子君）</span><span class="tr-txt">お答えいたします。　在宅にてお子様を見られている家庭が保育園を希望しない理由に関するご質問です　が、理由といたしましては、１つ目に、保育園を利用するための要件を満たさないこ　とが上げられます。保育園の利用は原則保護者等が就労していることが必要となりま　すので、それを満たさないため、希望されない家庭があると考えます。２つ目に、保　育園に預けずに、自分で子どもを見たいという家庭です。３つ目に、保育園を希望し　ているが、待機となっている家庭です。このほかにも理由はあると思いますが、主に　はこれらになると考えております。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">ただいまの答弁ですと、待機となっている家庭以外は保育園の利　用を希望していない、希望する必要がない家庭であると考えます。確かに、待機とな　っている家庭に対しては、無償化した場合、何かしらの支援をしなければ不平等にな　ると思いますが、希望していない家庭に対してまで支援する必要があるかどうかにつ　いては疑問があります。逆に待機者と希望していない家庭に同じ支援をした場合、待　機者に不平等になるのではないかと考えます。　このようなことから、待機となっている家庭に対して何かしらの支援を実施すれば、　不平等ではなくなり、必要とする費用も抑えられ、保育料の無償化も進めやすくなる　とは思いますが、村はどのように考えているか、伺います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">福祉課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○福祉課長（相川佐江子君）</span><span class="tr-txt">お答えいたします。　保育園を希望して待機となっている家庭と、希望していない家庭については議員ご　指摘のように違いがあります。しかし、保育サービスにつきましては、ほかに一時的　保育事業があります。これは在宅にてお子様を見られている家庭で、保護者の就労、　疾病やリフレッシュなどの理由で緊急的、一時的に保育園を利用することができるサ　ービスとなります。保育料が無償化となれば、一時的保育事業に関しても併せて無償　化する必要があると考えます。　一方で、このサービスは保育園を希望していない家庭も利用する可能性がございま　すので、サービスを利用した家庭、利用しない家庭で不平等となるのではないかと考　えます。これらのことから、村といたしましては、保育料無償化を実施する場合、在　宅にてお子様を見られている全家庭に対して、何らかの支援が必要であると考えます。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">確かに、一時的保育事業の利用は、保育園を希望していない家庭　でも利用ができるという部分においては、多少の不平等はあると認識いたしました。　一時的保育事業について伺いますが、過去の利用実績と金額はどのようになっている　か、伺います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">福祉課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○福祉課長（相川佐江子君）</span><span class="tr-txt">お答えいたします。　はじめに、一時的保育事業に関しては、村内の保育園全てで実施しているわけでは　ありません。このサービスを実施するには、基準に適合した保育士の配置が必要とな　るため、実施できる園とできない園がございます。現在、村内の保育園ではまきば保　育園とくまっこ保育園の２園で実施しております。また、このサービスも希望した方　全員が利用できるものではなく、利用できる人数に上限があります。この部分も不平　等となります。　一時的保育事業の過去の利用実績と金額に関するご質問ですが、一時的保育事業の　利用実績と金額につきましては、令和２年度まきば保育園は延べ人数で５１９名、　３歳以上１２３名、３歳未満３９６名、利用金額は約７５万６,０００円となります。　くまっこ保育園は延べ人数４９７名、３歳以上７１名、３歳未満４２６名、利用金額　は約７５万２,０００円となります。令和３年度まきば保育園は延べ人数２７４名、　全て３歳未満児となります。利用金額は約４３万３,０００円となります。くまっこ　保育園は延べ人数３８５名、全て３歳未満児となります。利用金額は６１万　６,０００円となります。令和４年度まきば保育園は延べ人数４６７名、全て３歳未　満児となります。利用金額は約７４万７,０００円となります。くまっこ保育園は延　べ人数２５７名、３歳未満２３５名、３歳以上２２名、利用金額は約３５万　３,０００円となります。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">ただいまの一時的保育事業の利用実績に関する答弁ですと、令和　４年度の実績が合計で約１１０万円かかっているとのことでした。保育料約　６,０００万円に一時保育で約１１０万円、在宅で子どもを見ている家庭への支援、　これらを村が負担できれば保育料の完全無償化ができるということです。　最後に、村長に伺いますが、保育料の無償化について、今現在、どのように考えて　いられるか、お伺いします。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">村長、髙橋廣志君。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○村長（髙橋廣志君）</span><span class="tr-txt">お答えいたします。　議員おただしのように、保育料約６,０００万円、一時保育１１０万円、在宅で子　どもを見ている家庭への支援を村が負担することができれば、保育料の完全無償化が　図れ、子育て世帯の負担軽減につながると考えられます。しかし約６,０００万円の　保育料の収入がなくなり、さらに在宅で子どもを見ている家庭への支援を実施すると　なると、年間１億円を超える村の負担が出てくることとなります。これはなかなか負　担できる金額ではありませんし、直ちに実施できるものではありません。村としても　子育て政策に力を注いでいきたいと考えておりますが、ほかに解決しなければならな　い課題も山積しておりますので、国・県の動向を見定め、最善と判断した場合には進　めていきたいと考えております。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">ありがとうございます。　年間約１億円を超える村の負担と言われますと、給食費の無償化が実現したばかり　ですので、ぐうの音も出ないところではあります。ただ一つ、無償化の大前提として、　子育て世帯もただ受け取るだけではなく、その支援を受けているということを意識し　て、できる限り村内で支出を検討することが重要だと思っていまして、例えばふだん　の買物や外食を村内で行うことで、お金が村内で循環して、子育て世帯にばかり支援　しているように見られますが、そのお金がさらにまた別の誰かに届くとなれば、１億　円の出費も、形を変えて別の誰かを支援していることにつながってくるのではないか　と思いますので、３歳未満の保育料を無償化することで約２００世帯の保護者負担が　減った結果、そこを起点に支援が広がっていくことも含めて、ぜひ前向きに検討して　いただきたいと思います。　次の質問に移ります。　補助教材費について伺います。　まずは、確認も含めて補助教材費が何に使われているか、伺います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">学校教育課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○学校教育課長（緑川 浩君）</span><span class="tr-txt">１番小澤議員の一般質問にお答えいたします。　補助教材費につきまして何に使われているかというご質問でございますが、小中学　校で集金している保護者負担金は、ＰＴＡ会費、学級費、生徒会費、修学旅行費等が　あり、補助教材は教科書以外で使うドリルや理科の観察セット、実技や実習で使用す　る教材等になります。これらの補助教材費を保護者の皆様に負担していただいている　ところでございます。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">再質問します。　保護者が負担している補助教材費、いわゆる集金です。月５,０００円程度払って　いて、親の立場からすると毎月毎月大変なんですが、現在は保護者が集金袋にお金を　入れ、子どもが集金袋で持っていきます。特に、小学校低学年の児童が現金を取り扱　うこと、また児童を介して現金の受渡しをするリスク等もあると思いますが、この点　に関して伺います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">学校教育課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○学校教育課長（緑川 浩君）</span><span class="tr-txt">お答えいたします。　議員おただしのとおり、児童生徒を介して学校、保護者間で現金の受渡しをしてお　ります。現金の入れ違いや紛失等のリスクがございます。また、現金を準備しなけれ　ばならない等の負担をかけている面もございます。これらの問題に対応すべく学校で　は口座振替の利用など、リスクの軽減や利便性の向上を図っていく取組を現在進めて　いるところでございます。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">では、それらの補助教材費をほかの市町村はどうしているのか。　給食費も無償化になり、子育て支援に力を入れていただいているのは実感しますが、　補助教材費の無償化は検討されているか、村長に伺います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">村長、髙橋廣志君。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○村長（髙橋廣志君）</span><span class="tr-txt">お答えいたします。　補助教材費でありますけれども、県内のほとんどの市町村は保護者の方にご負担を　いただいておるところであります。議員おっしゃられましたように、本年度より給食　費の無償化など子育て支援の拡充を図っているところでございます。そんな中で補助　教材費の無償化については、近隣市町村の動向を注視しながら、引き続き保護者の皆　様には実費負担を賜りたいと考えております。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">ありがとうございます。　保護者負担について、親の立場から言えば、義務教育期間中に必要な教材について　は、国や自治体が負担してほしいと思うところであります。　ある自治体では、保護者費用負担軽減事業として、学用品などのリサイクルや共同　利用をしている自治体もあります。また、ドリルに関しましても、今はタブレットが　支給されていますので、やり方によってはほかの代替手段があると思います。保護者　の金銭的負担をできるだけ軽減する方向で進めることが、現在の課題であることをお　伝えし、次の質問に移りたいと思います。　次に、ファミリーサポート事業について伺います。　保育サービスには、一時的保育事業があり、保育園を利用していない家庭について　も緊急的な場合やリフレッシュを目的とした一時的な利用が可能であると答弁が先ほ　どありましたが、現在はまきば保育園とくまっこ保育園のみの実施で、利用できる人　数も上限があるため、希望者全員が利用できるわけではないとのことでしたので、改　めて一時的保育事業とはどのような事業なのか、教えてください。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">福祉課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○福祉課長（相川佐江子君）</span><span class="tr-txt">１番小澤佑太議員のご質問にお答えいたします。　一時的保育事業の内容に関するご質問ですが、この事業は西郷村一時的保育事業実　施要綱、西郷村一時的保育事業費用徴収条例、西郷村一時的保育事業費用徴収条例施　行規則に基づき実施しております。事業の内容といたしましては、１つ目が非定期型　的保育サービス事業で、保護者の就労形態等により、家庭における保育が継続的に困　難となる児童に対し、原則的として週３回を限度に保育するものです。２つ目が、緊　急保育サービス事業で保護者の疾病、入院等により、緊急、一時的に保育を必要とす　る児童に対し、原則として１か月以内を限度に保育するものです。３つ目が私的理由　による保育サービス事業で、保護者の育児に伴う心理的肉体的負担を解消するため、　村長が児童の一時的保育が必要と認めた場合に、原則として１週間を限度として保育　するものです。　なお、対象児童は村内に住所を有する児童及び満１歳に達しない児童を除き、就学　前の児童が対象となります。利用定員については要綱上は１日おおむね１２名以内と　なっておりますが、受入れ児童の年齢により、保育士配置及び保育室のスペースが異　なりますので、１２名まで預かれていないのが現状です。保育時間は午前８時半から　午後５時までとなります。利用の申請については利用する前日までに申請が必要です。　利用料金は３歳未満児が１日１,６００円、３歳以上児が１日１,０００円となります。　ただいま申し上げた内容はまきば保育園で実施している事業内容となります。くまっ　こ保育園で実施している事業の内容に関しましては少し異なりますので、よろしくお　願いいたします。　一時的保育事業の内容に関しては以上となります。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">再質問します。　ただいまの答弁で、１日おおむね１２名以内、場合によってはもう少し少ない、ま　た利用するためには前日までの申請が必要であるとのことで、これでは預けられる人　数が少ないと思います。この事業以外にも民間も入れて、村内で一時的に預かれる事　業、例えばファミリーサポート事業のような事業を実施しているところはあるか、伺　います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">福祉課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○福祉課長（相川佐江子君）</span><span class="tr-txt">お答えいたします。　一時的保育事業以外の預かり事業に関するご質問ですが、実施場所が近隣市町村と　なりますが、子育て短期支援事業などを実施している施設はございます。しかし、現　時点においては、村内にはございません。また、村内のファミリーサポートセンター　に関しましては、村の委託事業として西郷村社会福祉協議会において事業実施をして　おりますが、スタッフ不足などの理由から機能していないのが実情であります。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">村内には一時的に預かりができる施設がほかにないとのことでし　たが、私は保護者の負担軽減をするためにはもっと必要であると考えています。さら　に、予約が不要で、利用したいときに利用できる施設が必要であると思っています。　また、スタッフが不足するということであれば、様々な経験をされている元気な高齢　者の方々にお願いできれば解決すると思いますが、利用したいときに利用できる一時　的な預かり施設の整備について、村長はどのように考えているか、伺います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">村長、髙橋廣志君。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○村長（髙橋廣志君）</span><span class="tr-txt">お答えいたします。　議員おただしのとおり、利用したいときにすぐ利用できる預かり施設は必要である　と私も認識しております。しかし、利用したいときに利用できるという仕組みは非常　に難しいと考えます。預かる側も預かる子どもの情報の把握が必要ですし、事業を実　施する場合も、施設の面積によって定員の設定が必要となります。加えてスタッフの　問題もあります。子育て支援のためには、利用したいときに利用できる預かり施設は　先ほども申し上げましたように、必要と感じておりますが、クリアしなければならな　い課題がたくさんあります。　現時点においては、現在実施されている保育園での一時的保育事業や子育て短期支　援事業などを活用していただきながら、子育てを頑張っている保護者のためにも、社　会福祉協議会で実施しているファミリーサポート事業をより機能させるなど、子育て　世帯への支援の充実が図れるよう村として取り組んでまいります。　さらに、今後、この取組により、子供たちの成長に夢と希望を与え、お父さん、お　母さんが心にゆとりを持ち、子どもを安心して産み育てられる西郷村を目指してまい　ります。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">ありがとうございます。　村長のおっしゃるとおり、利用したいときに利用できる仕組みは非常に難しいと思　いますが、子育て中にトラブルやアクシデントが急に発生することはよくあります。　ワンオペやシングルの方は特に急に時間的な自由が必要になることがありますし、身　近に預けられる人がいない場合計り知れないストレスが発生して、心に余裕が持てな　くなることもあります。結局、こうしたストレスが児童虐待やネグレクトの原因にも　つながる可能性があるため、大規模な事業ではなく、例えば文化センターで子どもを　預かる方を募り、当日預かってほしい方が来たら希望時間に子どもを預かるなど、テ　スト運用を行い、需要の程度を調査することは検討していただければと思います。　というのも、乳幼児を育てている家庭では、夜間の睡眠が確保できないことが多く、　不眠で育児している場合も多いので、その睡眠時間ぐらいはどうにか確保してあげた　いという思いでこの質問をしています。私も夜勤で帰ってきて寝ていたら、あなたは　自分の時間があっていいわねと皮肉を言われた経験もあります。こうした状況は離婚　の原因にもなり得るため、ファミリーサポート事業がこれからの問題を解決できる可　能性を秘めていると考え、今後の課題として検討していただきたいということをお伝　えして、子育て支援についての質問を終わります。　次の質問に移りたいと思います。</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="record-card" data-tags="family" onclick="toggleCard(this)">
+        <div class="record-card-header">
+          <div class="record-meta"><div class="record-num">No.</div><div class="record-num-val">03</div></div>
+          <div class="record-title-area">
+            <div class="record-title">新型コロナワクチン接種について——村民が自分で判断できる情報提供を</div>
+            <div class="record-tags"><span class="record-tag">💉 ワクチン情報</span><span class="record-tag">情報提供</span><span class="record-tag">副反応</span><span class="record-tag">自己判断</span></div>
+          </div>
+          <div class="record-toggle">▼</div>
+        </div>
+        <div class="record-detail">
+          <p class="record-summary">
+            <strong>質問の要旨：</strong>ワクチン接種の効果とリスクについて、村民が自分で判断できるよう多角的・客観的な情報を提供することを求めた。<br><br>
+            <strong>答弁の要旨：</strong>国・県の方針に基づき適切な情報提供を行っている。<br><br>
+            <strong>再質問：</strong>接種推奨だけでなく、不安を抱える村民への相談体制と、自己判断を支える情報発信の強化を求めた。
+          </p>
+          <button class="transcript-toggle" onclick="toggleTranscript(this, event)">📄 議事録全文を読む <span class="tr-arrow">▼</span></button>
+          <div class="transcript-full" style="display:none">
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">健康推進課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○健康推進課長（添田真二君）</span><span class="tr-txt">１番小澤議員のご質問にお答えいたします。　ただいまメッセンジャーＲＮＡワクチンのリスクということでございました。メッ　センジャーＲＮＡワクチンは新しいワクチン技術ですが、これまで臨床試験を行い、　多くの人々に効果があるとされ、使用されていると認識しております。　一方、全ての医薬品やワクチンと同様に、特定のリスクや副反応があるのも事実で　ございます。アレルギー反応といたしまして、特にひどいものとしましては重度のア　レルギー反応、アナフィラキシー、まれですが絶対ないとは言い切れません。また、　副反応といたしまして、一般的な副反応には接種部位のはれ、痛み、発赤、発熱、倦　怠感、頭痛などが含まれます。これらの症状は通常軽度で一時的であり、通常は数日　で自然に改善するとされております。また、ごくまれにメッセンジャーＲＮＡワクチ　ンを接種した人々で血栓症や出血障害、こういったものが報告されています。　中長期的なメッセンジャーＲＮＡワクチンの安全性については、まだ完全には明ら　かになっていません。しかし、これまでのデータからは、一般的にワクチンの副反応　やリスクは接種後数週間から数か月以内に現れる傾向があるため、長期的な深刻なリ　スクがあるとは考えにくいとされています。しかしながら、ワクチン接種によるもの　と思われる後遺症で悩んでいる方もおられると認識しております。　体内にワクチンという異物を接種するわけですから、こういったリスクを理解した　上で接種されることが望ましいと考えております。ワクチンの接種については、あく　まで個人の判断により接種可能となりますので、リスクについての情報提供をまめに　行いまして、接種する上での判断材料となるよう努めていきたいと思います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">既に、秋冬用のワクチン接種は始まってしまいましたが、ホーム　ページなど可能な限り早急に対応していただきたいと思います。厚生労働省のほうで　もワクチン接種後の死亡者や副反応、健康被害などの報告者の情報を出していますん　で、このあたりはホームページに載せていただきたいと思います。　次の質問に移ります。　新型コロナワクチン接種の接種券の配布についてです。ワクチン接種は個人の判断　というのであれば、接種券は希望者のみに配布したほうがいいかと思いますが、どの　ようにお考えか、伺います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">健康推進課長。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○健康推進課長（添田真二君）</span><span class="tr-txt">質問にお答えいたします。　各自治体、様々な方法で接種券の配布については行っていると思われます。当村の　接種券の配布についてでございますけれども、秋冬接種対象者の接種券の配布ですが、　前回のワクチンを接種している方にのみ発送いたします。６５歳以上の高齢者と基礎　疾患のある方４,９２０人中３,３５０人、小児５歳から１１歳５２４人中１５０人に　は、９月８日から１２日に発送しております。１２歳から６４歳の対象の方１万　１,７８３人中約６,０００人につきましては、１０月以降に発送を予定しております。　乳幼児６か月から４歳の接種券の発送ですが、９月末日で６か月に到達する方が　４２人います。乳幼児の初回接種は通常３週間の間隔を置いて２回、その後８週間以　上の間隔を置いて１回接種し、計３回で初回が完了となるため、令和６年３月末まで　に完了することを考えますと、１０月初旬には接種券の発送をしないと、接種を希望　する方は間に合わない可能性があるために、接種券を発送させていただいて、希望す　る方には予約をして接種をしていただきたいと考えております。　また、乳幼児で初回接種を完了している者が６０人います。この６０名につきまし　ては、追加接種の希望を取り、希望者のみに接種券の発送をしたいと考えております。　なお、接種券発送の際にはワクチンの説明書を同封し、ワクチンの効果や注意事項、　副反応や健康被害救済制度に関する情報について周知したいと思っております。　以上でございます。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">何度も言いますが、ワクチン接種は個人の判断です。であるなら　ば、接種券を配布ではなく、申込み制に変更したほうがいいと思います。子どもたち　は自身の意思でワクチンの接種の判断を下すことができません。特に初めての子ども　を持つ親であれば、生後僅か６か月しかたっていない状況で、初回接種が完了するま　でに、いつまでに打たないといけないと言われると、さらにプレッシャーとなり適切　な判断が難しくなる可能性があります。そのため、接種券と同時に、ワクチン接種に　関するリスク、副反応、後遺症についての情報を提供し、村民が適切な判断をするた　めの環境を整えていただきたいと思います。　次の質問に移ります。　当村において、ワクチン接種後の副反応、後遺症の調査を行っているか、伺います。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">村長、髙橋廣志君。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○村長（髙橋廣志君）</span><span class="tr-txt">お答えいたします。　新型コロナワクチン接種後の副反応、後遺症調査についてでありますが、村独自で　のワクチン接種後の副反応、後遺症調査は行っておりません。接種後に起こりやすい　副反応については個人差があると考えますが、通常起こり得る反応と捉え、ワクチン　接種時に説明しており、接種日に痛み、疲労、頭痛、筋肉痛、発熱等は数日で消失す　る旨を説明しており、その都度相談等にも対応しております。　今までに、ワクチンの健康被害救済の申請が２件あり、令和４年１月に国への進達　をしております。２件とも健康被害救済の認定が令和５年３月に認められたところで　あります。給付内容としましては、有期期間の認定で、認定された症状のみの医療費　と医療手当の給付が１件、入院治療期間中の医療費、医療手当の給付が１件となって　おります。新型コロナワクチン関連で、８月２１日時点での国の健康被害救済認定者　は死亡事例での救済が１５６件、その他救済の対象と認定された３,８１０件となっ　ております。審議対象者として受理されている件数は８,５５４件となっています。　村としましては、今後もワクチンの接種においてリスクについての情報提供もしっか　り行い、副反応等の相談には丁寧に対応してまいりたいと考えております。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">質問の前に、１４番大石議員が戻りましたんで、ご報告いたしま　す。１番小澤佑太君。</span></div>
+<div class="tr-line tr-ozawa"><span class="tr-spk">○１番（小澤佑太君）</span><span class="tr-txt">実際に健康被害救済の申請が認定されているとのことですので、　子どもたちの未来を守る観点からも、今後は保護者が適切な判断を行えるよう充実し　た情報提供をお願いしたいと思います。　また、子どもの健康と命を守れるのは大人だけですので、個人の判断でワクチン接　種を行ったとしても、その後の経過や健康被害について、村としても十分注意深く監　視していただきたいと申し上げまして、私の一般質問を終わります。</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">１番小澤佑太君の一般質問は終わりました。　◎休憩の宣告</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">一般質問の途中でありますが、これより午後２時１５分まで休憩　いたします。　（午後１時５５分）　◎再開の宣告</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">再開いたします。　（午後２時１５分）</span></div>
+<div class="tr-line tr-other"><span class="tr-spk">○議長（真船正晃君）</span><span class="tr-txt">休憩前に引き続き、一般質問を続行いたします。　次に、通告第３、１１番鈴木勝久君の一般質問を許します。１１番鈴木勝久君。</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-notice">
+    <p>
+      議事録PDFは順次アップロード予定です。<br>
+      特定の質問の記録をお探しの方は、<strong>お問い合わせフォーム</strong>よりご連絡ください。<br><br>
+      <a href="index.html#contact" style="color:var(--vermillion);text-decoration:none;letter-spacing:0.15em;">← 連絡先を見る</a>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <p style="margin-bottom:12px;">
+    <a href="index.html">メインページ</a>
+    <a href="index.html#support">応援する</a>
+    <a href="index.html#contact">連絡先</a>
+  </p>
+  <p>© 2024 小澤ゆうた｜福島県西白河郡西郷村</p>
+</footer>
+
+<script>
+function toggleTranscript(btn, event) {
+  if (event) event.stopPropagation();
+  const box = btn.nextElementSibling;
+  const isOpen = box.style.display !== 'none';
+  box.style.display = isOpen ? 'none' : 'block';
+  btn.classList.toggle('open', !isOpen);
+  btn.querySelector('.tr-arrow').textContent = isOpen ? '▼' : '▲';
+}
+
+function toggleCard(card) {
+  card.classList.toggle('open');
+}
+function filterRecords(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.record-card[data-tags]').forEach(card => {
+    if (tag === 'all' || card.dataset.tags === tag) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// ── ハッシュ先ハイライト＋質問カード自動展開 ──
+(function(){
+  function highlightTarget(){
+    const hash = location.hash.replace('#','');
+    if(!hash) return;
+    const target = document.getElementById(hash);
+    if(!target) return;
+
+    // セクションハイライト
+    document.querySelectorAll('.session-group.highlighted').forEach(el => el.classList.remove('highlighted'));
+    target.classList.remove('highlighted');
+    void target.offsetWidth;
+    target.classList.add('highlighted');
+
+    // URLパラメータからq番号を取得（例: #r5-3?q=01）
+    const qParam = location.search.replace('?q=','') || new URLSearchParams(location.search).get('q');
+
+    setTimeout(() => {
+      // スクロール
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+
+      // q番号が指定されている場合、該当カードを開いて全文も展開
+      if(qParam){
+        const num = qParam.replace(/^0+/,''); // 先頭ゼロ除去
+        const cards = target.querySelectorAll('.record-card');
+        cards.forEach(card => {
+          const numEl = card.querySelector('.record-num-val');
+          if(numEl && numEl.textContent.replace(/^0+/,'') === num){
+            // カード展開
+            if(!card.classList.contains('open')) card.classList.add('open');
+            // 全文ボタンがあれば展開
+            const btn = card.querySelector('.transcript-toggle');
+            const box = card.querySelector('.transcript-full');
+            if(btn && box && box.style.display === 'none'){
+              box.style.display = 'block';
+              btn.classList.add('open');
+              const arrow = btn.querySelector('.tr-arrow');
+              if(arrow) arrow.textContent = '▲';
+            }
+            // カードまでスクロール
+            setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'start'}), 300);
+          }
+        });
+      }
+    }, 150);
+  }
+  window.addEventListener('load', highlightTarget);
+  window.addEventListener('hashchange', highlightTarget);
+})();
+</script>
+
+</body>
+</html>

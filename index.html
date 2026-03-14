@@ -1,0 +1,2497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小澤ゆうた｜西郷村議会議員</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Zen+Antique&family=Shippori+Mincho:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1c1710;
+  --paper: #fdf6ee;
+  --paper2: #f5ead8;
+  --orange: #e8611a;
+  --orange-dark: #c04d0f;
+  --orange-light: #f5874a;
+  --orange-pale: #fff3eb;
+  --moss: #4a5240;
+  --stone: #6b6055;
+  --cream: #fdfaf5;
+  --border: rgba(28,23,16,0.1);
+  --border-orange: rgba(232,97,26,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Shippori Mincho','Noto Serif JP',serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,246,238,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Zen Antique',serif;font-size:1.05rem;color:var(--ink);letter-spacing:0.15em}
+.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:0.8rem;color:var(--stone);text-decoration:none;letter-spacing:0.1em;transition:color 0.2s}
+.nav-links a:hover{color:var(--orange)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:100px 40px 80px;overflow:hidden}
+
+/* backpanel bg */
+.hero-bg-img{position:absolute;inset:0;background-image:url('backpanel.jpg');background-size:cover;background-position:center;opacity:0.12;pointer-events:none;z-index:0}
+.hero-bg-paper{position:absolute;inset:0;background:var(--paper);z-index:0;display:none}
+.hero-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(80vw,650px);height:min(80vw,650px);border-radius:50%;border:1px solid rgba(232,97,26,0.07);pointer-events:none;z-index:1}
+.hero-rings::before{content:'';position:absolute;inset:50px;border-radius:50%;border:1px solid rgba(232,97,26,0.1)}
+.hero-rings::after{content:'';position:absolute;inset:100px;border-radius:50%;border:1px solid rgba(232,97,26,0.14)}
+.hero-glow{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;background:radial-gradient(circle,rgba(232,97,26,0.07) 0%,transparent 70%);pointer-events:none;z-index:1}
+.hero-inner{position:relative;text-align:center;max-width:700px;z-index:2}
+.hero-kamon{width:52px;height:52px;margin:0 auto 24px;animation:fadeUp 0.6s ease both}
+.hero-pre{font-size:0.75rem;letter-spacing:0.45em;color:var(--stone);margin-bottom:18px;animation:fadeUp 0.8s ease both}
+.hero-name{font-family:'Zen Antique',serif;font-size:clamp(3.5rem,10vw,7rem);line-height:1;color:var(--ink);letter-spacing:0.05em;animation:fadeUp 1s ease both}
+.hero-name .yuta{color:var(--orange)}
+.hero-line{width:1px;height:52px;background:linear-gradient(to bottom,transparent,var(--orange),transparent);margin:26px auto;animation:growLine 1.4s ease both}
+.hero-copy{font-size:clamp(0.9rem,2.5vw,1.15rem);line-height:2.4;color:var(--stone);letter-spacing:0.06em;animation:fadeUp 1.4s ease both}
+.hero-copy strong{color:var(--ink);font-weight:700}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:30px;animation:fadeUp 1.6s ease both}
+.htag{font-size:0.75rem;padding:5px 16px;border:1px solid var(--border-orange);color:var(--orange-dark);letter-spacing:0.1em;background:rgba(255,243,235,0.85)}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.4em;color:var(--stone);opacity:0.4;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2}
+.hero-scroll::after{content:'';width:1px;height:30px;background:linear-gradient(to bottom,var(--orange),transparent);animation:growLine 2s ease-in-out infinite}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes growLine{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+/* SECTION COMMONS */
+.section-wrap{max-width:880px;margin:0 auto;padding:88px 32px}
+.sec-en{font-size:0.66rem;letter-spacing:0.5em;color:var(--orange);text-transform:uppercase;margin-bottom:6px}
+.sec-jp{font-family:'Zen Antique',serif;font-size:clamp(1.7rem,4vw,2.5rem);color:var(--ink);letter-spacing:0.08em;margin-bottom:44px;line-height:1.4}
+
+/* ABOUT */
+.about-bg{background:var(--paper2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.about-bg-img{position:absolute;inset:0;background-image:url('backpanel.jpg');background-size:cover;background-position:center;opacity:0.04;pointer-events:none}
+.about-flex{display:flex;gap:48px;align-items:flex-start;margin-bottom:52px;position:relative;z-index:1}
+.about-photo-placeholder{width:180px;height:220px;background:var(--paper);border:1px dashed rgba(232,97,26,0.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--stone);font-size:0.75rem;letter-spacing:0.1em;flex-shrink:0}
+.about-photo-placeholder span{font-size:2rem;opacity:0.3}
+.about-photo{width:180px;height:220px;object-fit:cover;border:1px solid var(--border);display:block;flex-shrink:0}
+.about-text-block{flex:1}
+.about-lead{font-size:0.97rem;line-height:2.5;color:var(--stone);letter-spacing:0.04em}
+.about-lead strong{color:var(--orange);font-weight:700}
+.timeline{position:relative;padding-left:24px;margin-bottom:48px;position:relative;z-index:1}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,97,26,0.1))}
+.tl-item{position:relative;margin-bottom:22px;padding-left:18px}
+.tl-item::before{content:'';position:absolute;left:-29px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--orange);border:2px solid var(--paper2)}
+.tl-year{font-size:0.68rem;letter-spacing:0.2em;color:var(--orange);margin-bottom:3px}
+.tl-text{font-size:0.92rem;line-height:1.8;color:var(--ink);font-weight:700}
+.tl-sub{font-size:0.8rem;color:var(--stone);margin-top:2px;line-height:1.7}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;position:relative;z-index:1}
+.about-card{background:var(--cream);border:1px solid var(--border);padding:22px 18px;position:relative;transition:border-color 0.3s;overflow:hidden}
+.about-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--orange);transition:height 0.3s}
+.about-card:hover{border-color:var(--orange-light)}
+.about-card:hover::before{height:100%}
+.about-card-icon{font-size:1.4rem;margin-bottom:10px}
+.about-card h3{font-size:0.88rem;font-weight:700;color:var(--ink);letter-spacing:0.04em;margin-bottom:7px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+.about-card p{font-size:0.82rem;line-height:1.9;color:var(--stone)}
+
+/* =====================
+   QUESTION SECTION — 浮遊キーワード × フリップカード
+   ===================== */
+.q-section-bg{
+  background:#03040a;
+  position:relative;
+  overflow:hidden;
+}
+.q-section-bg .sec-en{color:rgba(220,160,80,0.8)}
+.q-section-bg .sec-jp{color:rgba(253,240,215,0.9)}
+.q-section-bg > .section-wrap > p{color:rgba(253,240,215,0.3)!important}
+
+#qFloatCanvas{
+  display:block;
+  width:100%;
+  height:600px;
+  position:relative;
+  z-index:0;
+  cursor:pointer;
+}
+@media(max-width:720px){#qFloatCanvas{height:460px}}
+
+#qFlashCanvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* dim overlay */
+#qDimOverlay{
+  position:absolute;
+  inset:0;
+  background:transparent;
+  z-index:2;
+  pointer-events:none;
+  transition:background .5s;
+}
+#qDimOverlay.active{background:rgba(2,3,8,.78);pointer-events:auto;}
+
+/* flip card */
+#qFlipWrap{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  z-index:3;
+}
+.qf-card{
+  width:min(400px,90%);
+  perspective:1000px;
+  pointer-events:auto;
+  opacity:0;
+  transform:scale(0.8) translateY(20px);
+  transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1);
+}
+.qf-card.visible{opacity:1;transform:scale(1) translateY(0);}
+.qf-inner{
+  position:relative;width:100%;min-height:240px;
+  transform-style:preserve-3d;
+  transition:transform .75s cubic-bezier(.34,1.2,.64,1);
+}
+.qf-card.flipped .qf-inner{transform:rotateY(180deg);}
+.qf-face{
+  position:absolute;width:100%;min-height:240px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  padding:30px 28px 26px;border-radius:3px;
+}
+.qf-front{
+  background:rgba(8,10,24,.97);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+}
+.qf-back{
+  background:rgba(6,8,20,.97);
+  transform:rotateY(180deg);
+  display:flex;flex-direction:column;
+}
+.qf-num{font-family:'Special Elite',monospace;font-size:.58rem;letter-spacing:.3em;margin-bottom:14px;}
+.qf-keyword{font-family:'Zen Antique',serif;font-size:clamp(1.1rem,3vw,1.55rem);line-height:1.65;color:rgba(253,242,215,.92);}
+.qf-session{margin-top:12px;font-size:.6rem;letter-spacing:.15em;color:rgba(255,255,255,.22);}
+.qf-tap{margin-top:22px;font-size:.58rem;letter-spacing:.25em;color:rgba(255,255,255,.2);animation:qfBlink 2s ease-in-out infinite;}
+@keyframes qfBlink{0%,100%{opacity:.2}50%{opacity:.7}}
+.qfb-num{font-family:'Special Elite',monospace;font-size:.58rem;letter-spacing:.3em;margin-bottom:10px;}
+.qfb-title{font-family:'Zen Antique',serif;font-size:clamp(.95rem,2.2vw,1.2rem);line-height:1.6;color:rgba(253,242,215,.9);margin-bottom:14px;}
+.qfb-session{font-size:.58rem;letter-spacing:.15em;color:rgba(255,255,255,.22);margin-bottom:16px;}
+.qfb-thought{font-size:.8rem;line-height:2.1;color:rgba(253,242,215,.65);border-left:2px solid;padding-left:16px;}
+.qfb-close{
+  margin-top:22px;align-self:flex-end;
+  padding:8px 18px;border:1px solid rgba(255,255,255,.1);
+  background:transparent;color:rgba(255,255,255,.3);
+  cursor:pointer;font-size:.6rem;letter-spacing:.2em;
+  font-family:'Noto Serif JP',serif;transition:all .2s;
+}
+.qfb-close:hover{border-color:rgba(255,255,255,.4);color:#fff;}
+
+/* CATEGORY PANEL */
+#catPanel{
+  background:#03040a;
+  border-top:1px solid rgba(255,255,255,0.06);
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .35s ease, transform .35s ease;
+  pointer-events:none;
+}
+#catPanel.open{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+.cat-q-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  padding:20px 22px;
+  cursor:pointer;
+  transition:background .2s,transform .2s;
+  animation:catCardIn .4s ease both;
+}
+.cat-q-card:hover{
+  background:rgba(255,255,255,0.06);
+  transform:translateY(-2px);
+}
+@keyframes catCardIn{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.cat-q-num{font-family:'Special Elite',monospace;font-size:.6rem;letter-spacing:.25em;margin-bottom:8px;}
+.cat-q-title{font-family:'Zen Antique',serif;font-size:.95rem;color:rgba(253,242,215,.9);line-height:1.6;margin-bottom:6px;}
+.cat-q-session{font-size:.62rem;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:10px;}
+.cat-q-thought{font-size:.75rem;line-height:1.9;color:rgba(253,242,215,.45);margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.cat-q-btn{
+  background:transparent;border:1px solid;padding:6px 14px;
+  cursor:pointer;font-size:.6rem;letter-spacing:.18em;
+  font-family:'Noto Serif JP',serif;transition:all .2s;
+}
+.cat-q-btn:hover{opacity:.7;}
+
+
+.q-modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:500;
+  display:flex;
+  align-items:stretch;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 0.35s ease;
+}
+.q-modal-overlay.open{
+  pointer-events:all;
+  opacity:1;
+}
+.q-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(28,23,16,0.72);
+  backdrop-filter:blur(3px);
+}
+.q-modal{
+  position:relative;
+  z-index:1;
+  width:min(860px,96vw);
+  margin:auto;
+  max-height:90vh;
+  background:var(--cream);
+  display:flex;
+  flex-direction:column;
+  transform:translateY(40px) scale(0.97);
+  transition:transform 0.38s cubic-bezier(0.22,1,0.36,1);
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+.q-modal-overlay.open .q-modal{
+  transform:translateY(0) scale(1);
+}
+.q-modal-header{
+  padding:28px 36px 22px;
+  background:var(--paper);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:flex-start;
+  gap:20px;
+  flex-shrink:0;
+}
+.q-modal-num{
+  font-family:'Zen Antique',serif;
+  font-size:2.8rem;
+  line-height:1;
+  color:rgba(232,97,26,0.15);
+  font-weight:900;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.q-modal-meta{flex:1}
+.q-modal-session{font-size:0.66rem;letter-spacing:0.3em;color:var(--orange);margin-bottom:8px}
+.q-modal-title{font-family:'Zen Antique',serif;font-size:clamp(1.1rem,2.5vw,1.55rem);color:var(--ink);line-height:1.5;margin-bottom:10px}
+.q-modal-tags{display:flex;flex-wrap:wrap;gap:5px}
+.q-modal-tag{font-size:0.64rem;padding:2px 9px;background:var(--orange-pale);color:var(--orange-dark);border:1px solid var(--border-orange)}
+.q-modal-close{
+  width:36px;height:36px;
+  border:1px solid var(--border);
+  background:none;
+  cursor:pointer;
+  font-size:1.1rem;
+  color:var(--stone);
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;
+  font-family:inherit;
+}
+.q-modal-close:hover{border-color:var(--orange);color:var(--orange)}
+
+.q-modal-body{
+  overflow-y:auto;
+  flex:1;
+  padding:28px 36px 36px;
+}
+.dialogue-row{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.dialogue-row.answer{flex-direction:row-reverse}
+.d-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;border:1px solid var(--border);background:var(--paper2)}
+.d-content{flex:1}
+.d-name{font-size:0.67rem;letter-spacing:0.12em;color:var(--stone);margin-bottom:4px}
+.dialogue-row.answer .d-name{text-align:right}
+.d-bubble{padding:12px 16px;font-size:0.88rem;line-height:2;border:1px solid var(--border);color:var(--ink)}
+.dialogue-row:not(.answer) .d-bubble{background:var(--orange-pale);border-left:3px solid var(--orange)}
+.dialogue-row.answer .d-bubble{background:var(--paper2);border-right:3px solid var(--moss);text-align:right}
+.q-philosophy{margin-top:20px;padding:16px 20px;border:1px solid var(--border-orange);background:var(--orange-pale);font-size:0.86rem;line-height:2;color:var(--ink)}
+.q-philosophy::before{content:'── ゆうたの想い';display:block;font-size:0.67rem;letter-spacing:0.22em;color:var(--orange);margin-bottom:6px}
+
+/* TRANSCRIPT in modal */
+.transcript-toggle{margin-top:18px;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid var(--border);font-size:0.77rem;color:var(--stone);cursor:pointer;background:var(--paper);letter-spacing:0.1em;transition:all 0.2s;font-family:inherit}
+.transcript-toggle:hover{border-color:var(--orange);color:var(--orange)}
+.transcript-toggle .arr{transition:transform 0.25s;display:inline-block}
+.transcript-box{display:none;margin-top:12px;border:1px solid var(--border);background:var(--paper)}
+.transcript-box.open{display:block}
+.transcript-inner{padding:18px 22px;max-height:380px;overflow-y:auto}
+.t-line{font-size:0.79rem;line-height:2.2;color:var(--stone);margin-bottom:10px}
+.t-line .spk{color:var(--orange-dark);font-weight:700;font-size:0.71rem;letter-spacing:0.1em;display:block;margin-bottom:2px}
+.t-line .txt{color:var(--ink)}
+.t-note{font-size:0.68rem;color:var(--stone);padding:8px 22px;border-top:1px solid var(--border)}
+
+/* MODAL NAV */
+.q-modal-nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 36px;
+  border-top:1px solid var(--border);
+  background:var(--paper);
+  flex-shrink:0;
+}
+.q-modal-nav-btn{
+  display:flex;align-items:center;gap:8px;
+  font-size:0.77rem;color:var(--stone);
+  cursor:pointer;padding:8px 14px;
+  border:1px solid var(--border);background:none;
+  transition:all 0.2s;font-family:inherit;letter-spacing:0.1em;
+}
+.q-modal-nav-btn:hover{border-color:var(--orange);color:var(--orange)}
+.q-modal-nav-btn:disabled{opacity:0.3;cursor:default}
+.q-modal-nav-count{font-size:0.72rem;letter-spacing:0.25em;color:var(--stone)}
+
+/* ARCHIVE PREVIEW */
+.archive-preview-bg{background:var(--paper2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.archive-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:28px}
+@media(max-width:900px){.archive-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.archive-grid{grid-template-columns:1fr}}
+.archive-card{background:var(--cream);border:1px solid var(--border);padding:20px;text-decoration:none;color:var(--ink);transition:border-color 0.2s,transform 0.2s,background 0.2s,box-shadow 0.2s;display:block;cursor:pointer;position:relative}
+.archive-card:hover{border-color:var(--orange);transform:translateY(-2px)}
+.archive-card.selected{border-color:var(--orange);background:#fff8f0;box-shadow:0 4px 18px rgba(200,90,30,0.13);transform:translateY(-3px)}
+.archive-card.selected .archive-card-title{color:var(--orange-dark)}
+.archive-card-selected-badge{display:none;position:absolute;top:-10px;right:12px;background:var(--orange);color:#fff;font-size:0.58rem;letter-spacing:0.15em;padding:3px 10px}
+.archive-card.selected .archive-card-selected-badge{display:block}
+.archive-card-session{font-size:0.65rem;letter-spacing:0.25em;color:var(--orange);margin-bottom:6px}
+.archive-card-title{font-family:'Zen Antique',serif;font-size:0.95rem;line-height:1.5;color:var(--ink);margin-bottom:8px}
+.archive-card-topics{display:flex;flex-wrap:wrap;gap:4px}
+.archive-card-topic{font-size:0.65rem;padding:2px 8px;background:var(--orange-pale);color:var(--orange-dark);border:1px solid var(--border-orange)}
+.archive-more-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--orange);color:var(--orange);text-decoration:none;font-size:0.82rem;letter-spacing:0.15em;transition:background 0.2s,color 0.2s}
+.archive-more-btn:hover{background:var(--orange);color:#fff}
+
+/* BLOG */
+.note-bg{background:var(--cream)}
+.note-lead{font-size:0.93rem;line-height:2.3;color:var(--stone);margin-bottom:32px}
+.note-visual-card{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);overflow:hidden;text-decoration:none;color:var(--ink);transition:border-color 0.3s;background:#fff;margin-bottom:20px}
+.note-visual-card:hover{border-color:var(--orange)}
+.note-visual-left{background:var(--ink);padding:36px 32px;display:flex;flex-direction:column;justify-content:space-between;min-height:200px}
+.n-label{font-size:0.65rem;letter-spacing:0.45em;color:var(--orange-light);margin-bottom:12px}
+.n-title{font-family:'Zen Antique',serif;font-size:1.4rem;color:#fff;line-height:1.5}
+.n-url{font-size:0.78rem;color:rgba(255,255,255,0.45);letter-spacing:0.08em;margin-top:20px}
+.note-visual-right{background:var(--orange-pale);padding:28px;display:flex;flex-direction:column;gap:14px}
+.n-point{display:flex;gap:10px;align-items:flex-start}
+.n-point-num{font-size:0.65rem;letter-spacing:0.2em;color:var(--orange);border:1px solid var(--border-orange);padding:2px 6px;flex-shrink:0;margin-top:2px}
+.n-point-text{font-size:0.82rem;line-height:1.8;color:var(--stone)}
+.note-visit-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:var(--orange);color:#fff;text-decoration:none;font-size:0.8rem;letter-spacing:0.15em;transition:background 0.2s;align-self:flex-end}
+.note-visit-btn:hover{background:var(--orange-dark)}
+
+/* SUPPORT */
+.support-bg{background:var(--ink);color:var(--cream)}
+.support-bg .sec-jp{color:var(--cream)}
+.support-bg .sec-en{color:var(--orange-light)}
+.support-lead{font-size:0.9rem;line-height:2.3;color:rgba(253,246,238,0.6);margin-bottom:40px}
+.support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.support-card{border:1px solid rgba(232,97,26,0.2);padding:26px 22px;text-decoration:none;color:var(--cream);display:block;background:rgba(232,97,26,0.03);transition:all 0.3s}
+.support-card:hover{border-color:var(--orange-light);transform:translateY(-3px);background:rgba(232,97,26,0.07)}
+.support-badge{font-size:0.65rem;letter-spacing:0.3em;color:var(--orange-light);border:1px solid rgba(232,97,26,0.3);display:inline-block;padding:2px 9px;margin-bottom:14px}
+.support-icon{font-size:1.7rem;margin-bottom:12px}
+.support-card h3{font-family:'Zen Antique',serif;font-size:1.05rem;margin-bottom:8px}
+.support-card p{font-size:0.8rem;line-height:1.9;color:rgba(253,246,238,0.5)}
+.support-action{display:inline-flex;align-items:center;gap:5px;margin-top:14px;font-size:0.78rem;color:var(--orange-light)}
+
+/* X Follow Button */
+.x-follow-wrap{margin-top:16px}
+.x-follow-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 20px;
+  background:#000;
+  color:#fff;
+  text-decoration:none;
+  font-size:0.82rem;
+  letter-spacing:0.1em;
+  border:1px solid rgba(255,255,255,0.15);
+  transition:background 0.2s;
+  font-family:'Shippori Mincho','Noto Serif JP',serif;
+}
+.x-follow-btn:hover{background:#1a1a1a}
+.x-follow-icon{font-size:0.85rem}
+
+/* CONTACT */
+.contact-bg{background:var(--paper2);border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.contact-card{padding:24px 18px;text-align:center;border:1px solid var(--border);background:var(--cream);text-decoration:none;color:var(--ink);transition:border-color 0.2s;display:block}
+.contact-card:hover{border-color:var(--orange)}
+.contact-icon{font-size:1.6rem;margin-bottom:8px}
+.contact-label{font-size:0.68rem;letter-spacing:0.2em;color:var(--stone);margin-bottom:4px}
+.contact-value{font-size:0.88rem;font-weight:700}
+
+footer{background:var(--ink);color:rgba(253,246,238,0.3);text-align:center;padding:32px 20px;font-size:0.75rem;letter-spacing:0.15em;border-top:1px solid rgba(232,97,26,0.12)}
+footer a{color:rgba(253,246,238,0.3);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--orange-light)}
+
+@media(max-width:720px){
+  nav{padding:0 16px}
+  .nav-links{display:none}
+  .section-wrap{padding:56px 16px}
+  .q-kw-sub{display:none}
+  .q-kw-word{font-size:1.1rem}
+  .q-panel{padding:20px 16px}
+  .q-modal{width:100vw;max-height:100vh;margin:0;border:none}
+  .q-modal-header,.q-modal-body,.q-modal-nav{padding-left:20px;padding-right:20px}
+  .about-flex{flex-direction:column}
+  .about-photo-placeholder,.about-photo{width:100%;height:200px}
+  .note-visual-card{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">おざわ<span>ゆうた</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">人物</a></li>
+    <li><a href="#questions">議会質問</a></li>
+    <li><a href="#archive">議事録</a></li>
+    <li><a href="#blog">ブログ</a></li>
+    <li><a href="#support">応援する</a></li>
+    <li><a href="#contact">連絡先</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-paper"></div>
+  <div class="hero-bg-img"></div>
+  <div class="hero-rings"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <svg class="hero-kamon" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="46" stroke="#e8611a" stroke-width="1" opacity="0.35"/>
+      <circle cx="50" cy="50" r="34" stroke="#e8611a" stroke-width="1" opacity="0.25"/>
+      <circle cx="50" cy="50" r="5" fill="#e8611a" opacity="0.5"/>
+      <line x1="50" y1="12" x2="50" y2="88" stroke="#e8611a" stroke-width="0.8" opacity="0.25"/>
+      <line x1="12" y1="50" x2="88" y2="50" stroke="#e8611a" stroke-width="0.8" opacity="0.25"/>
+      <line x1="22" y1="22" x2="78" y2="78" stroke="#e8611a" stroke-width="0.8" opacity="0.15"/>
+      <line x1="78" y1="22" x2="22" y2="78" stroke="#e8611a" stroke-width="0.8" opacity="0.15"/>
+    </svg>
+    <div class="hero-pre">元西郷村議会議員・元西郷村長選挙候補</div>
+    <h1 class="hero-name">おざわ<span class="yuta">ゆうた</span></h1>
+    <div class="hero-line"></div>
+    <p class="hero-copy">仕組みを考えるのが、好きだ。<br><strong>だから政治の道を選んだ。</strong></p>
+    <div class="hero-tags">
+      <span class="htag">元西郷村議会議員</span>
+      <span class="htag">元村長選挙候補</span>
+      <span class="htag">M-1挑戦</span>
+      <span class="htag">ゲーム開発</span>
+      <span class="htag">半導体メーカー勤務</span>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- ABOUT -->
+<div id="about" class="about-bg">
+  <div class="about-bg-img"></div>
+  <div class="section-wrap">
+    <div class="sec-en">ABOUT</div>
+    <div class="sec-jp">人物紹介</div>
+
+    <div class="about-flex">
+      <div class="about-photo-placeholder">
+        <span>👤</span>
+        <div>顔写真</div>
+        <div style="font-size:0.65rem;opacity:0.6">（準備中）</div>
+      </div>
+      <div class="about-text-block">
+        <p class="about-lead">
+          中学生のころからゲームの設定を考え、RPGツクールでゲームを作り、会社ではExcelのマクロを独学で組んだ。<br>
+          ずっと<strong>「仕組みを作ること」</strong>が好きだった。<br><br>
+          34歳のとき、TikTokで出会った一本の演説動画に魂を揺さぶられ、政治という「最大の仕組み」に飛び込んだ。
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">2007年</div>
+        <div class="tl-text">高校卒業・地元の半導体メーカーに入社</div>
+        <div class="tl-sub">現在も在職。仕事と政治活動を両立してきた。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2008年</div>
+        <div class="tl-text">M-1グランプリ 一回戦敗退</div>
+        <div class="tl-sub">笑いで人を動かすことへの挑戦。この経験が言葉の力を教えてくれた。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">25歳ごろ</div>
+        <div class="tl-text">RPGツクールでゲーム制作・Excelマクロを独学</div>
+        <div class="tl-sub">「仕組みを設計する」面白さに目覚める。この思考が後の政治活動の土台になった。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">34歳</div>
+        <div class="tl-text">TikTokで政治と出会い、心を打たれる</div>
+        <div class="tl-sub">一本の演説動画が魂に響いた。「政治も仕組みだ」と気づき、飛び込む決意をした。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2023年・35歳</div>
+        <div class="tl-text">西郷村議会議員 当選</div>
+        <div class="tl-sub">村の仕組みを内側から変えるために、議員という場所に立った。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2025年11月</div>
+        <div class="tl-text">離党・無所属として活動継続</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2026年2月</div>
+        <div class="tl-text">西郷村長選挙に挑戦・落選</div>
+        <div class="tl-sub">負けた。でも、戦った。この経験は次への糧だ。</div>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-icon">⚙️</div>
+        <h3>仕組みを作る人</h3>
+        <p>ゲーム・マクロ・政治。形は違っても、ずっと「仕組みを設計する」ことに惹かれてきた。</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🏭</div>
+        <h3>働きながら政治をする</h3>
+        <p>半導体メーカーに勤めながら、議員として活動してきた。地に足ついた視点が武器。</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🎤</div>
+        <h3>笑いと言葉の人</h3>
+        <p>M-1に挑戦し、ラップを録音し、TikTokで政治に出会った。表現することへの情熱は変わらない。</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🏡</div>
+        <h3>西郷村が好きだ</h3>
+        <p>生まれ育ったこの村で、たくさんの人が幸せになれる仕組みを作りたい。それだけだ。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUESTIONS -->
+<div id="questions" class="q-section-bg">
+  <div class="section-wrap" style="padding-bottom:0">
+    <div class="sec-en">INSIDE MY HEAD</div>
+    <div class="sec-jp">頭の中——<br>議会で問い続けたこと</div>
+    <p style="font-size:0.75rem;line-height:2;margin-bottom:0;letter-spacing:0.2em;text-align:center">カテゴリに触れると質問一覧が開きます</p>
+  </div>
+  <div style="position:relative;width:100%">
+      <canvas id="qFloatCanvas"></canvas>
+      <canvas id="qFlashCanvas"></canvas>
+      <div id="qDimOverlay"></div>
+  </div>
+  <!-- カテゴリ別質問パネル -->
+  <div id="catPanel" style="display:none">
+    <div class="section-wrap" style="padding-top:0;padding-bottom:48px">
+      <div id="catPanelHeader" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08)">
+        <div>
+          <div id="catPanelLabel" style="font-size:0.6rem;letter-spacing:0.3em;margin-bottom:6px;opacity:0.5">CATEGORY</div>
+          <div id="catPanelTitle" style="font-family:'Zen Antique',serif;font-size:1.2rem;color:rgba(253,242,215,0.9)"></div>
+        </div>
+        <button id="catPanelClose" onclick="closeCatPanel()" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);padding:8px 16px;cursor:pointer;font-size:0.65rem;letter-spacing:0.2em;font-family:'Noto Serif JP',serif;transition:all 0.2s">閉じる ✕</button>
+      </div>
+      <div id="catCardGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px"></div>
+    </div>
+  </div>
+</div><!-- /questions -->
+
+<!-- MODAL OVERLAY -->
+<div class="q-modal-overlay" id="qModalOverlay" onclick="handleOverlayClick(event)">
+  <div class="q-modal-backdrop"></div>
+  <div class="q-modal" id="qModal">
+    <div class="q-modal-header">
+      <div class="q-modal-num" id="mNum">01</div>
+      <div class="q-modal-meta">
+        <div class="q-modal-session" id="mSession"></div>
+        <div class="q-modal-title" id="mTitle"></div>
+        <div class="q-modal-tags" id="mTags"></div>
+      </div>
+      <button class="q-modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="q-modal-body" id="mBody"></div>
+    <div class="q-modal-nav">
+      <button class="q-modal-nav-btn" id="mPrev" onclick="navModal(-1)">← 前の質問</button>
+      <span class="q-modal-nav-count" id="mCount">1 / 3</span>
+      <button class="q-modal-nav-btn" id="mNext" onclick="navModal(1)">次の質問 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ARCHIVE PREVIEW -->
+<div id="archive" class="archive-preview-bg">
+  <div class="section-wrap">
+    <div class="sec-en">ASSEMBLY RECORDS</div>
+    <div class="sec-jp">議事録アーカイブ</div>
+    <p style="font-size:0.93rem;line-height:2.2;color:var(--stone);margin-bottom:36px">西郷村議会での一般質問の記録です。議会のたびに追加していきます。</p>
+    <div class="archive-grid">
+      <a href="gijiroku.html#r7-4" class="archive-card" onclick="selectArchiveCard(event,this)">
+        <div class="archive-card-selected-badge">▶ 閲覧中</div>
+        <div class="archive-card-session">令和7年 第4回定例会｜12月8日</div>
+        <div class="archive-card-title">第10回目の一般質問</div>
+        <div class="archive-card-topics">
+          <span class="archive-card-topic">部活動地域移行</span>
+          <span class="archive-card-topic">人口ビジョン</span>
+          <span class="archive-card-topic">財政戦略</span>
+        </div>
+      </a>
+      <a href="gijiroku.html#r7-3" class="archive-card" onclick="selectArchiveCard(event,this)">
+        <div class="archive-card-selected-badge">▶ 閲覧中</div>
+        <div class="archive-card-session">令和7年 第3回定例会｜9月8日</div>
+        <div class="archive-card-title">第9回目の一般質問</div>
+        <div class="archive-card-topics">
+          <span class="archive-card-topic">メガソーラー条例</span>
+          <span class="archive-card-topic">水源保全</span>
+        </div>
+      </a>
+      <a href="gijiroku.html#r7-2" class="archive-card" onclick="selectArchiveCard(event,this)">
+        <div class="archive-card-selected-badge">▶ 閲覧中</div>
+        <div class="archive-card-session">令和7年 第2回定例会｜6月9日</div>
+        <div class="archive-card-title">第8回目の一般質問</div>
+        <div class="archive-card-topics">
+          <span class="archive-card-topic">村内雇用の促進</span>
+          <span class="archive-card-topic">若者定着</span>
+          <span class="archive-card-topic">通信制高校</span>
+        </div>
+      </a>
+      <a href="gijiroku.html#r7-1" class="archive-card" onclick="selectArchiveCard(event,this)">
+        <div class="archive-card-selected-badge">▶ 閲覧中</div>
+        <div class="archive-card-session">令和7年 第1回定例会｜3月10日</div>
+        <div class="archive-card-title">第7回目の一般質問</div>
+        <div class="archive-card-topics">
+          <span class="archive-card-topic">食料自給率</span>
+          <span class="archive-card-topic">農業振興</span>
+          <span class="archive-card-topic">空き家活用</span>
+        </div>
+      </a>
+      <a href="gijiroku.html#r6-4" class="archive-card" onclick="selectArchiveCard(event,this)">
+        <div class="archive-card-selected-badge">▶ 閲覧中</div>
+        <div class="archive-card-session">令和6年 第4回定例会｜12月10日</div>
+        <div class="archive-card-title">第6回目の一般質問</div>
+        <div class="archive-card-topics">
+          <span class="archive-card-topic">副教材・AIドリル</span>
+          <span class="archive-card-topic">成人式</span>
+          <span class="archive-card-topic">デマンド交通</span>
+        </div>
+      </a>
+      <a href="gijiroku.html#r6-3" class="archive-card" onclick="selectArchiveCard(event,this)">
+        <div class="archive-card-selected-badge">▶ 閲覧中</div>
+        <div class="archive-card-session">令和6年 第3回定例会｜9月11日</div>
+        <div class="archive-card-title">第5回目の一般質問</div>
+        <div class="archive-card-topics">
+          <span class="archive-card-topic">ワクチン定期接種</span>
+          <span class="archive-card-topic">インバウンド観光</span>
+        </div>
+      </a>
+      <a href="gijiroku.html#r6-2" class="archive-card" onclick="selectArchiveCard(event,this)">
+        <div class="archive-card-selected-badge">▶ 閲覧中</div>
+        <div class="archive-card-session">令和6年 第2回定例会｜6月11日</div>
+        <div class="archive-card-title">第4回目の一般質問</div>
+        <div class="archive-card-topics">
+          <span class="archive-card-topic">運動会</span>
+          <span class="archive-card-topic">スポーツ振興</span>
+          <span class="archive-card-topic">子育て支援</span>
+        </div>
+      </a>
+      <a href="gijiroku.html#r6-1" class="archive-card" onclick="selectArchiveCard(event,this)">
+        <div class="archive-card-selected-badge">▶ 閲覧中</div>
+        <div class="archive-card-session">令和6年 第1回定例会｜3月7日</div>
+        <div class="archive-card-title">第3回目の一般質問</div>
+        <div class="archive-card-topics">
+          <span class="archive-card-topic">不登校</span>
+          <span class="archive-card-topic">通知表</span>
+          <span class="archive-card-topic">校則・宿題・ICT</span>
+        </div>
+      </a>
+      <a href="gijiroku.html#r5-4" class="archive-card" onclick="selectArchiveCard(event,this)">
+        <div class="archive-card-selected-badge">▶ 閲覧中</div>
+        <div class="archive-card-session">令和5年 第4回定例会｜12月12日</div>
+        <div class="archive-card-title">第2回目の一般質問</div>
+        <div class="archive-card-topics">
+          <span class="archive-card-topic">体育施設</span>
+          <span class="archive-card-topic">多様性</span>
+          <span class="archive-card-topic">地域コミュニティ</span>
+        </div>
+      </a>
+      <a href="gijiroku.html#r5-3" class="archive-card" onclick="selectArchiveCard(event,this)">
+        <div class="archive-card-selected-badge">▶ 閲覧中</div>
+        <div class="archive-card-session">令和5年 第3回定例会｜9月21日</div>
+        <div class="archive-card-title">第1回目の一般質問</div>
+        <div class="archive-card-topics">
+          <span class="archive-card-topic">メガソーラー</span>
+          <span class="archive-card-topic">子育て支援</span>
+          <span class="archive-card-topic">ワクチン情報</span>
+        </div>
+      </a>
+    </div>
+    <a href="gijiroku.html" class="archive-more-btn">📁 議事録アーカイブページへ</a>
+  </div>
+</div>
+
+<!-- BLOG -->
+<div id="blog" class="note-bg">
+  <div class="section-wrap">
+    <div class="sec-en">BLOG</div>
+    <div class="sec-jp">ブログ</div>
+    <p class="note-lead">政治のこと、村のこと、日々考えていることを書いています。<br>noteで更新中です。読んでいただけたら嬉しいです。</p>
+    <a href="https://note.com/yuta_nishigo" target="_blank" class="note-visual-card">
+      <div class="note-visual-left">
+        <div>
+          <div class="n-label">NOTE</div>
+          <div class="n-title">小澤ゆうた<br>の note</div>
+        </div>
+        <div class="n-url">note.com/yuta_nishigo →</div>
+      </div>
+      <div class="note-visual-right">
+        <div class="n-point">
+          <span class="n-point-num">01</span>
+          <span class="n-point-text">政治・議会の話をできるだけわかりやすく書いています</span>
+        </div>
+        <div class="n-point">
+          <span class="n-point-num">02</span>
+          <span class="n-point-text">日々の考えや、西郷村への想いを綴っています</span>
+        </div>
+        <div class="n-point">
+          <span class="n-point-num">03</span>
+          <span class="n-point-text">村長選挙に挑戦した記録も残しています</span>
+        </div>
+        <a href="https://note.com/yuta_nishigo" target="_blank" class="note-visit-btn">読みに行く →</a>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- SUPPORT -->
+<div id="support" class="support-bg">
+  <div class="section-wrap">
+    <div class="sec-en">SUPPORT</div>
+    <div class="sec-jp">応援する</div>
+    <p class="support-lead">小澤ゆうたの活動を、あなたの形で支えてください。<br>どんな形でも、力になります。</p>
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="support-badge">PLAN 01</div>
+        <div class="support-icon">𝕏</div>
+        <h3>Xでフォロー・拡散</h3>
+        <p>まずはXをフォローして、日々の発信をシェアしてください。一人ひとりの拡散が村の議論を広げます。</p>
+        <div class="x-follow-wrap">
+          <a href="https://x.com/intent/follow?screen_name=yuta_ozawa_n" target="_blank" class="x-follow-btn">
+            <span class="x-follow-icon">𝕏</span> @yuta_ozawa_n をフォロー
+          </a>
+        </div>
+      </div>
+      <a href="#" class="support-card">
+        <div class="support-badge">PLAN 02</div>
+        <div class="support-icon">☕</div>
+        <h3>月額応援プラン</h3>
+        <p>月々少額から、継続的に活動を支援できます。活動報告や裏話を定期的にお届けします。</p>
+        <div class="support-action">応援する →</div>
+      </a>
+      <a href="#" class="support-card">
+        <div class="support-badge">PLAN 03</div>
+        <div class="support-icon">🏮</div>
+        <h3>政治資金で応援</h3>
+        <p>政治資金規正法に基づく寄付として、活動資金を支援いただけます。詳細はお問い合わせください。</p>
+        <div class="support-action">詳細を見る →</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="contact-bg">
+  <div class="section-wrap">
+    <div class="sec-en">CONTACT</div>
+    <div class="sec-jp">連絡先</div>
+    <div class="contact-grid">
+      <a href="https://x.com/yuta_ozawa_n" target="_blank" class="contact-card">
+        <div class="contact-icon">𝕏</div>
+        <div class="contact-label">X (Twitter)</div>
+        <div class="contact-value">@yuta_ozawa_n</div>
+      </a>
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-label">メール</div>
+        <div class="contact-value" style="color:var(--stone);font-size:0.82rem">準備中</div>
+      </div>
+      <a href="https://note.com/yuta_nishigo" target="_blank" class="contact-card">
+        <div class="contact-icon">📝</div>
+        <div class="contact-label">NOTE</div>
+        <div class="contact-value" style="font-size:0.82rem">note.com/yuta_nishigo</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p style="margin-bottom:10px">
+    <a href="#about">人物</a><a href="#questions">議会質問</a><a href="#archive">議事録</a><a href="#blog">ブログ</a><a href="#support">応援する</a><a href="#contact">連絡先</a>
+  </p>
+  <p>© 2026 おざわゆうた｜福島県西白河郡西郷村</p>
+</footer>
+
+<script>
+/* ========================
+   MODAL DATA
+   ======================== */
+const qData = [
+  {
+    num: "01",
+    cluster: "nature",
+    shortTitle: "メガソーラー事業",
+    thought: "大きな資本が入ってくるとき、いちばん置いてけぼりになるのが村民の声だと思っています。東京ドーム200個分という現実を知らないまま、開発だけが進んでいく。それはおかしい。",
+    session: "令和5年 第3回定例会｜令和5年9月21日",
+    title: "メガソーラー事業について——景観・環境・村民の安全を守る",
+    tags: ["🌿 環境保全","メガソーラー規制"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">小澤ゆうた 議員</div>
+          <div class="d-bubble">村内のメガソーラー設置面積について伺う。また、廃棄費用の積立制度に従って積立てを行っているか確認しているか。さらに、福島市が行った「ノーモアメガソーラー宣言」のように、村としても意思表示をする考えはあるか。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長・環境保全課長 答弁</div>
+          <div class="d-bubble">村内のメガソーラー合計面積は約960ヘクタール（東京ドーム約200個分）。廃棄費用積立制度の確認作業を実施している。ノーモアメガソーラー宣言という形ではなく、条例に基づいた指導強化で対応する。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">小澤ゆうた 議員（再質問）</div>
+          <div class="d-bubble">宣言の形でなくとも、新たなメガソーラー設置に反対の立場を明確にしていただけたと思う。これほど広大な開発が進む以上、近隣住民の安全を最優先に、適切な指導と監視を求める。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">大きな資本が入ってくるとき、いちばん置いてけぼりになるのが村民の声だと思っています。東京ドーム200個分という現実を知らないまま、開発だけが進んでいく。それはおかしい。村民の側に立った判断を、議員として届け続けます。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">１番、参政党の小澤佑太です。通告に従いまして一般質問を始めます。まず、メガソーラー事業について伺います。メガソーラー事業では、事業者が収益を目的に発電事業を行う一方で、農地や森林がその代償に失われ、景観の悪化や災害、土壌汚染や地域の安全性が懸念されますが、村内のメガソーラー施設の現状と今後の方針について伺います。まず１つ目に、村内のメガソーラー設置面積について伺います。西郷村の住民は太陽光発電がどのように計画され、どのように進んでいるのかを知りません。一部の村民からは太陽光発電事業により災害の心配や景観悪化を嘆く声が聞こえております。そこで、西郷村内で現時点においての太陽光発電事業の実施者のうち、いわゆるメガソーラー事業を行っている事業者がどのぐらいいて、またどのぐらいの面積を太陽光発電事業として実施しているのか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○環境保全課長（今井 学君）</span><span class="txt">令和５年９月現在、村が把握しております太陽光発電事業者のうち、発電規模が１か所当たり１メガワット以上のメガソーラー事業者で、既に造成や太陽光パネルを設置するなどの行為が完了している事業者は１２社ございます。その合計面積は３０５.５１ヘクタールでございます。また、現在、開発中の事業者は２社ございまして、その面積は６３５.５９ヘクタールでございます。そのほか、協議中など現在計画中の事業者は２社ございまして、面積は１９.８７ヘクタールでございます。合計いたしまして、ご質問いただいた西郷村内において現在事業を開始している事業者は計１６社でございます。また、その総面積は９６０.９７ヘクタールでございます。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">総面積が約９６０ヘクタールとのことでしたので、東京ドームに換算しますと、東京ドーム１つ当たり約４.６ヘクタールですので、東京ドーム約２００個分となると思います。このように広大な太陽光発電事業が西郷村内において実施されていることが分かったところで、次の質問に移ります。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【ノーモアメガソーラー宣言について】</span><span class="txt">福島県内の市町村のうち、大玉村は大規模太陽光発電所と大玉村の自然環境保全との調和に関する宣言を令和元年６月に、そしてつい先月福島市はノーモアメガソーラー宣言を令和５年８月に行っています。西郷村においても村長はこれらの市町村と同様に、日本国内の太陽光発電を企画する事業者に対する意思表示として、西郷村にはもう太陽光発電事業は望まないのだと、西郷村ノーモアメガソーラー宣言を行うお気持ちがあるかどうかについてお伺いいたします。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">小澤議員の一般質問にお答えいたします。西郷村では福島県で２番目に、関連条例である西郷村の自然環境と再生エネルギー関連事業との調和に関する条例を制定し、事業者に対しまして条例に基づいた指導をしております。森林の伐採や用地の造成による災害発生などの懸念があり、自然環境に恵まれている西郷村の景観が損なわれるメガソーラーを、村としてもこれ以上新たに望まない思いは議員と同様であります。過去、ほかの議員からのおただしに対しまして、私も答弁の中に、もう西郷村はこれ以上の山林を切り開くような大規模メガソーラーは必要ないと申し上げたこともございます。現在もこの気持ちには変わりあません。村として、ノーモアメガソーラー宣言という意思表示ではなく、実質的に、西郷村の自然環境と再生可能エネルギー関連事業との調和に関する条例に基づき、住環境を守り調和を目指した指導の強化をしてまいりたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">メガソーラー事業の新設に反対の立場を明確にしていただけたと思います。今回は、東京ドーム２００個分のメガソーラーという設置面積は分かり、これ以上設置についてはもういいでしょうという思いは皆さん同じだと思います。同時に、このような大規模なメガソーラーが存在する以上、近隣住民の安全性を最優先に考え、西郷村が適切な指導や監視を行っていただきたいと思います。さらに、外国資本の参入により、国民が負担する賦課金で外国企業が利益を上げ、自然環境や水源地が破壊されるなど、あまりにも理不尽な仕組みになっていますので、今後も村民の意思を尊重していただきたいと切に願い、メガソーラー事業についての質問を終わり、次の質問に移ります。</span></div>
+        </div>
+        <div class="t-note">※ 令和5年第3回西郷村議会定例会（令和5年9月21日）議事日程第2号 P36〜P39より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "02",
+    cluster: "family",
+    shortTitle: "子育て支援",
+    thought: "子どもが育てやすい村なら、若い人も残る。シンプルだからこそ、本気でやらないといけない。",
+    session: "令和5年 第3回定例会｜令和5年9月21日",
+    title: "子育て支援について——保育料無償化・ファミリーサポート",
+    tags: ["👶 子育て支援","保育料・一時預かり"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">小澤ゆうた 議員</div>
+          <div class="d-bubble">３歳未満の保育料無償化について、約6,000万円の村負担で実現できると理解してよいか。また、ファミリーサポート事業が機能していない現状と、利用したいときに利用できる一時預かり施設の整備について伺う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長・福祉課長 答弁</div>
+          <div class="d-bubble">年間1億円を超える村の負担となり、直ちに実施は困難。ファミリーサポートはスタッフ不足で機能していない現状。利用したいときに使える預かり施設は必要と認識しているが、クリアすべき課題が多い。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">小澤ゆうた 議員（再質問）</div>
+          <div class="d-bubble">子育て中のトラブルやアクシデントは急に発生する。不眠で育児をしている親の睡眠時間を確保するだけでも、離婚・虐待・ネグレクトを防ぐことにつながる。テスト運用でも構わないので、需要調査から始めてほしい。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">子どもが育てやすい村なら、若い人も残る。シンプルだからこそ、本気でやらないといけない。1億円の出費も、形を変えて別の誰かを支援していることにつながっていく——そういう視点で、子育て支援を考え続けます。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【保育料無償化について】</span><span class="txt">約３０年間所得が上がらない中で、相次ぐ増税や物価上昇が起きており、これに対処するためには子育て世帯への一時的ではなく、中長期的な支援が必要です。給食費の無償化が実現されたことは、子育て支援に非常に前向きな一歩だとは思いますが、今後の子育て支援について伺います。まず１つ目に、３歳未満の保育料の無償化について伺います。第２回定例会時の執行部から答弁で、令和４年度のゼロ歳から２歳児までの保育料の収入総額は約４,９００万円、３歳から５歳児までの副食費の収入額は約１,１８０万円、合計で約６,０８０万円との内容でした。これは約６,０００万円程度村が負担をすれば３歳未満の保育料が無償化できるということでよろしいか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">議員おただしのように、保育料約６,０００万円、一時保育１１０万円、在宅で子どもを見ている家庭への支援を村が負担することができれば、保育料の完全無償化が図れ、子育て世帯の負担軽減につながると考えられます。しかし約６,０００万円の保育料の収入がなくなり、さらに在宅で子どもを見ている家庭への支援を実施するとなると、年間１億円を超える村の負担が出てくることとなります。これはなかなか負担できる金額ではありませんし、直ちに実施できるものではありません。村としても子育て政策に力を注いでいきたいと考えておりますが、ほかに解決しなければならない課題も山積しておりますので、国・県の動向を見定め、最善と判断した場合には進めていきたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">年間約１億円を超える村の負担と言われますと、給食費の無償化が実現したばかりですので、ぐうの音も出ないところではあります。ただ一つ、無償化の大前提として、子育て世帯もただ受け取るだけではなく、その支援を受けているということを意識して、できる限り村内で支出を検討することが重要だと思っていまして、例えばふだんの買物や外食を村内で行うことで、お金が村内で循環して、子育て世帯にばかり支援しているように見られますが、そのお金がさらにまた別の誰かに届くとなれば、１億円の出費も、形を変えて別の誰かを支援していることにつながってくるのではないかと思いますので、３歳未満の保育料を無償化することで約２００世帯の保護者負担が減った結果、そこを起点に支援が広がっていくことも含めて、ぜひ前向きに検討していただきたいと思います。</span></div>
+          <div class="t-line"><span class="spk">○福祉課長（相川佐江子君）【ファミリーサポートについて】</span><span class="txt">村内のファミリーサポートセンターに関しましては、村の委託事業として西郷村社会福祉協議会において事業実施をしておりますが、スタッフ不足などの理由から機能していないのが実情であります。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">議員おただしのとおり、利用したいときにすぐ利用できる預かり施設は必要であると私も認識しております。しかし、利用したいときに利用できるという仕組みは非常に難しいと考えます。現時点においては、現在実施されている保育園での一時的保育事業や子育て短期支援事業などを活用していただきながら、子育てを頑張っている保護者のためにも、社会福祉協議会で実施しているファミリーサポート事業をより機能させるなど、子育て世帯への支援の充実が図れるよう村として取り組んでまいります。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">村長のおっしゃるとおり、利用したいときに利用できる仕組みは非常に難しいと思いますが、子育て中にトラブルやアクシデントが急に発生することはよくあります。ワンオペやシングルの方は特に急に時間的な自由が必要になることがありますし、身近に預けられる人がいない場合計り知れないストレスが発生して、心に余裕が持てなくなることもあります。結局、こうしたストレスが児童虐待やネグレクトの原因にもつながる可能性があるため、大規模な事業ではなく、例えば文化センターで子どもを預かる方を募り、当日預かってほしい方が来たら希望時間に子どもを預かるなど、テスト運用を行い、需要の程度を調査することは検討していただければと思います。というのも、乳幼児を育てている家庭では、夜間の睡眠が確保できないことが多く、不眠で育児している場合も多いので、その睡眠時間ぐらいはどうにか確保してあげたいという思いでこの質問をしています。私も夜勤で帰ってきて寝ていたら、あなたは自分の時間があっていいわねと皮肉を言われた経験もあります。こうした状況は離婚の原因にもなり得るため、ファミリーサポート事業がこれからの問題を解決できる可能性を秘めていると考え、今後の課題として検討していただきたいということをお伝えして、子育て支援についての質問を終わります。</span></div>
+        </div>
+        <div class="t-note">※ 令和5年第3回西郷村議会定例会（令和5年9月21日）議事日程第2号 P39〜P45より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "03",
+    cluster: "health",
+    shortTitle: "コロナワクチン情報提供",
+    thought: "賛成・反対じゃなくて、村民一人ひとりが自分で考えられる環境を作りたかった。",
+    session: "令和5年 第3回定例会｜令和5年9月21日",
+    title: "新型コロナワクチン接種について——村民が自分で判断できる情報提供を",
+    tags: ["💊 医療・健康情報","自己決定・情報提供"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">小澤ゆうた 議員</div>
+          <div class="d-bubble">mRNAワクチンのリスクについて、村民が適切な判断を行えるよう十分な情報提供が必要。接種券は希望者のみへの配布（申込み制）に変更すべきでは。また村独自の副反応・後遺症調査を行っているか。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長・健康推進課長 答弁</div>
+          <div class="d-bubble">接種はあくまで個人の判断。リスクについての情報提供を行いたい。接種券は前回接種者のみに発送している。村独自の副反応・後遺症調査は行っていない。健康被害救済申請2件はすでに認定済み。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">小澤ゆうた 議員（再質問）</div>
+          <div class="d-bubble">何度も言うが、ワクチン接種は個人の判断だ。であれば接種券と同時に、リスク・副反応・後遺症についての情報を提供し、村民が適切な判断をするための環境を整えてほしい。特に生後6か月の乳幼児の保護者がプレッシャーの中で判断できるよう、丁寧な情報提供を求める。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">賛成・反対じゃなくて、村民一人ひとりが自分で考えられる環境を作りたかった。「お上が言うから」じゃなく、「自分で判断した」と言える村民を増やすことが、本当の意味での健康な地域だと思っています。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【新型コロナウイルスワクチンについて】</span><span class="txt">最後に新型コロナウイルスワクチンについて伺います。９月２０日から始まった新型コロナウイルスワクチンの秋冬接種について、現在分かっているメッセンジャーＲＮＡワクチンによる副反応や後遺症の実態を判断材料になるように提示して、村民が適切な判断を行えるように十分な情報提供が必要だと考えています。令和５年５月８日に新型コロナウイルスはウイルス変異を繰り返し、弱毒化の傾向も見られ、重症化するケースが減少していることから、感染症の位置づけが変更され、５類感染症に移行しました。一方で、ワクチン接種による副反応や後遺症が日々増加しているにもかかわらず、その因果関係を不明と判断するなど、多くの国民が苦しんでいます。まず、１つ目にメッセンジャーＲＮＡワクチンのリスクについて伺います。</span></div>
+          <div class="t-line"><span class="spk">○健康推進課長（添田真二君）</span><span class="txt">メッセンジャーＲＮＡワクチンは新しいワクチン技術ですが、これまで臨床試験を行い、多くの人々に効果があるとされ、使用されていると認識しております。一方、全ての医薬品やワクチンと同様に、特定のリスクや副反応があるのも事実でございます。中長期的なメッセンジャーＲＮＡワクチンの安全性については、まだ完全には明らかになっていません。体内にワクチンという異物を接種するわけですから、こういったリスクを理解した上で接種されることが望ましいと考えております。ワクチンの接種については、あくまで個人の判断により接種可能となりますので、リスクについての情報提供をまめに行いまして、接種する上での判断材料となるよう努めていきたいと思います。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【接種券の配布方法について】</span><span class="txt">何度も言いますが、ワクチン接種は個人の判断です。であるならば、接種券は希望者のみに配布したほうがいいかと思いますが、どのようにお考えか、伺います。乳幼児の初回接種を完了している者が６０人います。この６０名につきましては、追加接種の希望を取り、希望者のみに接種券の発送をしていただきたい。子どもたちは自身の意思でワクチンの接種の判断を下すことができません。特に初めての子どもを持つ親であれば、生後僅か６か月しかたっていない状況で、初回接種が完了するまでに、いつまでに打たないといけないと言われると、さらにプレッシャーとなり適切な判断が難しくなる可能性があります。そのため、接種券と同時に、ワクチン接種に関するリスク、副反応、後遺症についての情報を提供し、村民が適切な判断をするための環境を整えていただきたいと思います。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）【副反応・後遺症調査について】</span><span class="txt">新型コロナワクチン接種後の副反応、後遺症調査についてでありますが、村独自でのワクチン接種後の副反応、後遺症調査は行っておりません。今までに、ワクチンの健康被害救済の申請が２件あり、令和４年１月に国への進達をしております。２件とも健康被害救済の認定が令和５年３月に認められたところであります。新型コロナワクチン関連で、８月２１日時点での国の健康被害救済認定者は死亡事例での救済が１５６件、その他救済の対象と認定された３,８１０件となっております。村としましては、今後もワクチンの接種においてリスクについての情報提供もしっかり行い、副反応等の相談には丁寧に対応してまいりたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">実際に健康被害救済の申請が認定されているとのことですので、子どもたちの未来を守る観点からも、今後は保護者が適切な判断を行えるよう充実した情報提供をお願いしたいと思います。また、子どもの健康と命を守れるのは大人だけですので、個人の判断でワクチン接種を行ったとしても、その後の経過や健康被害について、村としても十分注意深く監視していただきたいと申し上げまして、私の一般質問を終わります。</span></div>
+        </div>
+        <div class="t-note">※ 令和5年第3回西郷村議会定例会（令和5年9月21日）議事日程第2号 P45〜P48より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "04",
+    cluster: "community",
+    shortTitle: "体育施設の改善",
+    thought: "「安くて安全で使いやすい」——それが公共施設のあるべき姿だと思っています。",
+    session: "令和5年 第4回定例会｜令和5年12月12日",
+    title: "体育施設について——予約システムと安全なトレーニング環境",
+    tags: ["🏘️ 地域コミュニティ","体育施設・利用改善"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">学校体育施設の予約状況をネットで確認できるよう変更できないか。また、トレーニングルームのパワーラックやスミスマシンが老朽化して危険。安全性確保のための更新と、頻繁に利用する方向けのパスカード導入を求める。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">生涯学習課長 答弁</div>
+          <div class="d-bubble">ネット予約については村ホームページにバナーを設置する方向で検討。フリーウェート器具は来年度更新予定。パスカード・半年フリーパスの導入についても検討していきたい。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">1時間100円という破格の料金なので、もっと使いやすくしてほしい。セーフティーバーなしのトレーニングで死亡事例もある。安全性は命に関わる問題。緊急ブザーや冷暖房設備も整えてほしい。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">「安くて安全で使いやすい」——それが公共施設のあるべき姿だと思っています。利用者目線で改善を求め続けることが、村民の生活の質を上げることにつながる。小さなことかもしれないけど、誰かが言わないと変わらない。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【体育施設について】</span><span class="txt">まず、体育施設について伺います。現在の西郷村公共施設予約案内システムについてですが、村民体育館や球場等のいわゆる社会体育施設の予約状況はネットで確認できるんですが、学校体育施設についてはネットで確認できないのが現状です。せっかく現行の予約システムがあるので、学校体育施設の予約状況もネットで確認できる使用へ変更することはできないか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○生涯学習課長（須藤隆士君）</span><span class="txt">議員おただしの、各学校体育施設の予約状況をインターネット上で公開することは先ほどの申請方法及び各学校の事務手続との兼ね合いもあり、最新の情報を公開できない場合がありますので、現在まで実施には至っていない状況であります。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">もう少し初見の方にもやさしく分かりやすいような、ページ誘導するような形式へ変更できないか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○生涯学習課長（須藤隆士君）</span><span class="txt">村のホームページのトップページに予約システム、または関連ページまでのバナーやショートカットを表示することで対応が可能と思料されますので、今後はより見つけやすいよう、情報管理者と協議検討をしてまいりたいと思います。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【トレーニングルームについて】</span><span class="txt">現在のトレーニングルームはマシンが５台新設され、以前に比べれば、トレーニング環境は向上されている一方、ベンチプレスやスクワットなどのいわゆるフリーウェートに使用するパワーラックやスミスマシン、スクワットラックなどは老朽化が進み、高重量トレーニーの安全性が損なわれているように見受けられます。セーフティーバーを使用しないでトレーニング中にけがや死亡した事例もありますので、簡単に高さ調節が可能な着脱式のセーフティーバータイプのパワーラックの変更へ要望します。</span></div>
+          <div class="t-line"><span class="spk">○生涯学習課長（須藤隆士君）</span><span class="txt">フリーウェート器具の老朽化につきましては来年度新たな器具の追加、更新を予定しております。生涯学習課といたしましても、今後も利用者のニーズに沿えるような施設づくりを目指してまいりたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【パスカードについて】</span><span class="txt">週に五、六回の高頻度でトレーニングを希望する利用者の施設利用時の手間を軽減するために、定期的な利用者には顔写真付きの申請カード等発行して、施設利用時の手続の手間を省略するとさらに利用率は増えると思いますが、申請カード等を導入する意向があるか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○生涯学習課長（須藤隆士君）</span><span class="txt">申請書記載省略のため、登録制のパスカードを発行することは利用促進も図ることが可能と思われますので、導入について今後検討してまいりたいと思います。また、半年券等のフリーパスの導入についても併せて検討していきたいと考えております。</span></div>
+        </div>
+        <div class="t-note">※ 令和5年第4回西郷村議会定例会（令和5年12月12日）議事日程第3号 P78〜P80より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "05",
+    cluster: "diversity",
+    shortTitle: "パートナーシップ制度",
+    thought: "「幸せの形は一つじゃない」——それを村が認めることに意味がある。",
+    session: "令和5年 第4回定例会｜令和5年12月12日",
+    title: "パートナーシップ制度について——多様な幸せを認める村へ",
+    tags: ["🌈 多様性","パートナーシップ制度"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">福島県内で伊達市が県内初のパートナーシップ制度を導入予定。西郷村としてもパートナーシップ制度の導入に関してどのようなスタンスか、村長に伺いたい。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長 答弁</div>
+          <div class="d-bubble">全国328自治体で導入済み。制度導入に当たっては村民への啓発活動を行い、住民の意見・要望を踏まえて慎重に取り組んでいきたい。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">性的マイノリティーの方が自ら制度導入を行政に求めることは難しい。マザーテレサの言葉にある通り、愛の反対は無関心。慎重には取り組んでほしいが、検討ではなく、ぜひ実現してほしい。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">「幸せの形は一つじゃない」——それを村が認めることに意味がある。声を上げられない人たちのために、議員として問いを立てることが自分の役割だと思っています。反対でも賛成でもなく、まず知ること、考えること。それを村に届けたかった。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【パートナーシップ制度について】</span><span class="txt">福島県伊達市では、来年１月４日より性別に関わらないカップルの関係を公的に証明するパートナーシップ・ファミリーシップ宣誓制度が開始され、福島市と富岡町は導入を検討しているそうです。私も性的マイノリティーの方への理解は深めていくべきだと思っていますが、西郷村としてはパートナーシップ制度の導入に関してどのようなスタンスであるか、村長に伺います。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">パートナーシップ制度は平成２７年に渋谷区と世田谷区で始まっており、令和５年６月２８日時点で、全国の３２８自治体で導入しており、先ほど議員もお話ししましたように、福島県においても伊達市が令和６年１月４日から県内で初めて導入されるほか、福島市でも来年度の導入を目指しており、富岡町でも検討されているということであります。まずは村民の方々に性の多様性について正しく理解し、認識を深められるよう性的マイノリティーの人権を守る運動などの啓発活動を行い、制度導入については住民の意見、要望を踏まえ、さらに村の体制整備も含め、様々な課題を整理し、慎重に取り組んでまいりたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">性的マイノリティーの方々は自らの性的志向を公表することが困難な社会で生活しています。そのため、このような制度導入を自ら行政に求めることは非常に難しいと思いますので、現在は幸せの定義も多様化しており、慎重には取り組んでいただきたいですが、導入に関しては積極的に、そして検討ではなく、ぜひ実現していただきたいことをお伝えして、最後の質問に移ります。</span></div>
+        </div>
+        <div class="t-note">※ 令和5年第4回西郷村議会定例会（令和5年12月12日）議事日程第3号 P80〜P81より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "06",
+    cluster: "community",
+    shortTitle: "行政区の未来",
+    thought: "先人たちが築き上げてきた今の西郷村を、我々世代は次の世代に引き継ぐ使命がある。",
+    session: "令和5年 第4回定例会｜令和5年12月12日",
+    title: "行政区について——加入率低下と地域のつながりの未来",
+    tags: ["🏘️ 地域コミュニティ","行政区・自治"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">ライフスタイルの多様化により行政区の加入率が減少傾向にある。現在の加入率と推移、そして村として行政区への負担軽減・活動のスリム化へ協力するお気持ちがあるか伺いたい。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長・総務課長 答弁</div>
+          <div class="d-bubble">直近5年間の加入率は72〜75%台で推移。最低の行政区は43.3%。回覧文書を増やして行政区長の負担を軽減する方向で努めていきたい。行政区に入ってよかったと思える魅力ある組織づくりを支援したい。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">これは選挙への投票率と似ている。自分の地域への興味・関心・思い入れが欠けていることが問題。先人たちが築いてきた西郷村を次の世代に引き継ぐ使命がある。時代の変化に合わせた行政区の在り方を、皆で考えていきたい。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">難しい問題だとは分かっていた。でも、誰かがこの場に上げなければ変わらないと思った。先輩たちが作ってきたこの村を、自分たちの代で途絶えさせてはいけない。変化を恐れず、未来に向けた選択を——そういう気持ちで質問に立った。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【行政区について】</span><span class="txt">ライフスタイルの多様化や共働きなど、家庭の事情によって地域活動に参加できない方が増加している中で、行政区への加入率が減少傾向にあると思いますが、行政区の現状と今後の課題について伺います。現在の行政区への加入率と推移を伺います。</span></div>
+          <div class="t-line"><span class="spk">○参事兼総務課長（田部井吉行君）</span><span class="txt">西郷村の行政区の加入率でございますけれども、村内５２行政区全体の過去５年間の行政区加入率は、いずれも４月１日現在で、令和元年度７４.７％、令和２年度７５.５％、令和３年度７４％、令和４年度７４.５％、令和５年度７２.９％となっております。また、令和５年度の行政区ごとの加入率に関しましては、一番高い行政区が１００％、一番低い行政区で４３.３％となっております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">加入率が約７割ということで、もちろん行政区への加入は強制ではありませんが、私は災害時のセーフティーネットとしての機能や地域の防災、防犯、治安維持の観点から行政区への加入は１００％が望ましいと感じますが、それと加入に伴う負担やデメリットを天秤にかけた際に明らかに加入後の負担が勝っているのは事実だと思います。村として行政区への負担軽減、活動のスリム化へ協力するお気持ちがあるか、村長へ伺います。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">現在、月２回、行政区長の皆様に行政区への回覧及び配布文書の配布をお願いしております。文書配布については全戸配布を減らし、回覧文書を増やすよう心がけ、行政区長の皆様のご負担を軽減できるよう努めてまいりたいと考えております。行政区の加入率についても、村や行政区が加入を強制することはできませんが、行政区は防災や防犯などの安全・安心な地域づくりを進めるためにも不可欠な組織であると考えておりますので、行政区に加入された方が入ってよかったと思えるような、行政区の実情に合った魅力のある組織づくりを支援してまいりたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">これは少し選挙への投票率と似ていると思っていて、自分の地域における興味や関心、思い入れが欠けていることが問題だと考えており、先人たちが築き上げてきた今の西郷村を、我々世代は先人たちの思いと一緒に次の世代に引き継ぐ使命があると思うのです。やはり時代の変化に合わせて行政区の在り方も変えていかなければ、これからの世代が日本人としてのアイデンティティーやふるさとを思う心が根付いていかないのではないかという懸念で、この村で生まれ育ってよかったと思える子どもたちが一人でも増えるように、まず我々大人たちが変化を恐れず、未来に向けた選択をしていただきたいという私の思いをお伝えして、私の一般質問を終わります。</span></div>
+        </div>
+        <div class="t-note">※ 令和5年第4回西郷村議会定例会（令和5年12月12日）議事日程第3号 P81〜P83より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "07",
+    cluster: "edu",
+    shortTitle: "不登校生徒への取り組み",
+    thought: "学校が怖い子に「来い」とは言えない。でも、居場所は作れる。それを問い続けることが僕の仕事だと思っています。",
+    session: "令和6年 第1回定例会｜令和6年3月7日",
+    title: "不登校生徒について——一人ひとりに寄り添う教育を",
+    tags: ["📚 学校教育","不登校・居場所づくり"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">全国では不登校児童が10年連続増加し過去最多。本村の不登校生徒数と理由、そして村としてどのような対応をしているか伺う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">学校教育課長 答弁</div>
+          <div class="d-bubble">西郷村も全国同様、不登校は増加傾向。発達的な問題、生活環境の乱れ、コロナ禍の影響等が背景にある。スクールカウンセラーや適応指導教室、関係機関と連携しながらケース会議を開催し、個別対応を行っている。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">人生100年時代のうち青春は約20年。学校行事を友達と共有できない時間は取り戻せない。不登校生徒が問題を乗り越え充実した学生生活を送れるよう、子どもファーストな学校環境を整えていただきたい。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">数字よりも、一人の子どもの青春がどれだけ輝けるかが大事だと思っています。学校は居場所でなければならない——子どもたちに「学校ガチャ」と言わせない環境をつくることが、大人の責任だと思って問いを立てました。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">１番、参政党の小澤佑太です。通告に従い一般質問を始めます。学校教育についてですが、まず、不登校生徒について伺います。文部科学省が公表した調査結果によれば、令和４年度における小・中学校の不登校児童生徒数は約３０万人で、前年度から２２.１％増加し、１０年連続の増加で過去最多となったそうです。不登校割合としては、小学校で約６０人に１人、中学校で約１７人に１人が不登校の計算となります。本村においても、不登校生徒の実態は把握していると思いますので、不登校生徒数と不登校理由について伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">本村の不登校の状況も全国と同じ状況にあり、増加傾向にあります。その背景には、発達的な問題や病気、昼夜逆転などの生活環境等があります。また、コロナ禍に起因するもの、生活習慣の乱れによるものも増加しております。令和５年度の人数は前年度と比べて西郷村も増加しております。その要因は、無気力、不安、学業不振、人間関係、家庭環境等と多様化しております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">不登校生徒の数だけ不登校の理由はあると思いますので、一人一人寄り添ったフォローと、子どもたちの青春を担保できるようなフォローを手厚く行っていただきたいと思います。学校ガチャと言われないような、思われないような学校環境や特色ある授業で、学校行事で、子どもたちに選ばれるような学校を目指すことは非常に重要な課題と思います。そして、それが不登校生徒の改善にもつながると思いますので、そういった子どもファーストな学校環境を整えていただきたいと要望して、次の質問に移ります。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第1回西郷村議会定例会（令和6年3月7日）議事日程第2号 P65〜P66より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "08",
+    cluster: "edu",
+    shortTitle: "通知表のあり方",
+    thought: "数字で人を測ることへの違和感は、ずっとあった。評価のあり方が変われば、子どもの見え方が変わる。",
+    session: "令和6年 第1回定例会｜令和6年3月7日",
+    title: "通知表のあり方について——数字より、その子らしさを",
+    tags: ["📚 学校教育","通知表・評価改革"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">通知表は法的義務ではなく校長の裁量。数値評価に依存すると「通知表に特化した児童」を育てることになりかねない。村として現在の評価方法・通知表についてどのような考えか伺う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">学校教育課長 答弁</div>
+          <div class="d-bubble">通知表は学校と家庭をつなぐ大切なもの。評定のみにとらわれず、一人ひとりの努力の成果を明らかにし次学期への努力を促すものと考えている。様式や伝え方も各学校で毎年見直しを図っている。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">5だとか1だとかよりも、友達が悩んでいたら手を差し伸べられるか、夢を笑わずに後押しできるか——家では見せない一面を通知表にありったけ書いてほしい。何のために通知表を出すのかという原点に戻って考えていただきたい。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">子どもは可能性という点において誰しもが100点満点だと思っています。その宝に点数をつけることの意味を、もう一度考えてほしかった。点数じゃなくて、その子の生き方が見えるような通知表があったら——そういう思いで問いを立てました。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">文部科学省によると、通知表には法的根拠はなく、様式や内容も全て作成の主体は学校長の裁量となっています。子どもは可能性という点において誰しもが１００点満点だと思いますが、西郷村としては現在の評価方法の通知表について、どのような考えであるか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">通知表は、学校、担任教師と家庭、児童・生徒、保護者とを結ぶ上で欠くことのないものでございます。通知表は、学期の学校生活の様子を伝える連絡簿として、一人一人の児童・生徒の努力の成果を明らかにし、次学期への一層の努力を促すとともに、児童・生徒の教育について保護者の理解と協力を求める大切なものであると考えます。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">私は、親目線でいうと、通知表の点数や評価に全く興味がありません。それよりも、自分の子どもは何が好きで、どういったときに本気になり、何に興味、関心を抱き、友達とどう過ごすのか——友達が悩んでいたら手を差し伸べられるだろうか、友達の夢を笑わないで後押しできるのだろうか。私は、そういう家庭では分からない一面を通知表にありったけ書いてほしいと思っています。何のために通知表を出すのかという原点に戻って考えていただきたいと思いますが、村の考えを伺います。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第1回西郷村議会定例会（令和6年3月7日）議事日程第2号 P66〜P69より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "09",
+    cluster: "edu",
+    shortTitle: "校則のあり方",
+    thought: "理由のない校則は、子どもに「考えるな」と教えているのと同じ。自分の頭で考える人を育てたい。",
+    session: "令和6年 第1回定例会｜令和6年3月7日",
+    title: "校則のあり方について——自由をつかむ力を育む学校へ",
+    tags: ["📚 学校教育","校則・生徒自治"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">ブラック校則は生徒の尊厳を傷つけ不登校につながる可能性もある。村内小・中学校にブラック校則または名残があるか。また、校則はどのような形で更新・周知されているか伺う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">学校教育課長 答弁</div>
+          <div class="d-bubble">ブラック校則はない。校則は社会通念に照らして合理的な範囲で、児童・生徒や保護者との共通理解のもと適宜見直しを行っている。タブレットを活用したアンケートで生徒・保護者の意見を取り入れる学校もある。ホームページ等での公開も推進していく。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">子どもたちに冒険してほしい。校則も学校長に決定権があるなら、自分たちの青春は自分たちで勝ち取るというハングリー精神で、生徒が教師と話し合って変えていける仕組みをつくってほしい。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">大人にとって都合のいいルールより、子どもが自分で考えて変えていける仕組みのほうが、ずっと教育的だと思っています。曇りなき青春を過ごせる環境づくりに、少しでも貢献したくて問いを立てました。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">校則とは、生徒が社会に出る上でルールを守ることの大切さを教え、自尊心を育むためにあるものです。行き過ぎた校則は生徒個人の尊厳を傷つけたり、ハラスメントに該当したり、場合によっては先ほどの不登校へつながる可能性もあります。村内の小・中学校にブラック校則に当たるもの、もしくはその名残があるものが存在するか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">本村において、ブラック校則といわれる校則はございません。校則の内容につきましては、社会通念に照らして合理的と見られる範囲内で、学校や地域の実態に応じて児童・生徒や保護者との共通理解のもと、適宜見直しを行いながら適切に定められるべきであるものと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">中学生の息子に生徒手帳を見せてもらったんですが、今は校則が書いていないようなんです。ホームページ等見ても載っていなくて、校則というのは、いわばルールなので、生徒も親も教師も含めて、校則を知らずして校則は守れませんので、どういった形で校則を知ることができるか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">ふだんから、保護者をはじめ学校内外の方が参照できるように、学校だより、保護者懇談会、学校運営協議会等の機会を捉えたり、各学校のホームページ等に公開したりするなど、保護者や地域の方々に周知を図ってまいります。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第1回西郷村議会定例会（令和6年3月7日）議事日程第2号 P69〜P71より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "10",
+    cluster: "edu",
+    shortTitle: "宿題のあり方",
+    thought: "宿題をやることが目的になっている現場を見て、何かが違うと感じた。学びは手段であるべきだ。",
+    session: "令和6年 第1回定例会｜令和6年3月7日",
+    title: "宿題のあり方について——学ぶ喜びを奪わない教育を",
+    tags: ["📚 学校教育","宿題・自主学習"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">学校で一日勉強した上に家でも強制される宿題は不健全。本人が夢や目標を持てば自発的に勉強する。宿題に伴う保護者負担の声や、宿題のあり方についての村の考えを伺う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">学校教育課長 答弁</div>
+          <div class="d-bubble">家庭学習は自己マネジメント力の育成に重要。学年×10〜15分の目安を示して各家庭に方針を共有している。今後も宿題の内容・方法についての悩みを把握し、気軽に相談できる機会を設けていく。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">子どもたちを宿題から解放して「学校に行ったら勉強する、学校を出たら好きなことをする」めり張りをつけた教育を模索してほしい。好きなことに没頭できる時間を与えることも教育だと思う。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">子どもたちの好きなことに没頭できる時間こそが、本当の教育だと思っています。やりたくない宿題を無理やりやらせることに意味はない——好きなことは寝る間も惜しんで没頭できる時間を、大人が与えてあげることが大事だと思っています。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">宿題とは、授業で学んだ内容を復習し定着させるための重要な手段であり学習効果が高まりますが、学校で一日勉強して、その上で家でも勉強しろというには、あまりにも不健全な教育だと私は思っています。本人が明確な夢や目標を持っていて、家での勉強にも必要性を感じているのであれば、宿題として出されなくてもやるだろうし、そうできるように促すのが重要で、それが教育だと考えますが、村としてどうお考えか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">変化の激しい時代にあって、子どもたちが豊かな人生を切り開き、よりよい社会の作り手として成長していくことは私たち大人の共通の願いです。だからこそ、自分で学習する、生活を改善する力、つまり自己マネジメント力が必要になってきます。各学校で作成している家庭学習の手引では、小学校では学年掛ける１０分程度、中学校では学年掛ける１時間程度の時間の目安が示されています。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">子どもたちには自分たちの好きなことに自信を持って好きと言えるプライドと好きなことは寝る間も惜しんで没頭できる時間を与えるのも教育だと思いますので、子どもたち自身で宿題をなくすという校則をつくって、宿題の自由化をぜひ実現してほしいと思います。それと同時に、我々大人も、時には手放すという選択を選んでいただきたいと要望して、次の質問に移ります。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第1回西郷村議会定例会（令和6年3月7日）議事日程第2号 P71〜P73より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "11",
+    cluster: "edu",
+    shortTitle: "ICT・GIGAスクール",
+    thought: "道具が変わっても、大切なのは使う人間の側の哲学。テクノロジーに振り回されない教育を問いたかった。",
+    session: "令和6年 第1回定例会｜令和6年3月7日",
+    title: "ICT活用・GIGAスクールについて——子どもの夢を後押しするテクノロジー",
+    tags: ["📚 学校教育","ICT・教育DX"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">GIGAスクール構想の現状はどうか。自分の苦手な単元を好きな時に繰り返し見られる、他校の授業を見られる——そういった活用は現状できるか。また教員によるICT活用格差はあるか伺う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">学校教育課長 答弁</div>
+          <div class="d-bubble">令和2年度にタブレット1人1台を整備。ロイロノートやZoomを活用中。ただしネットワーク環境の不安定さや教員間の活用格差は課題。令和6年度は無線LANアクセスポイントを増強。AIドリルは次期更新時に導入予定。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">素人でも思いつく活用方法は早めに導入を。子どもたちの宿題の代替手段としても活用できるよう環境を整えてほしい。セカンドGIGAを見据え、他市町村に後れを取らないよう子どもたちの夢を後押ししてほしい。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">技術は手段であって目的じゃない。でも、使い方次第で子どもたちの可能性は無限に広がる。自分の好きな授業を自分のペースで深められる環境をつくることが、本当の意味での教育DXだと思って問いを立てました。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">ＧＩＧＡスクール構想は、教育の質や公平性を高めるだけでなく、子どもたちの未来に対応できる人材を育成するための大きな取組でありますが、現状どのように活用されているか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">ＩＣＴの具体的な活用は、令和２年度に国のＧＩＧＡスクール構想に基づき、１人１台のタブレット端末の整備から始まり、少しずつ授業に取り入れております。デジタル教科書と電子黒板を組み合わせた活用以外に、Ｚｏｏｍなどのオンライン会議アプリを利用した海外の講師とのオンライン英会話への活用、ロイロノートを使用しての意見交換などを行っております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">私の解釈では、自分の苦手な授業や単元を繰り返し繰り返し家でも復習できることだと思うんです。動画やパワーポイントのような媒体で好きなときに見返すことができる、または、学年、科目問わず、自分の興味のある授業を選んでいつでも見ることができたりすることにメリットがあると思いますが、現状、このような活用方法ができるか、伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">現在、タブレット端末の持ち帰りは毎日ではありませんが、必要に応じて持ち帰って活用している状況です。タブレットドリルにはＡＩを取り入れたサービスもあり、苦手を克服や、得意を伸ばして興味関心に応じて学習を進められるため、個に応じた学習の充実が図られるものとして、次期のタブレット更新の際には導入していきたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">ＧＩＧＡスクール構想は、次のステージとして、セカンドＧＩＧＡと位置づけ、整備が早い市町村ですと来年度からタブレット端末の更新が行われていきます。西郷村としても、学校教育の必須ツールとして、他市町村に後れを取らぬよう十分にＩＣＴを活用して子どもたちの夢や目標を後押ししていただきたいと要望して、私の一般質問を終わります。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第1回西郷村議会定例会（令和6年3月7日）議事日程第2号 P73〜P75より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "12",
+    cluster: "edu",
+    shortTitle: "運動会・合同学習",
+    thought: "子どもの青春は取り戻せない。行事をなくすことで何を失うか、大人はもっと真剣に考えるべきだと思う。",
+    session: "令和6年 第2回定例会｜令和6年6月11日",
+    title: "教育行政について——運動会の在り方・村内小学校合同学習の廃止",
+    tags: ["📚 学校教育","運動会・合同学習"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">コロナ明けも続く運動会の半日開催について、今後の在り方を問う。また、今年から廃止された「村内小学校合同学習」の背景と、代替となる行事・体験活動の計画について伺う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">教育長・学校教育課長 答弁</div>
+          <div class="d-bubble">半日開催は熱中症・感染症対策等のメリットがあり各学校判断だが、1日開催についても今後検討する。合同学習はコロナを機に廃止したが、代わりに各校・中学校区単位での体験活動や村の自然を活かした交流活動を充実させていく。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">行事が1つ減れば、子どもたちの青春が1つ削られる。先生方の負担にならない形でいいから、村内小学生が一堂に集まれるイベントを継続・代替してほしい。子どもを中心に考えた判断を求める。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">子どもの青春は取り戻せない。大人の都合でイベントを削るのではなく、子どもたちが「あの体験があったから今がある」と思えるような行事を守り続けることが、議員としての使命だと思っています。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【運動会について】</span><span class="txt">ここ数年、新型コロナウイルスの影響により、各小学校の運動会で午前中だけの時短、半日開催となっていましたが、昨年より新型コロナウイルス感染症が２類から５類感染症へ移行となり、以前のように運動会の１日開催へ戻るのかどうかという期待の声もいただいていましたが、今年も午前中のみの半日開催となりました。来年以降は半日開催から１日開催へ戻す可能性、お気持ちはあるのか、そして、今後の運動会の在り方についてどのようにお考えか伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">運動会は子どもたちの運動能力を向上させることを目的に、教員が主体となって企画や進行を行う学校行事であり、各学校の特別活動の学校行事として実施されております。半日開催にすることで、準備時間の軽減、保護者の昼食準備の負担軽減も図られます。また、近年では新型コロナウイルスの感染拡大や熱中症も心配されますので、感染症対策、暑さ対策等の観点も踏まえまして、半日開催としております。</span></div>
+          <div class="t-line"><span class="spk">○教育長（秋山充司君）</span><span class="txt">運動会につきましては、学校行事となっておりまして、それぞれ学校の規模によりましても、運動会の内容、それから日程等もそれぞれ学校のほうで判断して決めているところでございます。このような中で、今後このような運動会のことにつきましても、各学校で決めているところではございますが、議員おただしのように１日開催ということにつきましても助言等をしながら、教育委員会といたしましても、今後検討してまいりたいと思います。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【村内小学校合同学習について】</span><span class="txt">村内小学校合同学習とは、村内の各小学校６年生児童が一堂に会し、体験学習を通して互いの交流を深める村独自の学習事業だったと認識しております。今年からなくなったと聞いて物すごく残念でした。まずは合同学習がなくなった背景をお伺いします。</span></div>
+          <div class="t-line"><span class="spk">○教育長（秋山充司君）</span><span class="txt">村内小学校の合同学習につきましては、平成１６年より村内の６年生を対象に村内小学校合同宿泊学習として、宿泊を伴う自然体験活動を行うことで、豊かな情操を養うとともに、小学校のよりよい思い出をつくるということを目的に開催しておりました。新型コロナウイルスが始まりまして、令和３年度から令和５年度につきましては、日帰りでの実施をいたしておりました。次年度以降の交流学習の在り方について検討してまいりましたが、各学校ごと、中学校区ごとにそれぞれの交流学習等を充実させていくことに力を注いでいきたいというご意見をいただきまして、今回中止の運びといたしました。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">行事が１個減ってしまうんですね。子どもたちに青春を謳歌してもらいたいと思っていますので、授業を削ってでも、こういったイベントごとは削っていただきたくないという率直な意見です。先生方の負担や授業の支障にならないような形式での開催でもいいと思うんです。それこそ、村内小学校対抗のスポーツ大会であるとか、みんなで集まって西郷村の未来について考えるとか、内容だって固定化したっていいと思います。今後そういった代替となる行事のお気持ちがあるのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○教育長（秋山充司君）</span><span class="txt">今後、教育委員会といたしましても、６年生も含めてでございますが、子どもたちのよりよい生活、思い出づくりということを重点にした事業等を考えていきたいと思っております。村内の美しい自然を活用したアクティビティな体験、あるいは地元産業、あるいは農業、こういったものとも連携しながら、子どもたちに体験活動等を通して、村の魅力を感じながら思い思いに楽しめるような交流活動を充実させていきたいと考えております。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第2回西郷村議会定例会（令和6年6月11日）議事日程第3号 P94〜P97より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "13",
+    cluster: "community",
+    shortTitle: "スポーツ激励金・テニスコート",
+    thought: "手続きの壁で、子どもの挑戦が遠のいてはいけない。村のスポーツ支援は、もっと使いやすくなれる。",
+    session: "令和6年 第2回定例会｜令和6年6月11日",
+    title: "スポーツ振興について——激励金の手続き改善・テニスコートの利便性向上",
+    tags: ["🏘️ 地域コミュニティ","スポーツ振興"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">スポーツ競技大会激励金の事後払い制度が使いにくい。大会前の概算払いや、大会中止時の返金不要措置は検討できないか。また、村内テニスコートの鍵の借用が不便で利用が伸び悩んでいる。改善を求める。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">生涯学習課長 答弁</div>
+          <div class="d-bubble">激励金は本村の交付額は近隣市町村より高い水準。事前払いは中止時の返還手続等の課題があり検討中。テニスコートのしらさか使用料村負担は公平性の観点から検討しないが、鍵の借用方法の改善（コンビニ管理・キーボックス等）は検討する。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">事前払いが可能な交付式という仕組みがあるなら、交付式なしでも事前払いは可能なはず。スポーツ振興を目的とするなら、いっそ補助金への名称変更も視野に。鍵の管理は24時間利用可能なコンビニへの依頼が最善策。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">手続きの壁で、子どもの挑戦が遠のいてはいけない。激励金の手続きを簡略化し、鍵の借用を使いやすくする——小さな改善が、村のスポーツ文化を大きく育てる一歩になると思っています。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【スポーツ競技大会激励金について】</span><span class="txt">スポーツ競技大会激励金は全国規模の各種体育・スポーツ大会に参加・出場する選手、またはその所属する団体に激励金を交付し、体育・スポーツの普及・激励と技術の向上を図るものですが、まず、過去の激励金の交付件数について伺います。</span></div>
+          <div class="t-line"><span class="spk">○生涯学習課長（黒須賢博君）</span><span class="txt">スポーツ競技大会激励金の過去の実績といたしましては、令和５年度の交付件数は１０６件、そのうち個人では９９件、団体が７件、交付金額が合計で２４７万５,０００円、令和４年度の交付件数は７８件、交付金額合計で２０６万５,０００円、令和３年度の交付件数は３７件、交付金額合計で８８万５,０００円となっております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">現在は大会終了後の事後払いとなっていますが、大会前の事前払いにすることはできないのか、また、遠方の大会に参加する場合は交通費などの保護者の負担が大きいため、会場まで行って大会が中止になった場合は返金しなくていいとか、半額返金にすることはできないのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○生涯学習課長（黒須賢博君）</span><span class="txt">現在の奨学金交付要綱では、大会前に交付決定を行い、大会終了後に請求書と実績報告書を提出した後に交付することと定められております。大会前の概算払いにつきましては、申請者が激励金交付式を要望された場合にのみ大会前に交付しております。今後の激励金の制度につきましては、情勢等を踏まえた上で、柔軟に検討してまいります。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【テニスコートについて】</span><span class="txt">村内折口原のテニスコートの利用状況についてですが、村内テニスコートを利用するには、村民体育館で申請をして、鍵を借りて折口原のテニスコートまで移動する必要があります。この手続や移動が面倒で、しらさかの森スポーツ公園のテニスコートを利用している方がいらっしゃるのも現状です。村内のテニスコートに利用に伴う申請手続や鍵の借用方法について、もっと簡素化、改善することができないのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○生涯学習課長（黒須賢博君）</span><span class="txt">生涯学習課では、コンビニエンスストアに鍵の管理をお願いすることやナンバーロック式キーボックスの設置などを検討しております。村といたしましても、なるべく利用者に負担とならないような鍵の借用方法、管理依頼先などについて今後検討してまいります。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第2回西郷村議会定例会（令和6年6月11日）議事日程第3号 P97〜P100より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "14",
+    cluster: "family",
+    shortTitle: "子育て支援・奨学金",
+    thought: "3歳未満の子どもを抱える家庭に、見える支援を届けたい。胸を張って『西郷村においで』と言えるその日まで。",
+    session: "令和6年 第2回定例会｜令和6年6月11日",
+    title: "子育て支援について——3歳未満の支援・給食費とお弁当・奨学金の拡充",
+    tags: ["👶 子育て支援","保育料・給食費・奨学金"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">3歳未満の保育料無償化は依然困難とのことだが、代案として紙おむつ等サブスクの村助成は検討できないか。また、給食費無償化後にお弁当持参が増えた学校があるか確認したい。さらに人材育成基金奨学金の貸与上限額を現行の倍程度に引き上げてほしい。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長・福祉課長・学校教育課長・生涯学習課長 答弁</div>
+          <div class="d-bubble">保育料無償化は年間1億円超の村負担で直ちに困難。紙おむつサブスクは使用量の個人差・在宅保育の不平等の問題があり難しい。弁当回数は無償化前後で増減ありだが今年度は令和5年度比で増加した学校はゼロ。奨学金貸与額の引き上げは運営委員会で協議していく。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">保育士確保が最優先なのは理解する。ただ、職場の若い女性から「今の時代に子どもを産み育てる自信がない」と言われた。西郷村なら大丈夫と胸を張って言えるくらいの支援を。奨学金は現在の倍の最大100万円への引き上げを。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">「西郷村に住んでよかった」「ここで産んでよかった」と思えるまちをつくりたい。3歳未満の子育て家庭に手が届く支援を届けること、奨学金で若者の夢を後押しすること——その積み重ねが、村の未来をつくると信じています。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【3歳未満の保育料無償化について】</span><span class="txt">この質問は以前同様の一般質問を令和５年第３回定例会で質問させていただきましたが、その際の答弁では早急な実施は難しいとの回答がありました。あれから半年以上が経過しましたが、この事業の実施に関する村長の考え方に変化があるか改めて伺います。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">令和５年度の収入総額で算定しますと、保育料収入総額約５,４００万円、副食費収入総額約１,６００万円、一時保育料６１万８,０００円、合わせて約７,０６０万円となり、完全無償化につきましては、在宅保育への支援費用と合わせ、年間約１億円以上の財政負担が必要となります。また、現在保育園の待機児童が増加しており、保育士確保に向けた対策と待機児童解消に向けた取組が最優先の課題であると思っております。まずは一つずつできることから子育て世帯に対する支援策を実施していきたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【紙おむつ等サブスクについて】</span><span class="txt">3歳未満の保育料の無償化が難しいということであれば、代案として保育園を利用する３歳未満の子どもに紙おむつ、お尻拭き等をセットにしたサブスク導入、そして、その費用を村が一部助成を実施する等の３歳未満児へも何かしらの支援が必要だと感じますが、村の考えを伺います。</span></div>
+          <div class="t-line"><span class="spk">○福祉課長（相川佐江子君）</span><span class="txt">保育園における紙おむつ等のサブスク導入ですが、各家庭において使用する紙おむつのメーカーや月齢や年齢、体の大きさにより、使用するサイズも違うことから、園児ごとに使用する枚数の差が出てきます。サブスクは使用料が多い園児の家庭においてはメリットでありますが、使用枚数が少ない園児の家庭においてはデメリットとなりますので、保育園におけるサブスクの導入については難しいと思われます。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【給食費無償化後のお弁当回数について】</span><span class="txt">給食費の無償化後にお弁当持参の回数について相談がありまして、給食費の無償化後にお弁当の回数が増えたような気がするとありましたので、給食費無償化前後でのお弁当の回数に変化があったのかについて伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">弁当持参回数につきましては、無償化前の令和４年度の弁当持参平均回数は小学校が約５回、中学校が約１４回、無償化後の令和５年度の弁当持参平均回数は小学校が６回、中学校が約１２回でございました。令和６年度につきましては、年間給食日数の上限を小学校１９７日、中学校１８７日とし、弁当持参平均回数は小学校が約５回、中学校が約１０回でございます。令和５年度と比較しますと、弁当持参回数が増加した学校はございませんでした。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【人材育成基金奨学金について】</span><span class="txt">過去３年度分の貸与及び返済実績について伺います。また、今後貸与額引上げを検討するご予定があるか伺います。</span></div>
+          <div class="t-line"><span class="spk">○生涯学習課長（黒須賢博君）</span><span class="txt">令和５年度は大学・専修学校進学者６名、高等学校進学者２名の計８名、総額３５０万円の貸与。返済につきましては、各年度とも滞納はございませんでした。貸与額引上げについては、これまで検討に至っておりませんが、今後、近年における物価高等の社会情勢を考慮し、奨学金貸与の財源である人材育成基金に関する運営委員会においても協議を図り、貸与額の適切な在り方について検討してまいります。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">現在最大５０万円借りても、最大返済期間は８年４か月で月々５,０００円の返済額なので、物すごく良心的な制度だと思います。これを倍の１００万円にしても月々１万円なので、十分返済していける額だと思います。有望な人材を育成することを目的にしている奨学金制度ですから、早急な最大額の見直しを検討していただきたいと要望して、私の一般質問を終わります。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第2回西郷村議会定例会（令和6年6月11日）議事日程第3号 P100〜P107より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "15",
+    cluster: "health",
+    shortTitle: "コロナワクチン定期接種",
+    thought: "打つ打たないは個人の判断。でも判断するための情報が届いていなければ、それは自由な選択じゃない。",
+    session: "令和6年 第3回定例会｜令和6年9月11日",
+    title: "新型コロナウイルスワクチン接種について——レプリコンワクチンの安全性と情報提供",
+    tags: ["💊 医療・健康情報","レプリコンワクチン"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">令和6年10月から定期接種となるコロナワクチンに、世界で日本のみ認可のレプリコンワクチン（コスタイベ）が含まれる可能性がある。安全性への懸念と、村としての情報提供体制について伺う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長・健康推進課長 答弁</div>
+          <div class="d-bubble">10月からの定期接種は高齢者等が対象の任意接種。5種類のワクチン（mRNAワクチン3種・組換えタンパクワクチン・レプリコンワクチン）が提供見込み。ワクチンの効果と副反応リスクを理解した上で判断できるよう、適切な情報提供に努める。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">65歳以上の村民の7回目接種率が52.3%と高い。特に高齢者は情報弱者になりやすいため、村としてワクチン接種リスクの情報提供を徹底してほしい。接種の際はインフォームドコンセントをしっかり実施するよう周知を。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">打つ打たないは個人の判断。でも判断するための情報が届いていなければ、それは自由な選択じゃない。村民が自分の意志で選べる環境をつくること——それが行政の役割だと思って、この質問を続けています。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">令和６年１０月から、新型コロナウイルス感染症の予防接種が定期接種となり、使用されるワクチンの種類は、組換えたんぱくワクチンと、メッセンジャーＲＮＡワクチンと、自己増幅型メッセンジャーＲＮＡワクチン（レプリコンワクチン）の３種類の中から選択される予定です。今回の定期接種に使用されるワクチンの種類について伺います。</span></div>
+          <div class="t-line"><span class="spk">○健康推進課長（高野則子君）</span><span class="txt">厚生労働省ホームページによると、８月３０日時点で５種類のワクチンが提供見込みです。ファイザー社コミナティ・モデルナ社スパイクバックス（mRNAワクチン・承認済み）、第一三共ダイチロナ（mRNAワクチン・承認中）、武田薬品ヌバキソビッド（たんぱく組換えワクチン・承認中）、Meiji Seikaファルマ社コスタイベ（レプリコンワクチン・承認中）の５種類です。どの医療機関でどのワクチンが使用されるかは把握できません。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【レプリコンワクチンの安全性について】</span><span class="txt">レプリコンワクチンは昨年11月28日に世界に先駆けて日本で認可され、日本は世界で唯一の認可国となっています。開発国であるアメリカや大規模治験を実施したベトナムをはじめとする世界各国でいまだに認可されていません。この安全性が懸念されているレプリコンワクチンについて、村として情報を把握しているか伺います。</span></div>
+          <div class="t-line"><span class="spk">○健康推進課長（高野則子君）</span><span class="txt">レプリコンワクチンは、細胞内でRNAを増殖できるため、少量の接種でも抗体価が高く持続性に優れています。海外での大規模治験により有効性・安全性が確認され、薬事承認が行われたものと認識しております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【情報提供について】</span><span class="txt">65歳以上の村民の7回目接種者は2,775人（接種率52.3%）です。特に高齢者は情報弱者になりやすいため、村としてワクチン接種リスクの情報提供を十分にしていただきたいと思います。</span></div>
+          <div class="t-line"><span class="spk">○健康推進課長（高野則子君）</span><span class="txt">接種を受けようとする方が、ワクチンの効果と副反応のリスクをよく理解した上で判断できるよう、周知チラシやホームページ等による広報等、適切な情報提供に努めてまいります。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">接種は任意であり強制ではありません。予防接種による効果と副反応のリスクの双方について理解していただいた上で、自らの意思で接種の判断をしていただきたいと考えておりますし、そのための情報発信に努めてまいりたいと考えております。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第3回西郷村議会定例会（令和6年9月11日）議事日程第4号 P146〜P149より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "16",
+    cluster: "infra",
+    shortTitle: "ニシゴーヌ・インバウンド観光",
+    thought: "くまモンが証明した。キャラクターは育てれば村の経済を動かす。ニシゴーヌにも、まだその可能性がある。",
+    session: "令和6年 第3回定例会｜令和6年9月11日",
+    title: "観光行政について——ニシゴーヌのブランディング・台湾インバウンド誘客",
+    tags: ["🚌 地域インフラ・観光","インバウンド・ニシゴーヌ"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">くまモンの経済効果は10年で約1兆4,800億円。ニシゴーヌも同様にブランディング戦略を取れば村の経済活性化につながる。また、令和6年1月から開始した福島空港〜台湾定期便を活かしたインバウンド誘客戦略について伺う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長・企画政策課長・産業振興課長 答弁</div>
+          <div class="d-bubble">ニシゴーヌは年40件のイベントに参加。グッズ収益化等を検討。10周年（2025年）に向け特別表彰・住民票発行・記念グッズ等を計画。インバウンドは台湾インフルエンサーツアーへの同行や繁体字パンフ配布を実施。近隣市町村と広域連携で誘客を図る。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">ニシゴーヌは近隣市町村のキャラクターの中でも圧倒的なポテンシャルがある。台湾は親日で温泉・ラーメンなど西郷村の観光資源と相性がいい。モニターツアーや現地営業も視野に。令和8年のふくしまDCも見据えた戦略を。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">くまモンが証明した——キャラクターは育てれば村の経済を動かす。ニシゴーヌにも、まだその可能性がある。台湾便という追い風がある今こそ、点ではなく面でインバウンドを取りに行く戦略を、村全体で描いてほしいと思っています。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【ニシゴーヌの運用状況について】</span><span class="txt">くまモンの累計経済効果は2010年から2020年の10年間で約1兆4,800億円と報告されています。現在のニシゴーヌの運用状況について伺います。</span></div>
+          <div class="t-line"><span class="spk">○企画政策課長（関根 隆君）</span><span class="txt">ニシゴーヌは各種イベントへの参加、ＰＲ活動、ＳＮＳでの情報発信等に活用しております。令和５年度においてニシゴーヌが参加したイベントは４０件でございました。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">ニシゴーヌを村全体で育てて、付加価値をつけていく必要があると思いますが、今後のプロモーション活動のご予定はあるか伺います。</span></div>
+          <div class="t-line"><span class="spk">○企画政策課長（関根 隆君）</span><span class="txt">村内外の企業や団体等にも積極的に活用いただき、オリジナルグッズの製作や販売などで収益につながるようなニシゴーヌの利活用方法等について周知を図って、活用してまいりたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）【ニシゴーヌ10周年について】</span><span class="txt">生誕１０周年を記念して、ニシゴーヌを特別表彰することや、住民票の発行、あるいは記念グッズ等を考えて、ＰＲしていきたいと考えております。今年も、ニシゴーヌへ暑中見舞いを送ろうコンテストで村内の小学校４年生１８６名から暑中見舞いをいただきました。村全体でニシゴーヌを育てていきたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【台湾インバウンドについて】</span><span class="txt">令和６年１月より、福島空港から台湾の定期チャーター便が開始されました。私も７月に実際に台湾便へ乗って現地へ視察に行ってきました。今年４月の台湾便客数は２,０００人を超えており、村としてもこの機を見逃すわけにはいかないと思いますが、村内に来る台湾からの観光客を把握しているのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○産業振興課長（相川哲也君）</span><span class="txt">外国人旅行者数の実数はほとんど確認できない状況です。台湾のインフルエンサーモニターツアーへの同行や、県の観光交流課担当者を村に招いての観光施設案内ＰＲ、繁体字版パンフレットの作成・配布などを行っております。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">人口が１名減少すると経済へのマイナス影響は１８０万円だそうです。外国人旅行者の旅行消費額は約２０万円と言われております。今後は近隣の市町村と広域で連携しながら、西郷村を楽しんでいただけるような様々な施策を行ってまいりたいと考えております。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第3回西郷村議会定例会（令和6年9月11日）議事日程第4号 P149〜P153より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "17",
+    cluster: "edu",
+    shortTitle: "副教材・AIドリル",
+    thought: "義務教育中の教材は、保護者に負担させてはいけない。副教材と呼ぶなら、本当に必要か問い直す。そしてAIで、取り残される子をゼロにしたい。",
+    session: "令和6年 第4回定例会｜令和6年12月10日",
+    title: "教育行政について——副教材費・学用品リユース・AIドリル導入",
+    tags: ["📚 学校教育","副教材・AIドリル"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">義務教育で「副教材」として保護者負担となっているワークや資料集は、実質的に必須教材だ。村が負担するか、リユース・デジタル代用を進めるべきでは。また現行タブレットドリルにAIがないため、次期GIGA端末更新時にAIドリル導入を求める。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長・教育長・学校教育課長 答弁</div>
+          <div class="d-bubble">副教材は教材選定委員会で厳選済み。現行ドリルは7万問・解説動画完備だがAIなし。就学援助・共通学用品一括購入等で負担軽減中。令和7年度の次期GIGA端末更新時に複数AIドリルを選定・導入を前向きに検討する。村長も積極的に進める意向。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">「副教材が絶対必要なら、それはもう副ではなく教材だ」と主張。娘の中学入学準備だけで10万円超、村の入学祝い金3万円では全然足りない。保護者負担軽減を強く要望。AIドリルで「誰一人取り残されない」個別最適化教育の実現を。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">義務教育中の教材は、保護者に負担させてはいけない。「副教材」と呼ぶなら、本当に必要か問い直す。そしてAIで、取り残される子をゼロにしたい——私自身が中学校で教育に取り残された経験があるから、この問いは他人事じゃない。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【副教材の必要性について】</span><span class="txt">副教材も教科書と同様に学習に不可欠であり、義務教育の理念からすれば無償化されていないことに疑問を感じます。まずは本当に副教材が必要なものであるのかどうか伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">各学校で教材選定委員会を開催し、①実態に合った教材 ②授業で必ず活用するもの ③前年度より価格が高価にならないこと、を意識して選定しており、学習効果の向上が見込める補助教材は必要であると考えます。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">副教材が絶対必要であれば、それはもう副でも何でもなく、教科書同等に必要な教材です。義務教育中に必要な教材であるならば村が負担すべきだと思います。また村負担が難しい場合はデジタル教材での代用や学用品のリユースをするお気持ちがあるか伺います。</span></div>
+          <div class="t-line"><span class="spk">○教育長（秋山充司君）</span><span class="txt">お道具箱・ヘルメット・防犯ブザーなど共通的なものは村で一括購入しています。経済的に困窮している家庭には就学援助制度で支援。水彩絵の具・習字・裁縫セットは中学でも活用。副教材の有益性と保護者負担を考慮して選定するよう校長会等を通じて周知徹底してまいります。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【AIドリル導入について】</span><span class="txt">娘のタブレットドリルを実際に使ってみて、全学年主要教科の約7万問と解説動画に感動しました。ただ今後はAI技術の活用が必須だと思います。AIドリルの導入を検討されているか伺います。</span></div>
+          <div class="t-line"><span class="spk">○学校教育課長（緑川 浩君）</span><span class="txt">令和3年度より全児童・生徒に各主要教科の約7万の問題・苦手対策解説動画を整備しています。ただし導入当時にAI機能を有するドリルソフトは販売されておらず、現在のタブレットドリルにはAI機能はございません。</span></div>
+          <div class="t-line"><span class="spk">○教育長（秋山充司君）</span><span class="txt">令和7年度は次期GIGA端末入替えに向けた準備をしております。AIドリルを含めて複数のドリル教材の選定を実施し、AI機能や高校入試レベルの問題等に対応できるものなど、児童・生徒にとってよりよいものを選択してまいりたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">誰一人取り残さない教育を実現し、全ての子どもたちの個別最適な学びが実現できるよう取り組んでまいります。次期GIGA端末入替え時には教育委員会からの説明を受け、前向きに積極的に検討してまいります。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第4回西郷村議会定例会（令和6年12月10日）議事日程第3号 P79〜P84より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "18",
+    cluster: "infra",
+    shortTitle: "成人式・オンライン中継",
+    thought: "成人式は「祝辞を聞く場」ではなく、ふるさとを再確認する場であるべき。7割しか来ない現実を直視し、来られない家族にも届く式典にしてほしい。",
+    session: "令和6年 第4回定例会｜令和6年12月10日",
+    title: "一般行政について——成人式典の意義・出席率とオンライン中継の導入",
+    tags: ["🚌 地域インフラ・観光","成人式・オンライン中継"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">来賓として参加した成人式は形式的な祝辞が多く、新成人にとって一方的な場になっている。出席率の推移と、来られない家族も見られるオンライン中継の導入について問う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長・生涯学習課長 答弁</div>
+          <div class="d-bubble">過去5年の出席率は約7割（令和3年コロナ影響で46.5%、他年は69〜72%）。令和6年は保護者向けに別室で中継映像を実施済み。オンライン中継は映像悪用防止・プライバシー配慮が必要だが、よりよい成人式に向け検討を進める。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">地元企業から協賛金を募ったり、有料カメラ席を設けて収益化する仕組みで運営費を補うことも可能では。対象者を限定したオンライン中継を実施し、成人式典を充実化してほしい。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">成人式は「祝辞を聞く場」ではなく、ふるさとを再確認する場であるべきだと思っています。出席率7割という現実を直視し、来られない家族にも届く式典に。地元企業の協賛や収益化の仕組みで、新成人の声がもっと反映される成人式を目指してほしい。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【成人式典の意義について】</span><span class="txt">式典中の祝辞が多く形式的なものが多いと感じました。村として成人式典の意味合いをどのように捉え、どのような目的をもって実施されているのか、村長に伺います。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">新成人としての自覚の場であることはもちろんのこと、ふるさとである西郷村を意識してもらう機会になってほしいという思いがあります。式典で会う友人たち、それを祝う家族や地域の方々との触れ合いや景色を含めて、ふるさと西郷村への思い、郷土を愛する心を新たにする機会にしていただければと思っております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【出席率の推移について】</span><span class="txt">物価高騰の影響で生活が苦しい若者世代にとって参加費用も負担になりますし、特に県外の上京組は帰省費もかかります。令和以降の成人式の出席者数の推移と今後の在り方について伺います。</span></div>
+          <div class="t-line"><span class="spk">○生涯学習課長（黒須賢博君）</span><span class="txt">令和2年：215名中155名（72.1%）、令和3年：コロナで11月延期・245名中114名（46.5%）、令和4年：229名中166名（72.5%）、令和5年：239名中165名（69.0%）、令和6年：216名中151名（69.9%）。コロナ禍を除けば7割前後でほぼ横ばいです。出席者で構成される実行委員とより協議を図りながら進めてまいりたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【オンライン中継について】</span><span class="txt">現状の式典では参加者が新成人に限られており、保護者や祖父母が直接その場に立ち会えない現状があります。式典のオンライン中継を導入することで、家族や地域住民が成人式を共有できる機会をつくることができますが、導入するお気持ちがあるか伺います。</span></div>
+          <div class="t-line"><span class="spk">○生涯学習課長（黒須賢博君）</span><span class="txt">直近の令和6年の式典では、出席者の保護者向けに会場の別室で中継映像の放映を行っております。オンライン中継については、撮影機材の調整、映像の悪用を防ぐための視聴者限定、カメラに映りたくない出席者への入念な配慮が必要ですが、よりよい成人式になるよう検討を進めてまいりたいと考えております。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第4回西郷村議会定例会（令和6年12月10日）議事日程第3号 P83〜P87より抜粋</div>
+      </div>
+    `
+  },
+  {
+    num: "19",
+    cluster: "infra",
+    shortTitle: "デマンド交通・AI活用",
+    thought: "デマンド交通は高齢者だけのものじゃない。子育て世帯の足にも、部活の移動手段にも。AIで効率化して、村の誰もが移動できる社会をつくりたい。",
+    session: "令和6年 第4回定例会｜令和6年12月10日",
+    title: "デマンド交通について——利用状況・AI活用・運行時間延長",
+    tags: ["🚌 地域インフラ・観光","デマンド交通・AI"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">令和6年10月に本格運行へ移行したデマンド交通。利用者の68%が75歳以上・医療機関利用53%・事業費は年々増加。AI技術の活用・運行時間延長（部活地域移行への対応）・持続可能性の確保について伺う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">村長・企画政策課長 答弁</div>
+          <div class="d-bubble">登録者717人、月平均1,250件予約。1人平均補助額2,030円、最大6,550円（新甲子〜白河厚生病院）。不交付団体のため特別交付税8割措置は使えない。夜間延長は飲酒利用等で事業費増の懸念あり現状維持。村長はAI配車システム導入を前向きに検討。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">スポ少送迎でタクシー1,200円→デマンド200円——この差額を村が支えてくれている。部活の地域移行で移動手段のない子どもが出た際、学校教育課と連携し対象者を絞った限定的な延長も検討してほしい。乗り合い率向上にはAI導入が不可欠。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">デマンド交通は高齢者だけのものじゃない。子育て世帯の足にも、部活の移動手段にも。私自身もスポ少送迎で愛用していて、1,200円のタクシーが200円になる——これは革命だ。AIで効率化して、村の誰もが移動できる社会をつくりたい。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【デマンド交通の利用状況について】</span><span class="txt">令和6年10月より本格的に開始したデマンド交通ですが、現在の利用状況と年齢層別利用者数と事業費について伺います。</span></div>
+          <div class="t-line"><span class="spk">○企画政策課長（関根 隆君）</span><span class="txt">本年度10月末時点の登録者が717人、4月からの予約数は月平均1,250件・1日当たり約40人で昨年度より増加しております。年齢構成は75歳以上が68%・60〜74歳が17%。目的地はイオン・白河厚生病院・かねこクリニックが多く、医療機関53%・商業施設29%。事業費は令和4年度2,550万円、令和5年度2,850万円で令和6年度はさらに増加見込みです。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">私もデマンド交通を利用しています。娘のスポ少送迎で、通常タクシー料金1,200円のところデマンド交通で200円で済みます。1人当たりの平均運行補助額と最大補助額はいくらになるか伺います。</span></div>
+          <div class="t-line"><span class="spk">○企画政策課長（関根 隆君）</span><span class="txt">令和5年度の実績では、1人当たりの平均運行費補助額は約2,030円、最大運行費補助額は新甲子地区から白河厚生病院間を利用した方の6,550円でございました。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）【財政支援・運行時間延長について】</span><span class="txt">デマンド交通事業に対する国もしくは県の財政支援はあるか。また部活動の地域移行で移動手段のない子どもが出た際を想定し、現在17時30分の最終便の運行時間延長はできないのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○企画政策課長（関根 隆君）</span><span class="txt">運行補助は8割が特別交付税措置の対象ですが、令和5・6年度は不交付団体であるため交付税措置はございません。実証運行期間中は県の補助金約300万円を活用しています。最終便の延長については、夜間便を増便すると飲酒後の帰宅利用など本来の事業目的と異なる利用による事業費の増大が想定されますので、現時点では延長は考えておりません。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）【今後のデマンド交通について】</span><span class="txt">デマンド交通は生活の利便性を向上させるだけではなく、様々な社会課題の解決や地域経済の活性化につながるものと考えております。AI配車システムの導入など効率化を図り、本村独自の公共交通を確立させ、村民が利用しやすい公共交通として継続していきたいと考えております。</span></div>
+        </div>
+        <div class="t-note">※ 令和6年第4回西郷村議会定例会（令和6年12月10日）議事日程第3号 P87〜P90より抜粋</div>
+      </div>
+    `
+  },
+  {
+    cluster: "agriculture",
+    shortTitle: "食料自給率・地産地消",
+    thought: "米だけで86%の自給率——数字は高くても、中身を見れば課題だらけ。村の食を村内で循環させる仕組みをつくりたい。",
+    session: "令和7年 第1回定例会｜令和7年3月10日",
+    title: "農業振興について——村の食料自給率の現状と地産地消の課題",
+    tags: ["🌾 農業振興","食料自給率・地産地消"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">日本全体のカロリーベース食料自給率は38%。西郷村独自の自給率・過去10年の推移・主要農産物の生産量・給食や直売所での地元産利用割合はどうか。定期的な数値算出と情報公開、給食地元産比率50%目標の設定を求める。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">産業振興課長 答弁</div>
+          <div class="d-bubble">西郷村の食料自給率は概算でカロリーベース86%以上・生産額ベース72%以上。主要作物は米（726ha作付・村民約3年8か月分を生産）。学校給食の地元産比率は食材費の約2割。まるごと西郷館では西郷村産が売上の約5割。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">米に偏った自給率構造では、本当の食の安全は守れない。給食地元産比率の数値目標設定・多品目生産の拡大・農産物消費循環の可視化を求める。農業振興は農家任せではなく村全体で支える仕組みが必要だ。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">米だけで86%の自給率——数字は高くても、中身を見れば課題だらけ。たんぱく質・ビタミン・油脂……米以外の食材がいざというとき確保できるのか。村の食を村内で循環させる仕組みをつくりたい。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">農業振興についてですが、まず、村の食料自給率の現状と課題について伺います。日本の食料自給率はカロリーベースで38%、生産額ベースでは61%ですが、地方においても農業の衰退や食生活の変化により、地元で作られた食料だけでは村民の食を賄えない状況になりつつあります。そこで、村の食料自給率は具体的に何%なのか、過去10年ほどの推移はどうなっているのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○産業振興課長（相川哲也君）</span><span class="txt">村の食料自給率の正確な数値としては発表しておりませんが、概算ではじき出した数字として、カロリーベースで86%以上、生産額ベースで72%以上となっております。村の基幹作物となるのが米でございますが、昨年村内で約726ヘクタールの作付があり、村民約2万500人と計算しますと、約3年8か月分のお米を生産しているという計算となります。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">給食やスーパー、直売所、飲食店などで地元産の食材はどれくらい使用されているか、その割合を把握しているか伺います。</span></div>
+          <div class="t-line"><span class="spk">○産業振興課長（相川哲也君）</span><span class="txt">学校給食における地場産物の活用につきましては、食材費の2割が村内の食材となっております。村の直売所であるまるごと西郷館におきましては、西郷村の出荷者の売上げで見ると、令和5年度は全体のおよそ5割ほどが西郷村産の商品となっております。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">学校給食における地元食材の利用や米消費拡大事業による地産地消を図ってまいりたいと考えております。農地転用により住宅化が進んでおりますが、今ある限られた村内の農地をいかに遊休農地とせず耕作を維持していくかが最大の課題となっております。</span></div>
+        </div>
+        <div class="t-note">※ 令和7年第1回西郷村議会定例会（令和7年3月10日）議事日程第2号 P44〜P47より抜粋</div>
+      </div>
+    `
+  },
+  {
+    cluster: "community",
+    shortTitle: "災害時食料・農業×防災",
+    thought: "備蓄には限界がある。本当の防災は、食べ物を生産できる力を村に根ざすことだ。農業への投資こそが村民を守る。",
+    session: "令和7年 第1回定例会｜令和7年3月10日",
+    title: "農業振興について——災害時の食料供給・備蓄と農業・防災の連携",
+    tags: ["🏘️ 地域コミュニティ","防災備蓄・食料確保"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">大規模災害・台湾有事で物流が途絶えた際、村として何日分の食料を確保できるか。現行備蓄量・スーパー等との協定状況・東日本大震災の教訓・農業と防災の連携について問う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">防災課長・村長 答弁</div>
+          <div class="d-bubble">現在の備蓄は主食約2,400食・お菓子類2,900個・水2,000本（補充中）。目標は想定避難者1,048人×3食×3日分＝約9,600食。イオン・ツルハ・白河青果等と物資供給協定を締結済み。東日本大震災時は備蓄ゼロで支援物資到着まで約6日を要したことが教訓。農業従事者・JAとの食料供給協定の締結を今後検討。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">備蓄よりも「生産力を高める」方向へのシフトを提言。村内農家・JAとの協定強化・コンビニ等との協定拡充・個人備蓄の啓発を要望。防災の観点からも農業への投資こそが村民を守ると主張した。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">備蓄には限界がある。循環させる手間も、時間が経てば形骸化してしまう記憶も。本当の防災は、食べ物を生産できる力を村に根ざすことだ。農業への投資こそが村民を守る。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">現在村として備蓄している食料、水の量はどの程度か、村民2万人分として正しく備蓄が確保されているのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○防災課長（木村三義君）</span><span class="txt">現在の在庫数ですが、主食となる食料が約2,400食、ようかんなどのお菓子類が2,900個、1.6リットルの水が2,000本ほどとなっております。西郷村地域防災計画にのっとって想定されている避難者数1,048人の1日3食の3日分、合計約9,600食分の備蓄を目標に備えていきたいと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">過去の災害時、特に東日本大震災の際など、村の食料の供給はどのような状況だったのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○防災課長（木村三義君）</span><span class="txt">東日本大震災を例に挙げますと、災害翌日には米を確保しましておにぎりの炊き出しを行いましたが、福島県からの支援物資が届くまでには約6日間の時間を要しました。震災当時は、村では水や食料の備蓄を行っていなかったので、早急な対応を取ることができなかったのは課題といえたと思います。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">村の備蓄だけでは不足すると思いますが、それを補うために農業と防災をどう結びつけるのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○防災課長（木村三義君）</span><span class="txt">まず村としてできることは、農業協同組合やまるごと西郷館との食料や燃料、資機材等を可能な範囲で供給してもらえるような物資応援協定等を締結し、災害時の食料確保の強化を図っていくほうがよいと考えられます。</span></div>
+        </div>
+        <div class="t-note">※ 令和7年第1回西郷村議会定例会（令和7年3月10日）議事日程第2号 P48〜P51より抜粋</div>
+      </div>
+    `
+  },
+  {
+    cluster: "economy",
+    shortTitle: "農業人口・新規就農",
+    thought: "原因が分かっているのに、なぜ対応できないのか。農業人口が減り続けることへの諦めが前提にあってはいけない。",
+    session: "令和7年 第1回定例会｜令和7年3月10日",
+    title: "農業振興について——農業人口の減少と新規就農者を増やすための施策",
+    tags: ["💼 地域経済・雇用","新規就農・担い手"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">2020年農林業センサスで農業従事者532人・うち60歳以上が約55%。2000年から農家戸数は899→366経営体へ減少。やめた理由・将来の持続可能性・新規就農者数（直近3年で計5名）・農業が選ばれない理由・半農半Xや農業塾などハードルを下げた仕組みの導入を問う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">産業振興課長 答弁</div>
+          <div class="d-bubble">担い手農家が農地集積を担うが、今後は全農地の維持が困難と見込む。5ha以上の規模農家は増加傾向。新規就農者支援に60万円補助（全員利用）。農業塾・就農相談・スマート農業補助等を実施。地域おこし協力隊（農業）1名採用・市民農園開設で関係人口拡大を目指す。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">「原因が分かっているのに対応できないのはなぜか」と問題の本質に迫った。東北6不交付団体の一員として農業人口増を証明する姿勢を求める。専業農家だけでなく多様な農業への入口を広げること、農を「諦め」ではなく「可能性」として語れるビジョンを村に求めた。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">分かっているのになぜ止められないのか——農業人口が減り続けることへの諦めが前提にあってはいけない。東北唯一の6不交付団体の一つとして、農業人口だって増やせると証明していかなければならない。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">現在の農業人口は何人か、そのうち高齢者の割合はどの程度か伺います。</span></div>
+          <div class="t-line"><span class="spk">○産業振興課長（相川哲也君）</span><span class="txt">2020年農林業センサスによりますと、農業経営体数につきましては366経営体で、農業に60日以上従事した世帯員等は532人、60歳以上の割合は約55%の294名となっております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">ここ数年の新規就農者の数はどのように推移していて、併せて年齢層も伺います。</span></div>
+          <div class="t-line"><span class="spk">○産業振興課長（相川哲也君）</span><span class="txt">令和4年度につきましては1名で40代の男性、令和5年度につきましては3名で20代男性1名・30代男性1名・40代男性1名、令和6年度につきましては1名で20代女性が1名となっております。令和7年度につきましては、現在のところ1名が予定されておりまして、30代女性1名となっております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">西郷村において、このまま農業人口が減少し続けた場合、村の農業は将来的に持続可能なのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○産業振興課長（相川哲也君）</span><span class="txt">今後さらなる農業人口が減少し続けた場合、地域の担い手農家の方たちだけでは全ての農地を維持できないことが見込まれております。若者の参入や退職者、半農半X、家庭菜園など、趣味で農業をしている方々など、幅広い様々な方々が農業に関わっていただき、地域全体で盛り上げる必要があると考えております。</span></div>
+        </div>
+        <div class="t-note">※ 令和7年第1回西郷村議会定例会（令和7年3月10日）議事日程第2号 P51〜P57より抜粋</div>
+      </div>
+    `
+  },
+  {
+    cluster: "agriculture",
+    shortTitle: "耕作放棄地の現状と対策",
+    thought: "東京ドーム約35個分の遊休農地。今がぎりぎりの分岐点——守りに入らず、未来の農地を取り戻す地図を描いてほしい。",
+    session: "令和7年 第1回定例会｜令和7年3月10日",
+    title: "農業振興について——耕作放棄地の現状把握と対策",
+    tags: ["🌾 農業振興","耕作放棄地・農地バンク"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">全国の耕作放棄地は約42万haと東京都の2倍。村内の耕作放棄地面積・エリア別分布・所有者特定状況・相続未登記問題・農地バンクの活用状況・今後の見通しを問う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">農業委員会事務局長 答弁</div>
+          <div class="d-bubble">今年度調査（10,788筆・2,080ha対象）で、非農地判断933筆・85ha（東京ドーム約18個分）、再生可能遊休農地767筆・78ha（同約17個分）。相続未登記農地は385筆・約57.7万㎡（同約12個分）で売買・転用不可。南部の耕作放棄地割合が最大（面積比10.3%）。昨年度比では若干減少も今後増加懸念。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">「守りに入りすぎ」と現状維持姿勢を問題視。耕作放棄地を減らすビジョンと未来地図の明確化を要望。相続問題を解決しない限り農地活用は不可能——農業委員会との連携強化・早期相続登記の促進を求めた。今がぎりぎりの分岐点だ。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">東京ドーム約35個分の遊休農地。相続できていないから何もできない——そんな土地が東京ドーム12個分もある。今がぎりぎりの分岐点。守りに入らず、未来の農地を取り戻す地図を描いてほしい。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">現在村内にはどれくらいの耕作放棄地の面積があるのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○農業委員会事務局長（鈴木弘嗣君）</span><span class="txt">今年度は1万788筆、面積で約2,080ヘクタールの農地の調査を実施いたしました。今年度の調査では、農地の様相を呈していない非農地判断の筆数は933筆、面積で約85ヘクタール、再生可能な遊休農地の筆数は767筆、面積で約78ヘクタールとなっております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">耕作放棄地の所有者はどの程度特定されており、相続の問題などで管理が難しい土地はどのくらいあるのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○農業委員会事務局長（鈴木弘嗣君）</span><span class="txt">村内に相続未登記の農地が385筆、人数では64名、面積で約57万7,000平方メートルございます。相続がされていない農地に関しましては、基本的には貸し借りや売買、転用申請も受け付けられないため、問合せがあった場合などには農業委員会のほうで早期の相続登記をお願いしております。</span></div>
+          <div class="t-line"><span class="spk">○農業委員会事務局長（鈴木弘嗣君）</span><span class="txt">耕作放棄地でございますが、昨年度に比べますと今年度非農地判断の筆数は40筆の減、面積で12万平方メートルの減となっております。今後の見通しでございますが、今後離農者の増加に伴い、耕作放棄地が増加してしまうことも予想されますので、新規就農者の育成といった取組が急務となっております。</span></div>
+        </div>
+        <div class="t-note">※ 令和7年第1回西郷村議会定例会（令和7年3月10日）議事日程第2号 P57〜P60より抜粋</div>
+      </div>
+    `
+  },
+  {
+    cluster: "economy",
+    shortTitle: "空き家×農地活用",
+    thought: "空き家と耕作放棄地——どちらも「もったいない」のひとことに尽きる。セットで活用する仕組みをつくれば、移住も農業も同時に動き出す。",
+    session: "令和7年 第1回定例会｜令和7年3月10日",
+    title: "農業振興について——空き家対策と農業振興の連携（農地付き空き家の活用）",
+    tags: ["💼 地域経済・雇用","空き家・移住促進"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">全国の空き家率は約13.6%。村内の空き家状況・空き家バンクの登録数・成約率を問う。また耕作放棄地と空き家をセットで新規就農者や2拠点生活（ダーチャ的活用）に提供する仕組みの導入を提案する。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">企画政策課長 答弁</div>
+          <div class="d-bubble">平成28年調査で空き家235棟（うち利活用可能48棟）。空き家バンクは令和2年度開始・9件登録・成約率89%。農地付き空き家は過去に成約実績あり。今後も産業振興課・農業委員会と連携し農地付き空き家の利活用を促進する。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問）</div>
+          <div class="d-bubble">成約率89%——登録さえ増やせば空き家は減らせる。農地付き空き家のマッチングをネットワーク化・仕組み化し、耕作放棄地解消と移住促進を同時に進めるロスのない仕組みを構築してほしい。農は国の礎——希望を持てる農業ビジョンを村に求める。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">空き家と耕作放棄地——どちらも「もったいない」のひとことに尽きる。セットで活用する仕組みをつくれば、移住も農業も同時に動き出す。農は国の礎。希望を持てるビジョンを、守りではなく前向きに描いてほしい。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">村内の空き家の軒数、分布、所有者の把握状況はどうなっているのか、現状を伺います。</span></div>
+          <div class="t-line"><span class="spk">○企画政策課長（関根 隆君）</span><span class="txt">村内の空き家等実態調査は、直近で平成28年度に実施しております。調査結果では、235棟は空き家と定義され、そのうち利活用可能な空き家が48棟、修繕が必要とされる空き家が116棟、著しく破損ありと判定された空き家が53棟となっています。空き家の分布につきましては、小田倉地区が最も多く、真船、鶴生、熊倉、羽太地区の順に多くなっております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">空き家バンクの登録数、成約率はどの程度で、実際にどれくらい活用されているのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○企画政策課長（関根 隆君）</span><span class="txt">空き家バンクは令和2年度から始めております。本年度までに9件の登録がございました。9件のうち、4件が成約、4件が取扱不動産会社で成約したことにより、登録を取り消しております。したがいまして、空き家バンクの成約率としましては89%となっております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">空き家と近くの耕作放棄地をセットで農地付き空き家としての活用を検討しているのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○企画政策課長（関根 隆君）</span><span class="txt">農地付き空き家につきましては、村の空き家バンクに登録が可能であり、過去に農地付き空き家が登録され、成約となった実績もございます。引き続き農地つき空き家をご希望される方については、村産業振興課、農業委員会と連携し、農地の利活用促進を図るとともに、空き家の解消にもつなげてまいりたいと考えております。</span></div>
+        </div>
+        <div class="t-note">※ 令和7年第1回西郷村議会定例会（令和7年3月10日）議事日程第2号 P60〜P62より抜粋</div>
+      </div>
+    `
+  }
+  ,
+  {
+    cluster: "nature",
+    shortTitle: "メガソーラー・条例",
+    thought: "理念条例だけでは守れない。ゾーニング・規制・廃棄費用——全部そろってはじめて「村民の生命と財産を守る」という言葉が本物になる。",
+    session: "令和7年 第3回定例会｜令和7年9月8日",
+    title: "メガソーラーについて——自然環境等と再生可能エネルギー条例の実効性を問う",
+    tags: ["🌿 環境保全","再エネ条例・ゾーニング"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">2年前の初議会でも質問したメガソーラー問題を再度問う。現行の再エネ条例（令和2年制定）は理念条例にとどまり、抑止力として不十分ではないか。規制条例に移行できなかった事情と、ゾーニング導入・小規模案件への届出義務化・廃棄パネル積立金の確認徹底・維持管理の把握・災害時対応マニュアルの整備を求める。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">環境保全課長 / 防災課長 / 村長 答弁</div>
+          <div class="d-bubble">条例制定時は指導要綱との併用で効果的と判断。制定以降の1,000㎡超新設は5件。担当実感として新設は減少しており一定の抑止効果あり。将来的に条例改正が必要と判断した場合はゾーニングや危険区域の盛り込みを検討する。廃棄費用積立管理は国（OCCTO）が担い、村は把握していない。メガソーラー火災は噴霧注水が可能（消防庁R6通知）。村長は「両者の調和を基本方針に、国・県・近隣市町村と連携して実効性ある制度構築に努める」と答弁。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（再質問・要望）</div>
+          <div class="d-bubble">東京ドーム200個分のメガソーラーを抱える西郷村はもう十分貢献した。理念条例が悪いのではなく、5年たっても当時のままでいいかを定期的に問い直す姿勢が大事。条例に限界があっても「諦める理由にはならない」。村民の最後のよりどころは行政——OCCTOへの制度確認徹底・ゾーニング検討・県条例制定への働きかけを強く要望する。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">理念条例だけでは守れない。ゾーニング・規制・廃棄費用——全部そろってはじめて「村民の生命と財産を守る」という言葉が本物になる。諦めることを「しようがない」と言い換えてはいけない。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">メガソーラーに関しては、ちょうど２年前の初議会でも一般質問させていただきましたが、再度質問させていただきます。まず、当時、理念条例ではなく規制条例にできなかった事情、また、理念条例で十分だと判断した根拠は何だったのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○環境保全課長（今井 学君）</span><span class="txt">条例制定に当たっては、西郷村と規模の近い市町村や福島県や近隣の県にある市町村の状況を参考にして、村独自の条例制定を行ったものでございます。条例や指導要綱の手続を通じ事業者に対して実効的な対策を求めることが効果的であると当時判断したものでございます。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">結果的に再エネ条例制定以降、村に届出・申請された件数はどの程度あったのか。また、結果的に理念条例で抑止的な効果があったと判断されているのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○環境保全課長（今井 学君）</span><span class="txt">１,０００平米を超える面積の太陽光発電事業者の新設状況につきましては、合計５件となっております。担当課の実感といたしましては、条例・要綱に基づく手続を新たにされました太陽光電気事業者は減少しているものと考えており、一定の効果があったものだというふうに考えているところでございます。</span></div>
+          <div class="t-line"><span class="spk">○環境保全課長（今井 学君）</span><span class="txt">将来的に条例改正が必要であるというふうに判断される場合におきましては、ゾーニングなどの区域設定や地滑り等防止区域や急傾斜地、崩壊危険区域などの特に危険と見られる区域につきましては、その条例に盛り込む必要があると認識しているところでございます。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">村では、令和２年に制定した西郷村自然環境等と再生可能エネルギー事業との調和に関する条例に基づき、自然環境と再生エネルギーの事業のいずれかを優先するのではなく、両者の調和を図ることを基本方針として取り組んでまいりたいと考えております。今後におきましても、国や県の関係機関をはじめ、近隣市町村などと共に継続的な問題提起及び情報共有を行いより実効性の高い制度構築に努めてまいります。</span></div>
+        </div>
+        <div class="t-note">※ 令和7年第3回西郷村議会定例会（令和7年9月8日）議事日程第2号 P23〜P34より抜粋</div>
+      </div>
+    `
+  },
+  {
+    cluster: "nature",
+    shortTitle: "水源保全",
+    thought: "水は命。外資による土地取得が現実のリスクになる前に、村が主体的に動かなければならない。守りではなく、備えること——それが村民への責任だ。",
+    session: "令和7年 第3回定例会｜令和7年9月8日",
+    title: "水源保全について——外国資本による土地取得と水源地保全の課題",
+    tags: ["🌿 環境保全","水源保全・外国資本"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">世界では「21世紀は水の世紀」と言われ、外国資本による水源地・山林の買収が日本国内でも現実のリスクとなっている。村内の外国資本による土地取得状況の把握・水源周辺での取得実績・想定リスク・農業への悪影響・村民の不安への認識・水源保全条例の検討状況を問う。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">企画政策課長 / 上下水道課長 / 産業振興課長 / 村長 答弁</div>
+          <div class="d-bubble">外国資本限定での土地取得状況は一元把握していない。現時点で水源地・森林法第5条の森林での外国資本・国内企業による売買実績はない。水質・水量への悪影響リスクは認識済み。村長は「外資に限らず山林の大規模開発は水源涵養機能低下等のリスクがある」と認識。村から福島県へ働きかけた結果「福島県水源地域保全条例」が今月の県議会に上程される予定。憲法上の制約により売買制限は困難。現在、北部水源の水源涵養林として土地購入を推進中。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（まとめ・要望）</div>
+          <div class="d-bubble">県条例案は届出・助言・勧告・5万円以下の過料にとどまり「抑止力としてかなり弱い」。水源地の位置情報の公開は難しくても、重要エリアのリスク共有は村民が軽々と売却しないための抑止力になる。県条例が形骸化した場合には村独自条例の検討を。村長には関係機関への強い働きかけと村独自の備えを強く要望する。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">水は命であり、農業や地域経済を支える基盤。その水を守ることは、村が存続していく上で避けて通れない最優先の課題だ。現在は大丈夫でも、気づいたときには後手に回っている——だから今動く。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">村内の外国資本による土地取得がどの程度行われているか、村として把握しているのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○企画政策課長（関根 隆君）</span><span class="txt">外国資本と限定した土地取得状況等につきましては、一元的には把握しておりません。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">水源地や重要な山林周辺での外国企業や大企業等による取得が、今現在確認されているのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○企画政策課長（関根 隆君）</span><span class="txt">現在のところ、村内の水源地や森林法第５条の森林等につきましては、外国資本の企業や国内企業等による土地の売買の実績はございません。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">外資ばかりではなく、水源涵養林などを含む山林における大規模開発は、治水・利水、生態系などへの影響が懸念されるため、リスク管理が必要であると認識しております。特に水源地周辺は優先して保存されるべきであり、国・県の制度や関係法令の枠組みの中で適正に運用していくものとしております。</span></div>
+          <div class="t-line"><span class="spk">○上下水道課長（相川 晃君）</span><span class="txt">村から福島県へ条例の制定を働きかけた結果、福島県水源地域保全条例が制定されることとなり、福島県議会９月定例会へ上程される予定となっております。西郷村の約６７.７％が森林であり、水の源である森林、その全てが、重要な守られるべき水源域と考えております。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">本村にとって、水源地の保全は、村において最も重要な課題の一つであると考えております。制度が形骸化してしまっている場合においては、県に制度刷新を要請するとともに、村独自の条例等の制定を検討するなど、水源の安全・安定的な保全を推進してまいりたいと思います。</span></div>
+        </div>
+        <div class="t-note">※ 令和7年第3回西郷村議会定例会（令和7年9月8日）議事日程第2号 P34〜P39より抜粋</div>
+      </div>
+    `
+  },
+  {
+    cluster: "economy",
+    shortTitle: "村内雇用の促進",
+    thought: "村で育てた人材を、村の企業に生かす。シンプルな循環が、地域の未来をつくる。",
+    session: "令和7年 第2回定例会｜令和7年6月9日",
+    title: "村内雇用の促進について——地元循環型の雇用構造と人口戦略",
+    tags: ["💼 地域経済・雇用","若者定着・地元就職"],
+    body: `
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員</div>
+          <div class="d-bubble">村内企業の新卒採用状況を把握しているか。高校卒業後の進路（村内・村外就職・進学）を追える体制はあるか。村外へ進学した若者に継続的な関わりを持つ取り組みはあるか。通信制高校の誘致を検討したことはあるか。</div>
+        </div>
+      </div>
+      <div class="dialogue-row answer">
+        <div class="d-avatar">🏛️</div>
+        <div class="d-content">
+          <div class="d-name">産業振興課長・企画政策課長・教育長・村長 答弁</div>
+          <div class="d-bubble">新卒採用状況は全村700社以上あり全体把握には至っていない。高校卒業後の進路情報は個人情報の観点から市町村では把握困難。若者との継続的関わりは企業ガイドブック配布やデジタルサイネージを実施。転入は20代半ばが多く、転出は大学卒業後の就職が要因。通信制高校誘致の検討は行っていない。</div>
+        </div>
+      </div>
+      <div class="dialogue-row">
+        <div class="d-avatar">🎤</div>
+        <div class="d-content">
+          <div class="d-name">おざわゆうた 議員（まとめ・要望）</div>
+          <div class="d-bubble">村が教育に予算をつける以上、その人材を後で回収できる仕組みがないと投資にならない。KPIを設定して施策の効果検証を。村外へ進む若者には戻れる環境と帰る理由を。通信制高校は地域課題解決と高校教育を合体した新しいモデルとして、ぜひ可能性を探ってほしい。</div>
+        </div>
+      </div>
+      <div class="q-philosophy">村で育てた人材を村の企業に生かす——地元循環型の雇用構造を作ることが、人口減少時代の西郷村が取り組むべき最重要課題の一つだ。送り出すだけでなく、帰ってこられる場所を用意する。それが本当の意味での地域づくりだと思っている。</div>
+      <button class="transcript-toggle" onclick="toggleT(this)">📄 議事録全文を読む <span class="arr">▼</span></button>
+      <div class="transcript-box">
+        <div class="transcript-inner">
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">１番、参政党の小澤佑太です。通告に従い、一般質問を始めます。まず、村内企業への新卒採用状況の把握についてですが、２０２４年、国内で生まれた日本人の子どもの数は約６８万人で、前年より４万人も減少、また、出生数の統計を取り始めて以降、７０万人を下回ってしまいました。少子高齢化が進めば、当然、労働人口の減少も加速していきます。村内企業が毎年新卒を何名採用しているか、現時点で把握しているのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○産業振興課長（相川哲也君）</span><span class="txt">村内企業が毎年新卒者を何名採用しているかについては、現時点では正確な数字の把握には至っておりません。毎年５０社ほど実施している企業訪問の際に、聞き取りできた企業につきましては、ある程度把握はしておりますが、村内全体で７００社以上ございますので、全てを把握するには至っておりません。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">現状、高校卒業時の進路、村内・村外就職・進学を追える体制は村にあるのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○産業振興課長（相川哲也君）</span><span class="txt">義務教育終了後は市町村の管轄から外れてしまうため、現在のところ、本村においては、高校卒業者の進路情報を把握できる体制は整っておりません。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">村として、中学生まで育てて、１５歳で村外に送り出す現状に対して、その後も継続的な関わりを持とうという意思はあるのか伺います。</span></div>
+          <div class="t-line"><span class="spk">○産業振興課長（相川哲也君）</span><span class="txt">高校進学後も継続的な関わりを持ちたいという意思は、村にとっては考えておりまして、各種給付事業のほか、就業に関しましては、地元企業への就職を促すため、管内の高校に企業の情報をまとめたガイドブックを作成し配布することや、高校生に地元企業の特徴や事業内容を分かりやすく伝えるため、県南管内の就職校にデジタルサイネージを設置して、企業のＰＲ動画の放映などを実施しております。</span></div>
+          <div class="t-line"><span class="spk">○村長（髙橋廣志君）</span><span class="txt">転入者を世代別に見ますと、男女ともに２０代半ばが多くなっております。就職から数年が経過し、勤務先近くへの引っ越しや、通勤のため新白河駅周辺の引っ越しなどで、本村が転入先となっているものと考えております。転出者についても同様に、男女ともに２０代前半が多く、こちらは大学卒業後の就職を機に、村外に住民票を移す方が多いものと考えております。</span></div>
+          <div class="t-line"><span class="spk">○１番（小澤佑太君）</span><span class="txt">通信制のよさを生かせば、別に校舎だって今から造らなくても、拠点があればいい。新庁舎の空いている会議室でも、文化センターだっていい。地域課題を解決するという授業にして単位を設定し、地域貢献と高校生活を両立させる方向にして——西郷単位制総合大学の高校版と通信制を合体したイメージが実現可能なのかなと思います。通信制の高校の誘致等含めて、ぜひ検討していただきたいと要望して、私の一般質問を終わります。</span></div>
+        </div>
+        <div class="t-note">※ 令和7年第2回西郷村議会定例会（令和7年6月9日）議事日程第2号 P13〜P27より抜粋</div>
+      </div>
+    `
+  }
+
+];
+
+// ── カテゴリ浮遊 × フィルター ENGINE ──
+(function(){
+
+  // 9カテゴリ定義
+  const CATS = [
+    { key:'nature',    label:'🌿 環境保全',         color:'#4cbe82', glow:'rgba(76,190,130,.7)'   },
+    { key:'family',    label:'👶 子育て支援',        color:'#e87050', glow:'rgba(232,112,80,.7)'   },
+    { key:'health',    label:'💊 医療・健康情報',    color:'#d06bbf', glow:'rgba(208,107,191,.7)'  },
+    { key:'diversity', label:'🌈 多様性',            color:'#9b7fe8', glow:'rgba(155,127,232,.7)'  },
+    { key:'community', label:'🏘️ 地域コミュニティ', color:'#e8a84a', glow:'rgba(232,168,74,.7)'   },
+    { key:'edu',       label:'📚 学校教育',          color:'#5ab0f0', glow:'rgba(90,176,240,.7)'   },
+    { key:'economy',   label:'💼 地域経済・雇用',    color:'#f06292', glow:'rgba(240,98,146,.7)'   },
+    { key:'infra',     label:'🚌 地域インフラ・観光',color:'#4db6ac', glow:'rgba(77,182,172,.7)'   },
+    { key:'agriculture',label:'🌾 農業振興',         color:'#8bc34a', glow:'rgba(139,195,74,.7)'   },
+  ];
+
+  const cv  = document.getElementById('qFloatCanvas');
+  const fcv = document.getElementById('qFlashCanvas');
+  if(!cv||!fcv) return;
+  const ctx  = cv.getContext('2d');
+  const fctx = fcv.getContext('2d');
+  let W, H, DPR = window.devicePixelRatio||1;
+
+  const _mctx = document.createElement('canvas').getContext('2d');
+  let particles = [], textWidths = {};
+  const FSIZE = 25;
+
+  function measureAll(){
+    _mctx.font = `bold ${FSIZE}px 'Zen Antique',serif`;
+    CATS.forEach(c => { textWidths[c.key] = _mctx.measureText(c.label).width; });
+  }
+
+  function resize(){
+    W = cv.offsetWidth; H = cv.offsetHeight;
+    cv.width  = W*DPR; cv.height = H*DPR;
+    ctx.setTransform(1,0,0,1,0,0); ctx.scale(DPR,DPR);
+    fcv.width = W*DPR; fcv.height = H*DPR;
+    fctx.setTransform(1,0,0,1,0,0); fctx.scale(DPR,DPR);
+    buildParticles();
+  }
+
+  function buildParticles(){
+    measureAll();
+    const n = CATS.length;
+    const cols = Math.ceil(Math.sqrt(n)), rows = Math.ceil(n/cols);
+    const cw = W/cols, ch = (H*.75)/rows;
+    particles = CATS.map((c,i) => ({
+      idx:   i,
+      key:   c.key,
+      label: c.label,
+      color: c.color,
+      glow:  c.glow,
+      x: cw*(i%cols) + cw*.15 + Math.random()*cw*.7,
+      y: H*.12 + ch*Math.floor(i/cols) + ch*.15 + Math.random()*ch*.7,
+      vx: (Math.random()-.5)*.25,
+      vy: (Math.random()-.5)*.18,
+      tw: textWidths[c.key]||100,
+      phase: Math.random()*Math.PI*2,
+      wobbleSpeed: .0015+Math.random()*.002,
+      hovered: false, scale: 1, targetScale: 1,
+      magnetPull: 0,
+      trail: [], rings: [],
+      selected: false,
+    }));
+  }
+
+  let mx=-9999, my=-9999;
+  function canvasXY(e){
+    const r = cv.getBoundingClientRect();
+    if(e.touches){ return [(e.touches[0].clientX-r.left)*(W/r.width),(e.touches[0].clientY-r.top)*(H/r.height)]; }
+    return [(e.clientX-r.left)*(W/r.width),(e.clientY-r.top)*(H/r.height)];
+  }
+  cv.addEventListener('mousemove', e => { [mx,my] = canvasXY(e); });
+  cv.addEventListener('mouseleave', () => { mx=-9999; my=-9999; });
+  cv.addEventListener('click', e => {
+    const [cx,cy] = canvasXY(e);
+    let best=-1, bestD=9999;
+    particles.forEach((p,i) => {
+      if(!p.hovered) return;
+      const d = Math.hypot(cx-p.x, cy-p.y);
+      if(d<bestD){ bestD=d; best=i; }
+    });
+    if(best>=0) openCatPanel(best);
+  });
+  cv.addEventListener('touchend', e => {
+    e.preventDefault();
+    const [cx,cy] = canvasXY(e.changedTouches[0] ? {clientX:e.changedTouches[0].clientX,clientY:e.changedTouches[0].clientY} : e);
+    let best=-1, bestD=9999;
+    particles.forEach((p,i) => {
+      const pad = p.tw/2+30;
+      if(Math.abs(cx-p.x)<pad && Math.abs(cy-p.y)<p.scale*FSIZE+20){ best=i; bestD=0; }
+    });
+    if(best>=0) openCatPanel(best);
+  });
+
+  // ── カテゴリパネル開閉 ──
+  let activeCatIdx = -1;
+  function openCatPanel(idx){
+    activeCatIdx = idx;
+    const cat = CATS[idx];
+    particles.forEach(p => p.selected = (p.idx===idx));
+
+    // bigBang
+    bigBang(particles[idx].x, particles[idx].y, cat.color);
+
+    // パネル構築
+    const panel = document.getElementById('catPanel');
+    document.getElementById('catPanelTitle').textContent = cat.label;
+    document.getElementById('catPanelTitle').style.color = cat.color;
+    document.getElementById('catPanelClose').style.borderColor = cat.color+'55';
+
+    const grid = document.getElementById('catCardGrid');
+    grid.innerHTML = '';
+    const qs = qData.filter(q => q.cluster === cat.key);
+    qs.forEach((q,i) => {
+      const card = document.createElement('div');
+      card.className = 'cat-q-card';
+      card.style.cssText = `border-left:3px solid ${cat.color}; animation-delay:${i*0.06}s`;
+      card.innerHTML = `
+        <div class="cat-q-num" style="color:${cat.color}aa">Q${q.num||String(i+1).padStart(2,'0')}</div>
+        <div class="cat-q-title">${q.shortTitle||q.title}</div>
+        <div class="cat-q-session">${(q.session||'').split('｜')[0]}</div>
+        <div class="cat-q-thought">${q.thought||''}</div>
+        <button class="cat-q-btn" style="border-color:${cat.color}55;color:${cat.color}" onclick="openModalDirect(${qData.indexOf(q)})">議事録を読む →</button>
+      `;
+      grid.appendChild(card);
+    });
+
+    panel.style.display = 'block';
+    requestAnimationFrame(() => panel.classList.add('open'));
+  }
+
+  window.closeCatPanel = function(){
+    const panel = document.getElementById('catPanel');
+    panel.classList.remove('open');
+    setTimeout(() => { panel.style.display='none'; }, 300);
+    activeCatIdx = -1;
+    particles.forEach(p => p.selected = false);
+  };
+
+  window.openModalDirect = function(idx){
+    const q = qData[idx];
+    const anchor = sessionToAnchor(q.session || '');
+    const num = q.num || '';
+    const url = 'gijiroku.html' + (anchor ? '#' + anchor : '') + (num ? '?q=' + num : '');
+    window.open(url, '_blank');
+  };
+
+  // ── パーティクルエフェクト ──
+  let gSparks = [];
+  function bigBang(px,py,color){
+    for(let i=0;i<200;i++){
+      const ang = Math.random()*Math.PI*2;
+      const spd = 2+Math.random()*14;
+      gSparks.push({
+        x:px,y:py,
+        vx:Math.cos(ang)*spd, vy:Math.sin(ang)*spd,
+        alpha:1, size:1.5+Math.random()*3,
+        color: i%4===0?'#fff':color,
+        life:0, maxLife:25+Math.random()*35,
+        gravity:.08+Math.random()*.08,
+      });
+    }
+    let fa=0.6;
+    (function flashLoop(){
+      fctx.clearRect(0,0,W,H);
+      if(fa>0){
+        const rg = fctx.createRadialGradient(px,py,0,px,py,Math.max(W,H)*.8);
+        rg.addColorStop(0,`rgba(255,255,255,${Math.min(fa*.4,.3)})`);
+        rg.addColorStop(.12,color.replace('rgb(','rgba(').replace(')',`,${fa*.25})`)||`rgba(255,255,255,${fa*.2})`);
+        rg.addColorStop(1,'transparent');
+        fctx.fillStyle=rg; fctx.fillRect(0,0,W,H);
+        fa-=.05; requestAnimationFrame(flashLoop);
+      } else { fctx.clearRect(0,0,W,H); }
+    })();
+  }
+
+  const stars = Array.from({length:80},(_,i)=>({
+    x:((i*173.37)%1), y:((i*97.61)%1),
+    r:.3+((i*37.1)%1)*1, a:.07+((i*53.7)%1)*.25,
+  }));
+
+  let t = 0;
+  function loop(){
+    t++;
+    ctx.clearRect(0,0,W,H);
+
+    // 背景グラデ
+    [[.2,.3,'80,50,180'],[.75,.6,'232,100,50'],[.5,.15,'50,120,200']].forEach(([nx,ny,nc])=>{
+      const g = ctx.createRadialGradient(nx*W,ny*H,0,nx*W,ny*H,.28*W);
+      g.addColorStop(0,`rgba(${nc},0.04)`); g.addColorStop(1,'transparent');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.ellipse(nx*W,ny*H,.28*W,.18*H,0,0,Math.PI*2); ctx.fill();
+    });
+
+    // 星
+    stars.forEach(s=>{
+      ctx.globalAlpha = s.a*(.6+Math.sin(t*.02+s.x*10)*.4);
+      ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(s.x*W,s.y*H,s.r,0,Math.PI*2); ctx.fill();
+    });
+    ctx.globalAlpha=1;
+
+    // 接続線
+    for(let i=0;i<particles.length;i++)
+      for(let j=i+1;j<particles.length;j++){
+        const a=particles[i],b=particles[j],d=Math.hypot(b.x-a.x,b.y-a.y);
+        if(d<180){
+          ctx.globalAlpha=(1-d/180)*.06;
+          ctx.strokeStyle='#fff'; ctx.lineWidth=.4;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        }
+      }
+    ctx.globalAlpha=1;
+
+    // スパーク
+    gSparks = gSparks.filter(s=>{
+      s.x+=s.vx; s.y+=s.vy; s.vy+=s.gravity; s.vx*=.97; s.life++;
+      s.alpha = Math.pow(1-s.life/s.maxLife,1.3);
+      if(s.alpha<=.01) return false;
+      ctx.save(); ctx.globalAlpha=s.alpha;
+      ctx.fillStyle=s.color; ctx.shadowColor=s.color; ctx.shadowBlur=8;
+      ctx.beginPath(); ctx.arc(s.x,s.y,Math.max(.1,s.size*(1-s.life/s.maxLife*.5)),0,Math.PI*2); ctx.fill();
+      ctx.restore(); return true;
+    });
+
+    // パーティクル描画・更新
+    particles.forEach((p,i)=>{
+      const pad=28;
+      const shw=(p.tw/2)*p.scale+pad, shh=p.scale*FSIZE+pad;
+      const hovered = mx>p.x-shw&&mx<p.x+shw&&my>p.y-shh&&my<p.y+shh;
+      p.hovered=hovered;
+
+      const dMag=Math.hypot(mx-p.x,my-p.y);
+      if(dMag<180&&mx>-100){ p.magnetPull=1-(dMag/180); p.vx+=(mx-p.x)*.0007; p.vy+=(my-p.y)*.0007; }
+      else { p.magnetPull*=.9; }
+
+      p.targetScale = hovered?1.5:(p.selected?1.25:1+p.magnetPull*.2);
+      p.scale += (p.targetScale-p.scale)*.1;
+
+      particles.forEach((o,j)=>{
+        if(j===i) return;
+        const dx=p.x-o.x,dy=p.y-o.y,d=Math.hypot(dx,dy);
+        const minD=(p.tw+o.tw)/2+50;
+        if(d<minD&&d>.1){ const f=(minD-d)/minD*.05; p.vx+=dx/d*f; p.vy+=dy/d*f; }
+      });
+
+      p.vx+=Math.cos(t*p.wobbleSpeed+p.phase)*.0006;
+      p.vy+=Math.sin(t*p.wobbleSpeed*1.3+p.phase)*.0006;
+      if(hovered){p.vx*=.8;p.vy*=.8;}
+      p.vx*=.975; p.vy*=.975;
+      p.x+=p.vx; p.y+=p.vy;
+      const bx=Math.max(p.tw/2+20,Math.min(W-p.tw/2-20,p.x));
+      const by=Math.max(80,Math.min(H-60,p.y));
+      if(bx!==p.x)p.vx*=-.5; if(by!==p.y)p.vy*=-.5;
+      p.x=bx; p.y=by;
+
+      // トレイル
+      p.trail.push({x:p.x,y:p.y});
+      if(p.trail.length>18) p.trail.shift();
+      for(let k=1;k<p.trail.length;k++){
+        ctx.globalAlpha=(k/p.trail.length)*.28*(hovered?2:1+p.magnetPull);
+        ctx.strokeStyle=p.color; ctx.lineWidth=hovered?2:1;
+        ctx.beginPath(); ctx.moveTo(p.trail[k-1].x,p.trail[k-1].y); ctx.lineTo(p.trail[k].x,p.trail[k].y); ctx.stroke();
+      }
+      ctx.globalAlpha=1;
+
+      // リング
+      p.rings=p.rings.filter(r=>{
+        r.r+=r.speed||4; r.alpha-=.025; if(r.alpha<=0) return false;
+        ctx.save(); ctx.globalAlpha=r.alpha;
+        ctx.strokeStyle=r.color; ctx.lineWidth=2; ctx.shadowColor=r.color; ctx.shadowBlur=14;
+        ctx.beginPath(); ctx.arc(p.x,p.y,r.r,0,Math.PI*2); ctx.stroke();
+        ctx.restore(); return true;
+      });
+
+      // オーラ
+      const isActive = hovered||p.selected||p.magnetPull>.08;
+      if(isActive){
+        const haR=p.tw*.9;
+        const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,haR);
+        const alpha = p.selected?.3:(hovered?.22:.1*p.magnetPull);
+        g.addColorStop(0,p.glow.replace('.7',String(alpha)));
+        g.addColorStop(1,'transparent');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.ellipse(p.x,p.y,haR,FSIZE*1.8,0,0,Math.PI*2); ctx.fill();
+      }
+
+      // 中心ドット
+      const dotR=hovered?5:p.selected?4:3+p.magnetPull*2;
+      const dg=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,dotR*4);
+      dg.addColorStop(0,p.color); dg.addColorStop(1,'transparent');
+      ctx.fillStyle=dg; ctx.beginPath(); ctx.arc(p.x,p.y,dotR*4,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle=p.color; ctx.shadowColor=p.color; ctx.shadowBlur=hovered?30:p.selected?20:12;
+      ctx.beginPath(); ctx.arc(p.x,p.y,dotR,0,Math.PI*2); ctx.fill();
+      ctx.shadowBlur=0;
+
+      // テキスト
+      ctx.save();
+      ctx.translate(p.x,p.y); ctx.scale(p.scale,p.scale);
+      ctx.font=`bold ${FSIZE}px 'Zen Antique',serif`;
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.shadowColor=p.color; ctx.shadowBlur=hovered?32:p.selected?20:10;
+      ctx.fillStyle = hovered?'#fff':(p.selected?p.color+'ff':p.color+(p.magnetPull>.2?'ff':'cc'));
+      ctx.fillText(p.label,0,0);
+      ctx.restore();
+
+      // 選択中 → 件数バッジ
+      if(p.selected){
+        const count = qData.filter(q=>q.cluster===p.key).length;
+        ctx.save();
+        ctx.font=`bold 10px 'Special Elite',monospace`;
+        ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.fillStyle=p.color; ctx.shadowColor=p.color; ctx.shadowBlur=8;
+        ctx.fillText(`${count}件`, p.x, p.y - FSIZE*p.scale - 10);
+        ctx.restore();
+      }
+    });
+
+    cv.style.cursor = particles.some(p=>p.hovered)?'pointer':'default';
+    requestAnimationFrame(loop);
+  }
+
+  document.fonts.ready.then(()=>{ resize(); window.addEventListener('resize',resize); loop(); });
+})();
+
+// ── モーダル実装 ──────────────────────────────
+// ── アーカイブカード選択 ──
+function selectArchiveCard(e, el) {
+  e.preventDefault();
+  // 他の選択を解除
+  document.querySelectorAll('.archive-card.selected').forEach(c => c.classList.remove('selected'));
+  // このカードを選択
+  el.classList.add('selected');
+  // 少し待ってからページ遷移（選択状態を見せる）
+  const href = el.getAttribute('href');
+  setTimeout(() => { window.open(href, '_blank'); }, 300);
+}
+
+let _currentModalIdx = 0;
+
+function renderModal(idx) {
+  const q = qData[idx];
+  if (!q) return;
+  _currentModalIdx = idx;
+
+  document.getElementById('mNum').textContent = q.num;
+  document.getElementById('mSession').textContent = q.session || '';
+  document.getElementById('mTitle').textContent = q.title || '';
+
+  // タグ
+  const tagsEl = document.getElementById('mTags');
+  tagsEl.innerHTML = (q.tags || []).map(t =>
+    `<span class="q-modal-tag">${t}</span>`
+  ).join('');
+
+  // 本文
+  document.getElementById('mBody').innerHTML = q.body || '';
+
+  // ナビ
+  document.getElementById('mCount').textContent = `${idx + 1} / ${qData.length}`;
+  document.getElementById('mPrev').disabled = idx === 0;
+  document.getElementById('mNext').disabled = idx === qData.length - 1;
+}
+
+function openModal(idx) {
+  renderModal(idx != null ? idx : _currentModalIdx);
+  document.getElementById('qModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// session文字列 → アーカイブページのアンカーidに変換
+function sessionToAnchor(session) {
+  const map = {
+    '令和5年 第3回定例会': 'r5-3',
+    '令和5年 第4回定例会': 'r5-4',
+    '令和6年 第1回定例会': 'r6-1',
+    '令和6年 第2回定例会': 'r6-2',
+    '令和6年 第3回定例会': 'r6-3',
+    '令和6年 第4回定例会': 'r6-4',
+    '令和7年 第1回定例会': 'r7-1',
+    '令和7年 第2回定例会': 'r7-2',
+    '令和7年 第3回定例会': 'r7-3',
+    '令和7年 第4回定例会': 'r7-4',
+  };
+  for(const key in map){
+    if(session && session.includes(key)) return map[key];
+  }
+  return '';
+}
+
+// カード裏面の「議事録を読む」ボタン用（フリップカードから）
+window.openModalFromCard = function() {
+  const q = qData[_currentModalIdx];
+  const anchor = sessionToAnchor(q.session || '');
+  const num = q.num || '';
+  const url = 'gijiroku.html' + (anchor ? '#' + anchor : '') + (num ? '?q=' + num : '');
+  window.open(url, '_blank');
+};
+
+// catパネルの「議事録を読む」ボタン用
+window.openModalDirect = function(idx) {
+  const q = qData[idx];
+  const anchor = sessionToAnchor(q.session || '');
+  const num = q.num || '';
+  const url = 'gijiroku.html' + (anchor ? '#' + anchor : '') + (num ? '?q=' + num : '');
+  window.open(url, '_blank');
+};
+
+function closeModal() {
+  document.getElementById('qModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function navModal(dir) {
+  const next = _currentModalIdx + dir;
+  if (next >= 0 && next < qData.length) renderModal(next);
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('qModalOverlay') ||
+      e.target.classList.contains('q-modal-backdrop')) {
+    closeModal();
+  }
+}
+
+// キャンバスのパーティクルクリックからモーダルを開けるよう接続
+// qfOpen の後、粒子クリック → qfOpen(idx) → カード裏「議事録を読む」→ openModal
+// また直接 openModal(idx) も呼べるように _currentModalIdx を qfOpen で更新
+
+function selectKw(){}
+function closeKw(){}
+function selectTheme(){}
+function closeCosmosPanel(){}
+
+function toggleT(btn){
+  const box = btn.nextElementSibling;
+  const open = box.classList.contains('open');
+  if(open){ box.classList.remove('open'); btn.querySelector('.arr').textContent='▼'; }
+  else    { box.classList.add('open');    btn.querySelector('.arr').textContent='▲'; }
+}
+
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') window.closeLotusPanel && window.closeLotusPanel();
+});
+</script>
+
+</body>
+</html>
